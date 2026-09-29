@@ -25,3 +25,6 @@ __pycache__/
 scratch/
 tmp/
 temp/
+
+# Paquete desacoplado de Artes Creativas (reservado para repositorio independiente)
+export_creative_arts/

@@ -35,15 +35,10 @@ except ImportError:
 
 TARGETS = [
     {
-        "name": "CV Software Web (Completo)",
-        "path": "01_Software_Dev/cv_web/cv_software.html",
-        "output": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software_completo.pdf",
-        "compat_copy": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software.pdf"
-    },
-    {
         "name": "CV Software Web (Compacto - 2 Páginas)",
-        "path": "01_Software_Dev/cv_web/cv_software.html?mode=compact",
-        "output": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software_compacto_2p.pdf"
+        "path": "01_Software_Dev/cv_web/cv_software.html",
+        "output": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software_compacto_2p.pdf",
+        "compat_copy": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software.pdf"
     },
     {
         "name": "CV Software ATS (Texto Plano)",
@@ -51,54 +46,18 @@ TARGETS = [
         "output": WORKSPACE_ROOT / "01_Software_Dev" / "cv_plain_text" / "cv_plain.pdf"
     },
     {
-        "name": "CV Software Web [EN] (Completo)",
-        "path": "01_Software_Dev/cv_web/cv_software_en.html",
-        "output": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software_en_completo.pdf",
-        "compat_copy": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software_en.pdf"
-    },
-    {
         "name": "CV Software Web [EN] (Compacto - 2 Páginas)",
-        "path": "01_Software_Dev/cv_web/cv_software_en.html?mode=compact",
-        "output": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software_en_compacto_2p.pdf"
+        "path": "01_Software_Dev/cv_web/cv_software_en.html",
+        "output": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software_compacto_2p_en.pdf",
+        "compat_copy": WORKSPACE_ROOT / "01_Software_Dev" / "cv_web" / "cv_software_en.pdf"
     },
     {
         "name": "CV Software ATS [EN] (Texto Plano)",
         "path": "01_Software_Dev/cv_plain_text/viewer_en.html",
         "output": WORKSPACE_ROOT / "01_Software_Dev" / "cv_plain_text" / "cv_plain_en.pdf"
-    },
-    {
-        "name": "CV Creative Arts Web (Completo)",
-        "path": "02_Creative_Arts/cv_web/cv_creative.html",
-        "output": WORKSPACE_ROOT / "02_Creative_Arts" / "cv_web" / "cv_creative_completo.pdf",
-        "compat_copy": WORKSPACE_ROOT / "02_Creative_Arts" / "cv_web" / "cv_creative.pdf"
-    },
-    {
-        "name": "CV Creative Arts Web (Compacto - 2 Páginas)",
-        "path": "02_Creative_Arts/cv_web/cv_creative.html?mode=compact",
-        "output": WORKSPACE_ROOT / "02_Creative_Arts" / "cv_web" / "cv_creative_compacto_2p.pdf"
-    },
-    {
-        "name": "CV Creative Arts ATS (Texto Plano)",
-        "path": "02_Creative_Arts/cv_plain_text/viewer.html",
-        "output": WORKSPACE_ROOT / "02_Creative_Arts" / "cv_plain_text" / "cv_plain.pdf"
-    },
-    {
-        "name": "CV Creative Arts Web [EN] (Completo)",
-        "path": "02_Creative_Arts/cv_web/cv_creative_en.html",
-        "output": WORKSPACE_ROOT / "02_Creative_Arts" / "cv_web" / "cv_creative_en_completo.pdf",
-        "compat_copy": WORKSPACE_ROOT / "02_Creative_Arts" / "cv_web" / "cv_creative_en.pdf"
-    },
-    {
-        "name": "CV Creative Arts Web [EN] (Compacto - 2 Páginas)",
-        "path": "02_Creative_Arts/cv_web/cv_creative_en.html?mode=compact",
-        "output": WORKSPACE_ROOT / "02_Creative_Arts" / "cv_web" / "cv_creative_en_compacto_2p.pdf"
-    },
-    {
-        "name": "CV Creative Arts ATS [EN] (Texto Plano)",
-        "path": "02_Creative_Arts/cv_plain_text/viewer_en.html",
-        "output": WORKSPACE_ROOT / "02_Creative_Arts" / "cv_plain_text" / "cv_plain_en.pdf"
     }
 ]
+
 
 def find_browser_executable() -> str | None:
     """Busca el ejecutable de Microsoft Edge o Chrome en rutas estándar de Windows."""

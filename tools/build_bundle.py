@@ -38,9 +38,10 @@ BUNDLE_PATH = DATA_DIR / "bundle.js"
 def load_json(path: Path) -> dict:
     """Carga un archivo JSON garantizando codificación UTF-8."""
     if not path.exists():
-        raise FileNotFoundError(f"No se encontró el archivo requerido: {path}")
+        return {}
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
 
 def build_bundle():
     """Genera data/bundle.js combinando los archivos JSON madre (Español e Inglés)."""

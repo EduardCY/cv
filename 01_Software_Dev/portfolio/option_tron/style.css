@@ -1435,3 +1435,312 @@ body.is-resizing iframe,
 body.is-resizing object {
     pointer-events: none !important;
 }
+
+/* ==========================================================================
+   ADAPTACIÓN RESPONSIVA MÓVIL Y PANTALLAS TÁCTILES (<= 768px)
+   ==========================================================================
+   Optimiza la experiencia en smartphones preservando el 100% de la estética
+   retro Windows 97, eliminando desbordamientos y facilitando la navegación táctil.
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    :root {
+        --taskbar-height: 44px; /* Área táctil idónea para pulgares */
+    }
+
+    html, body {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .desktop {
+        width: 100vw;
+        height: calc(100vh - var(--taskbar-height));
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Iconos del escritorio dispuestos en rejilla táctil */
+    .desktop-icons {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(76px, 1fr));
+        gap: 12px;
+        z-index: 1;
+    }
+
+    .desktop-icon {
+        width: 100%;
+        min-height: 72px;
+        padding: 8px 4px;
+        background: rgba(0, 0, 0, 0.18);
+        border: 1px dotted rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .desktop-icon:active,
+    .desktop-icon.active-icon {
+        background: rgba(0, 0, 128, 0.45);
+        border-color: var(--win-white);
+    }
+
+    .desktop-icon .icon-label {
+        font-size: 11px;
+        line-height: 1.2;
+        margin-top: 4px;
+    }
+
+    /* En móvil, cada ventana activa se proyecta en pantalla completa limpia */
+    .win97-window {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: calc(100vh - var(--taskbar-height)) !important;
+        min-width: 100vw !important;
+        max-width: 100vw !important;
+        min-height: calc(100vh - var(--taskbar-height)) !important;
+        max-height: calc(100vh - var(--taskbar-height)) !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-bottom: none !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        display: none;
+        flex-direction: column;
+        z-index: 10;
+        
+        /* Tipografía legible fija en móviles */
+        --win-font-base: 12.5px !important;
+        --win-font-sm: 11px !important;
+        --win-font-lg: 14px !important;
+        --win-line-height: 1.45 !important;
+        --project-desc-lines: 8 !important;
+    }
+
+    .win97-window.active {
+        display: flex !important;
+    }
+
+    /* Ocultar tiradores de redimensionamiento libre en dispositivos táctiles */
+    .win97-resizer,
+    .win97-resize-corner-texture,
+    .win97-snap-preview {
+        display: none !important;
+    }
+
+    /* Barra de título adaptada a dedos */
+    .win97-titlebar {
+        height: 32px !important;
+        padding: 3px 6px !important;
+        margin: 0 !important;
+    }
+
+    .titlebar-text {
+        font-size: 12px !important;
+    }
+
+    .titlebar-controls {
+        gap: 4px;
+    }
+
+    .win97-btn-box {
+        width: 28px !important;
+        height: 26px !important;
+        font-size: 14px !important;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Barra de menús deslizable horizontalmente */
+    .win97-menubar {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding: 4px 6px;
+        font-size: 12px;
+        flex-shrink: 0;
+    }
+
+    /* Cuerpo de la ventana con scroll vertical nativo fluido */
+    .win97-window-body {
+        flex: 1 1 auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        padding: 8px 10px !important;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* Pestañas de ventana deslizables */
+    .tab-strip {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        gap: 3px;
+        padding-bottom: 2px;
+        flex-shrink: 0;
+    }
+
+    .tab-button {
+        padding: 7px 12px !important;
+        font-size: 12px !important;
+        min-height: 34px;
+        flex-shrink: 0;
+    }
+
+    .tab-content-area {
+        flex: 1 1 auto !important;
+        overflow-y: visible !important;
+    }
+
+    /* Ajuste en perfil: foto y datos apilados */
+    .profile-sys-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .profile-photo-frame {
+        margin: 0 auto;
+        width: 130px;
+    }
+
+    .win97-profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Explorador de proyectos adaptado a pantalla estrecha */
+    .explorer-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100% !important;
+    }
+
+    .explorer-sidebar {
+        width: 100% !important;
+        border-right: none !important;
+        border-bottom: 2px solid var(--win-gray-dark);
+        max-height: 130px;
+        overflow-y: auto;
+        flex-shrink: 0;
+    }
+
+    .explorer-toolbar {
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 4px;
+    }
+
+    .t-btn {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+
+    .explorer-address-bar {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        padding: 6px !important;
+    }
+
+    /* Tablas de certificaciones en móvil */
+    .table-scroll-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+    }
+
+    .win97-table th, .win97-table td {
+        padding: 7px 8px;
+        font-size: 11.5px;
+        white-space: normal;
+    }
+
+    /* Botones de acción al pie de ventana */
+    .dialog-button-row {
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: auto;
+        padding-top: 10px;
+    }
+
+    .win97-btn {
+        padding: 7px 12px;
+        min-height: 34px;
+        font-size: 12px;
+    }
+
+    /* Barra de tareas adaptada a móviles */
+    .win97-taskbar {
+        height: var(--taskbar-height);
+        padding: 3px 4px;
+    }
+
+    .start-button {
+        height: 38px;
+        padding: 2px 10px;
+        font-size: 13px;
+    }
+
+    .taskbar-window-tabs {
+        overflow-x: auto;
+        display: flex;
+        gap: 3px;
+        -webkit-overflow-scrolling: touch;
+        flex: 1;
+    }
+
+    .taskbar-tab {
+        min-width: 90px;
+        max-width: 130px;
+        height: 38px;
+        font-size: 11px;
+        flex-shrink: 0;
+        padding: 0 6px;
+    }
+
+    .taskbar-btn-layout {
+        display: none !important; /* En móvil las ventanas son full screen fija */
+    }
+
+    .system-tray {
+        padding: 2px 6px;
+        font-size: 10px;
+    }
+
+    .tray-icon.tray-volume,
+    .tray-icon.tray-net {
+        display: none; /* Ahorrar espacio en móvil para el reloj */
+    }
+
+    /* Menú inicio en pantalla móvil */
+    .start-menu {
+        width: 260px;
+        bottom: var(--taskbar-height);
+        max-height: calc(100vh - var(--taskbar-height) - 10px);
+        overflow-y: auto;
+    }
+
+    .start-item {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+}
+

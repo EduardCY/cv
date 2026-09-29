@@ -454,6 +454,7 @@ function switchViewerTab(displayId, btn) {
 
 /**
  * Abre y enfoca una ventana por su ID.
+ * En pantallas móviles (<=768px) autoajusta al tamaño completo de la pantalla.
  * 
  * @param {string} winId ID de la ventana en el DOM.
  */
@@ -466,9 +467,17 @@ function openWindow(winId) {
     if (tab) tab.classList.remove('hidden-tab');
     bringToFront(winId);
 
-    const rect = win.getBoundingClientRect();
-    if (rect.width && rect.height) {
-        updateWindowDynamicLayout(win, rect.width, rect.height);
+    if (window.innerWidth <= 768) {
+        win.style.top = '0px';
+        win.style.left = '0px';
+        win.style.width = '100vw';
+        win.style.height = 'calc(100vh - var(--taskbar-height))';
+        updateWindowDynamicLayout(win, window.innerWidth, window.innerHeight - 44);
+    } else {
+        const rect = win.getBoundingClientRect();
+        if (rect.width && rect.height) {
+            updateWindowDynamicLayout(win, rect.width, rect.height);
+        }
     }
 }
 
@@ -608,7 +617,7 @@ function initDraggableWindows() {
         handle.addEventListener('pointerdown', (e) => {
             // Ignorar si se hizo clic en los botones de control
             if (e.target.closest('.win97-btn-box')) return;
-            if (win.classList.contains('maximized')) return;
+            if (window.innerWidth <= 768 || win.classList.contains('maximized')) return;
 
             isDragging = true;
             startX = e.clientX;
@@ -743,10 +752,17 @@ function initDesktopIcons() {
     const icons = document.querySelectorAll('.desktop-icon');
 
     icons.forEach(icon => {
-        // Selección al hacer clic simple
+        // Selección al hacer clic simple (y abrir inmediatamente en móvil)
         icon.addEventListener('click', (e) => {
             icons.forEach(i => i.classList.remove('active-icon'));
             icon.classList.add('active-icon');
+
+            if (window.innerWidth <= 768) {
+                const winTarget = icon.getAttribute('data-window');
+                if (winTarget) {
+                    openWindow(winTarget);
+                }
+            }
         });
 
         // Doble clic abre la ventana asociada
@@ -832,9 +848,9 @@ function showAboutDialog() {
  * Muestra el diálogo clásico de confirmación de apagado.
  */
 function showShutdownDialog() {
-    const ok = confirm("¿Desea apagar el sistema y regresar al Hub Principal?");
+    const ok = confirm("¿Desea apagar el sistema y regresar al Portal Principal de Software?");
     if (ok) {
-        window.location.href = '../../../CV_Eduard_Criollo_Yule.html';
+        window.location.href = '../../../index.html';
     }
 }
 
@@ -855,6 +871,20 @@ let pendingSnapAction = null; // 'left' | 'right' | 'top' | null
  */
 function updateWindowDynamicLayout(win, width, height) {
     if (!win) return;
+
+    // En pantallas táctiles o móviles, fijar escala legible sin recorte forzado
+    if (window.innerWidth <= 768) {
+        win.style.setProperty('--win-w', '100vw');
+        win.style.setProperty('--win-h', 'calc(100vh - var(--taskbar-height))');
+        win.style.setProperty('--win-scale', '1');
+        win.style.setProperty('--win-font-base', '12px');
+        win.style.setProperty('--win-font-sm', '10.5px');
+        win.style.setProperty('--win-font-lg', '13.5px');
+        win.style.setProperty('--win-line-height', '1.45');
+        win.style.setProperty('--project-desc-lines', '8');
+        return;
+    }
+
     const w = width || win.offsetWidth;
     const h = height || win.offsetHeight;
     if (!w || !h) return;
@@ -911,7 +941,7 @@ function initResizableWindows() {
             win.appendChild(resizer);
 
             resizer.addEventListener('pointerdown', (e) => {
-                if (win.classList.contains('maximized')) return;
+                if (window.innerWidth <= 768 || win.classList.contains('maximized')) return;
                 e.stopPropagation();
 
                 bringToFront(win.id);
@@ -1249,6 +1279,19 @@ function debounceAutoAdjustWindows() {
     if (!desktop) return;
     const dw = desktop.clientWidth;
     const dh = desktop.clientHeight;
+
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.win97-window').forEach(w => {
+            if (w.style.display !== 'none') {
+                w.style.top = '0px';
+                w.style.left = '0px';
+                w.style.width = '100vw';
+                w.style.height = 'calc(100vh - var(--taskbar-height))';
+                updateWindowDynamicLayout(w, dw, dh);
+            }
+        });
+        return;
+    }
 
     document.querySelectorAll('.win97-window').forEach(w => {
         if (w.classList.contains('maximized')) {

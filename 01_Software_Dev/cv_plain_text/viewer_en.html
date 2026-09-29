@@ -222,20 +222,23 @@
             </div>
 
             <div class="toolbar-actions">
-                <button class="tool-btn primary" onclick="copyToClipboard()" title="Copiar todo el texto">
-                    📋 Copiar Texto
+                <button class="tool-btn" id="langBtn" onclick="toggleLanguage()" title="Cambiar Idioma / Switch Language">
+                    🌐 Español
                 </button>
-                <button class="tool-btn" onclick="window.print()" title="Imprimir o Exportar PDF">
-                    🖨️ Imprimir PDF
+                <button class="tool-btn primary" onclick="copyToClipboard()" title="Copy all text">
+                    📋 Copy Text
                 </button>
-                <button class="tool-btn" onclick="toggleLineNumbers()" title="Mostrar/Ocultar Números de Línea">
-                    🔢 Líneas
+                <button class="tool-btn" onclick="window.print()" title="Print or Export PDF">
+                    🖨️ Print PDF
                 </button>
-                <button class="tool-btn" onclick="toggleTheme()" title="Cambiar Tema Visual">
-                    🎨 Tema
+                <button class="tool-btn" onclick="toggleLineNumbers()" title="Toggle Line Numbers">
+                    🔢 Lines
                 </button>
-                <a href="../cv_web/cv_software.html" class="tool-btn" title="Volver al CV Web Estilizado">
-                    🌐 CV Web
+                <button class="tool-btn" onclick="toggleTheme()" title="Toggle Theme">
+                    🎨 Theme
+                </button>
+                <a href="../cv_web/cv_software_en.html" class="tool-btn" title="Back to Web CV">
+                    🌐 Web CV
                 </a>
             </div>
         </header>
@@ -390,126 +393,124 @@ Pensamiento crítico y analítico • Resolución estructurada de problemas • 
 ==============================================================================`;
 
         let showLines = true;
-        let currentLang = 'en';
+        let currentLang = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('ats_sw_lang') || 'en';
 
+        /**
+         * Alterna el idioma entre Inglés y Español y refresca la vista.
+         */
         function toggleLanguage() {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
+            currentLang = currentLang === 'en' ? 'es' : 'en';
             localStorage.setItem('ats_sw_lang', currentLang);
             updateLangButton();
             loadData();
         }
 
+        /**
+         * Actualiza la etiqueta del botón según el idioma actual.
+         */
         function updateLangButton() {
             const btn = document.getElementById('langBtn');
             if (btn) btn.textContent = currentLang === 'en' ? '🌐 Español' : '🌐 English';
         }
 
+        /**
+         * Carga los datos maestros desde bundle.js o fetch HTTP y desencadena el renderizado.
+         */
         async function loadData() {
             updateLangButton();
-            let bundle = window.CV_DATA;
-            let langSource = (currentLang === 'en' && bundle?.en) ? bundle.en : (bundle?.es || bundle);
-
-            let profileData = langSource?.profile_software;
-            let projectsData = langSource?.projects || [];
-            let certsData = langSource?.certifications || [];
-
-            if (profileData) {
-                renderText(generateAtsString(profileData, projectsData, certsData, currentLang));
-            }
-
-            // HTTP fetch fallback / refresh
-            const suffix = currentLang === 'en' ? '_en' : '';
             try {
-                const [resProf, resProj, resCerts] = await Promise.allSettled([
-                    fetch(`../../data/profile_software${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject()),
-                    fetch(`../../data/projects${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject()),
-                    fetch(`../../data/certifications${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject())
-                ]);
+                const bundle = window.CV_DATA;
+                const langSource = (currentLang === 'en' && bundle?.en) ? bundle.en : (bundle?.es || bundle);
 
-                if (resProf.status === 'fulfilled') {
-                    profileData = resProf.value;
-                    if (resProj.status === 'fulfilled') projectsData = resProj.value.projects;
-                    if (resCerts.status === 'fulfilled') certsData = resCerts.value.certifications;
+                let profileData = langSource?.profile_software;
+                let projectsData = langSource?.projects || [];
+                let certsData = langSource?.certifications || [];
+
+                if (profileData) {
                     renderText(generateAtsString(profileData, projectsData, certsData, currentLang));
+                } else {
+                    renderText(ATS_FALLBACK);
                 }
-            } catch (_) {}
+
+                // Intentar refresco vía fetch si se ejecuta sobre servidor HTTP
+                const suffix = currentLang === 'en' ? '_en' : '';
+                try {
+                    const [resProf, resProj, resCerts] = await Promise.allSettled([
+                        fetch(`../../data/profile_software${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject()),
+                        fetch(`../../data/projects${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject()),
+                        fetch(`../../data/certifications${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject())
+                    ]);
+
+                    if (resProf.status === 'fulfilled' && resProf.value) {
+                        profileData = resProf.value;
+                        if (resProj.status === 'fulfilled' && resProj.value) projectsData = resProj.value.projects;
+                        if (resCerts.status === 'fulfilled' && resCerts.value) certsData = resCerts.value.certifications;
+                        renderText(generateAtsString(profileData, projectsData, certsData, currentLang));
+                    }
+                } catch (_) {}
+            } catch (err) {
+                console.warn('Error al procesar datos estructurados para ATS, aplicando fallback:', err);
+                renderText(ATS_FALLBACK);
+            }
         }
 
-        function generateAtsString(data, projects = [], certs = [], lang = 'es') {
-            const p = data.personal;
+        /**
+         * Genera la cadena de texto plano puro formateada deterministamente para sistemas ATS.
+         * 
+         * @param {Object} data Datos del perfil de software.
+         * @param {Array<Object>} projects Lista de proyectos técnicos.
+         * @param {Array<Object>} certs Lista de certificaciones profesionales.
+         * @param {'es'|'en'} lang Idioma objetivo.
+         * @returns {string} Texto plano estructurado listo para escaneo ATS.
+         */
+        function generateAtsString(data, projects = [], certs = [], lang = 'en') {
+            const p = data.personal || {};
             const c = p.contact || {};
-            const swProjects = projects.filter(pr => pr.category === 'software');
-            const swCerts = certs.filter(cr => (cr.track || []).includes('software') || (cr.track || []).includes('both'));
+            const swProjects = (projects || []).filter(pr => pr.category === 'software');
+            const swCerts = (certs || []).filter(cr => (cr.track || []).includes('software') || (cr.track || []).includes('both'));
             const isEn = lang === 'en';
 
             if (isEn) {
                 return `==============================================================================
- ${p.name.toUpperCase()}
- ${p.headline}
+ ${p.name ? p.name.toUpperCase() : 'EDUARD CRIOLLO YULE'}
+ ${p.headline || 'Full Stack Software Engineer & Applied AI Specialist'}
 ==============================================================================
  Phone    : ${c.phone || '+57 314 ••• ••••'}
  Email    : ${c.email || 'eduardcriolloyule2004@gmail.com'}
- Location : ${p.location}
- LinkedIn : ${c.linkedin || ''}
- GitHub   : ${c.github || ''}
- Platzi   : ${c.platzi || ''}
+ Location : ${p.location || 'Cali, Valle del Cauca, Colombia'}
+ LinkedIn : ${c.linkedin || 'https://www.linkedin.com/in/eduard-criollo-yule/'}
+ GitHub   : ${c.github || 'https://github.com/EduardCY'}
+ Platzi   : ${c.platzi || 'https://platzi.com/@EduardYule/'}
  Languages: Spanish (Native) | English (C1 Advanced - Oxford Placement Test 93/120)
 ------------------------------------------------------------------------------
 
-[ PROFESSIONAL PROFILE ]
+[ EXECUTIVE SUMMARY ]
 ------------------------------------------------------------------------------
-${p.summary_hook}
+${p.summary_hook || ''}
 
 [ PROFESSIONAL ACCREDITATIONS ]
 ------------------------------------------------------------------------------
-${(data.metrics || []).map(m => `* ${m.title}: ${m.score}
-  ${m.level} | ${m.breakdown || ''}`).join('
-
-')}
+${(data.metrics || []).map(m => `* ${m.title}: ${m.score}\n  ${m.level} | ${m.breakdown || ''}`).join('\n\n')}
 
 [ FEATURED TECHNICAL PROJECTS ]
 ------------------------------------------------------------------------------
-${swProjects.map(pr => `* ${pr.title} (${pr.date || '2025'})
-  Track: ${pr.sub_category || 'Software Engineering'}
-  Tech Stack: ${(pr.tech_stack || []).join(' • ')}
-  Metrics: ${pr.metrics || ''}
-  Summary: ${pr.summary_executive || pr.description}
-  Repository: ${pr.is_private ? 'Private / Confidential (Code demo available upon technical request)' : (pr.links?.github || 'Private / Confidential')}`).join('
-
-')}
+${swProjects.map(pr => `* ${pr.title} (${pr.date || '2025'})\n  Track: ${pr.sub_category || 'Software Engineering'}\n  Tech Stack: ${(pr.tech_stack || []).join(' • ')}\n  Metrics: ${pr.metrics || ''}\n  Summary: ${pr.summary_executive || pr.description}\n  Repository: ${pr.is_private ? 'Private / Confidential (Code demo available upon technical request)' : (pr.links?.github || 'Private / Confidential')}`).join('\n\n')}
 
 [ PROFESSIONAL CERTIFICATIONS ]
 ------------------------------------------------------------------------------
-${swCerts.map(cr => `* ${cr.title}
-  Issuer: ${cr.institution} | Date: ${cr.issue_date || 'Accredited'} ${cr.code ? '| ID: ' + cr.code : ''}${cr.credential_url ? '
-  Verification: ' + cr.credential_url : ''}`).join('
-
-')}
+${swCerts.map(cr => `* ${cr.title}\n  Issuer: ${cr.institution} | Date: ${cr.issue_date || 'Accredited'} ${cr.code ? '| ID: ' + cr.code : ''}${cr.credential_url ? '\n  Verification: ' + cr.credential_url : ''}`).join('\n\n')}
 
 [ FORMAL EDUCATION ]
 ------------------------------------------------------------------------------
-${(data.education || []).map(e => `* ${e.degree} (${e.period})
-  Institution: ${e.institution}
-  ${(e.highlights || []).join(' • ')}`).join('
-
-')}
+${(data.education || []).map(e => `* ${e.degree} (${e.period})\n  Institution: ${e.institution}\n  ${(e.highlights || []).join(' • ')}`).join('\n\n')}
 
 [ EXPERIENCE & TECHNICAL SUPPORT ]
 ------------------------------------------------------------------------------
-${(data.experience || []).map(exp => `* ${exp.role} — ${exp.organization || exp.company}
-  Period: ${exp.period}
-  Key Responsibilities:
-${(exp.responsibilities || []).map(r => `   - ${r}`).join('
-')}`).join('
-
-')}
+${(data.experience || []).map(exp => `* ${exp.role} — ${exp.organization || exp.company}\n  Period: ${exp.period}\n  Key Responsibilities:\n${(exp.responsibilities || []).map(r => `   - ${r}`).join('\n')}`).join('\n\n')}
 
 [ TECHNICAL COMPETENCIES / SKILLS MATRIX ]
 ------------------------------------------------------------------------------
-${Object.values(data.skills_matrix || {}).map(g => `* ${g.category}:
-  ${g.skills.join(' • ')}`).join('
-
-')}
+${Object.values(data.skills_matrix || {}).map(g => `* ${g.category}:\n  ${g.skills.join(' • ')}`).join('\n\n')}
 
 [ SOFT SKILLS ]
 ------------------------------------------------------------------------------
@@ -517,8 +518,7 @@ ${(data.soft_skills || []).join(' • ')}
 
 [ LANGUAGES ]
 ------------------------------------------------------------------------------
-${(data.languages || []).map(l => `* ${l.language}: ${l.level} ${l.certification ? `(${l.certification})` : ''}`).join('
-')}
+${(data.languages || []).map(l => `* ${l.language}: ${l.level} ${l.certification ? `(${l.certification})` : ''}`).join('\n')}
 
 ==============================================================================
  End of Document — Optimized ATS Plain Text Resume (English Edition)
@@ -526,72 +526,45 @@ ${(data.languages || []).map(l => `* ${l.language}: ${l.level} ${l.certification
             }
 
             return `==============================================================================
- ${p.name.toUpperCase()}
- ${p.headline}
+ ${p.name ? p.name.toUpperCase() : 'EDUARD CRIOLLO YULE'}
+ ${p.headline || 'Desarrollador Full Stack & Especialista en IA'}
 ==============================================================================
  Teléfono : ${c.phone || '+57 314 ••• ••••'}
- Correo   : ${c.email || 'eduardcriolloyule2004@gmail.com'}
- Ubicación: ${p.location}
- LinkedIn : ${c.linkedin || ''}
- GitHub   : ${c.github || ''}
- Platzi   : ${c.platzi || ''}
+ Correo   : eduardcriolloyule2004@gmail.com
+ Ubicación: ${p.location || 'Cali, Valle del Cauca, Colombia'}
+ LinkedIn : ${c.linkedin || 'https://www.linkedin.com/in/eduard-criollo-yule/'}
+ GitHub   : ${c.github || 'https://github.com/EduardCY'}
+ Platzi   : ${c.platzi || 'https://platzi.com/@EduardYule/'}
  Idiomas  : Español (Nativo) | Inglés (C1 Avanzado - Oxford Placement Test 93/120)
 ------------------------------------------------------------------------------
 
 [ PERFIL PROFESIONAL ]
 ------------------------------------------------------------------------------
-${p.summary_hook}
+${p.summary_hook || ''}
 
 [ ACREDITACIONES PROFESIONALES ]
 ------------------------------------------------------------------------------
-${(data.metrics || []).map(m => `* ${m.title}: ${m.score}
-  ${m.level} | ${m.breakdown || ''}`).join('
-
-')}
+${(data.metrics || []).map(m => `* ${m.title}: ${m.score}\n  ${m.level} | ${m.breakdown || ''}`).join('\n\n')}
 
 [ PROYECTOS TÉCNICOS DESTACADOS ]
 ------------------------------------------------------------------------------
-${swProjects.map(pr => `* ${pr.title} (${pr.date || '2025'})
-  Subcategoría: ${pr.sub_category || 'Ingeniería de Software'}
-  Stack: ${(pr.tech_stack || []).join(' • ')}
-  Métricas: ${pr.metrics || ''}
-  Descripción: ${pr.summary_executive || pr.description}
-  Repositorio: ${pr.is_private ? 'Privado / Confidencial (Código disponible bajo solicitud técnica)' : (pr.links?.github || 'Privado / Confidencial')}`).join('
-
-')}
+${swProjects.map(pr => `* ${pr.title} (${pr.date || '2025'})\n  Subcategoría: ${pr.sub_category || 'Ingeniería de Software'}\n  Stack: ${(pr.tech_stack || []).join(' • ')}\n  Métricas: ${pr.metrics || ''}\n  Descripción: ${pr.summary_executive || pr.description}\n  Repositorio: ${pr.is_private ? 'Privado / Confidencial (Código disponible bajo solicitud técnica)' : (pr.links?.github || 'Privado / Confidencial')}`).join('\n\n')}
 
 [ CERTIFICACIONES PROFESIONALES ]
 ------------------------------------------------------------------------------
-${swCerts.map(cr => `* ${cr.title}
-  Emisor: ${cr.institution} | Fecha: ${cr.issue_date || 'Acreditado'} ${cr.code ? '| ID: ' + cr.code : ''}${cr.credential_url ? '
-  Verificación: ' + cr.credential_url : ''}`).join('
-
-')}
+${swCerts.map(cr => `* ${cr.title}\n  Emisor: ${cr.institution} | Fecha: ${cr.issue_date || 'Acreditado'} ${cr.code ? '| ID: ' + cr.code : ''}${cr.credential_url ? '\n  Verificación: ' + cr.credential_url : ''}`).join('\n\n')}
 
 [ EDUCACIÓN ]
 ------------------------------------------------------------------------------
-${(data.education || []).map(e => `* ${e.degree} (${e.period})
-  Institución: ${e.institution}
-  ${(e.highlights || []).join(' • ')}`).join('
-
-')}
+${(data.education || []).map(e => `* ${e.degree} (${e.period})\n  Institución: ${e.institution}\n  ${(e.highlights || []).join(' • ')}`).join('\n\n')}
 
 [ EXPERIENCIA & COORDINACIÓN TÉCNICA ]
 ------------------------------------------------------------------------------
-${(data.experience || []).map(exp => `* ${exp.role} — ${exp.organization || exp.company}
-  Periodo: ${exp.period}
-  Responsabilidades:
-${(exp.responsibilities || []).map(r => `   - ${r}`).join('
-')}`).join('
-
-')}
+${(data.experience || []).map(exp => `* ${exp.role} — ${exp.organization || exp.company}\n  Periodo: ${exp.period}\n  Responsabilidades:\n${(exp.responsibilities || []).map(r => `   - ${r}`).join('\n')}`).join('\n\n')}
 
 [ COMPETENCIAS TÉCNICAS ]
 ------------------------------------------------------------------------------
-${Object.values(data.skills_matrix || {}).map(g => `* ${g.category}:
-  ${g.skills.join(' • ')}`).join('
-
-')}
+${Object.values(data.skills_matrix || {}).map(g => `* ${g.category}:\n  ${g.skills.join(' • ')}`).join('\n\n')}
 
 [ HABILIDADES BLANDAS ]
 ------------------------------------------------------------------------------
@@ -599,38 +572,53 @@ ${(data.soft_skills || []).join(' • ')}
 
 [ IDIOMAS ]
 ------------------------------------------------------------------------------
-${(data.languages || []).map(l => `* ${l.language}: ${l.level} ${l.certification ? `(${l.certification})` : ''}`).join('
-')}
+${(data.languages || []).map(l => `* ${l.language}: ${l.level} ${l.certification ? `(${l.certification})` : ''}`).join('\n')}
 
 ==============================================================================
  Fin del documento — Generado Dinámicamente desde /data/
 ==============================================================================`;
         }
 
+        /**
+         * Renderiza el texto en el pre e indexa los números de línea.
+         * 
+         * @param {string} text Texto formateado a mostrar.
+         */
         function renderText(text) {
             const pre = document.getElementById('plainTextContent');
             if (pre) pre.textContent = text;
 
-            const lines = text.split('
-');
+            const lines = (text || '').split('\n');
             const numContainer = document.getElementById('lineNumbers');
             if (numContainer) numContainer.innerHTML = lines.map((_, i) => i + 1).join('<br>');
         }
 
+        /**
+         * Copia el contenido plano al portapapeles con feedback tipo toast.
+         */
         function copyToClipboard() {
             const text = document.getElementById('plainTextContent').textContent;
             navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById('toast');
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2500);
+                if (toast) {
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2500);
+                }
             });
         }
 
+        /**
+         * Alterna la visibilidad de los números de línea.
+         */
         function toggleLineNumbers() {
             showLines = !showLines;
-            document.getElementById('lineNumbers').classList.toggle('hidden', !showLines);
+            const el = document.getElementById('lineNumbers');
+            if (el) el.classList.toggle('hidden', !showLines);
         }
 
+        /**
+         * Alterna el tema claro y oscuro.
+         */
         function toggleTheme() {
             document.body.classList.toggle('theme-light');
         }
