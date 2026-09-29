@@ -1,0 +1,113 @@
+==============================================================================
+ EDUARD CRIOLLO YULE
+ Desarrollador Full Stack • Especialista en IA & Data Science • Est. Ingeniería de Sistemas
+==============================================================================
+ Teléfono : +57 314 ••• ••••
+ Correo   : eduardcriolloyule2004@gmail.com
+ Ubicación: Cali, Valle del Cauca, Colombia
+ Platzi   : https://platzi.com/@EduardYule/
+ Idiomas  : Español (Nativo) | Inglés (C1 Avanzado - OOPT 93/120)
+------------------------------------------------------------------------------
+
+[ PERFIL PROFESIONAL ]
+------------------------------------------------------------------------------
+Desarrollador de Software con doble enfoque en arquitectura Full Stack empresarial
+(Spring Boot & Angular) y desarrollo de soluciones inteligentes con Inteligencia
+Artificial y Ciencia de Datos. Estudiante activo de Ingeniería de Sistemas en la
+Universidad Autónoma de Occidente, con base técnica rigurosa en diseño de bases de
+datos relacionales SQL, construcción de APIs de alto rendimiento con FastAPI /
+Flask / Java y dominio avanzado del idioma inglés (Nivel C1 certificado por Oxford).
+Combino capacidad analítica de alto desempeño con destrezas de soporte y coordinación
+técnica multidisciplinaria demostradas en certámenes internacionales (Juegos
+Panamericanos Juveniles 2021).
+
+[ ACREDITACIONES PROFESIONALES ]
+------------------------------------------------------------------------------
+* Oxford Placement Test (OOPT): 93 / 120 (Nivel C1 CEFR)
+  Detalles: Use of English: 93/C1 | Listening: 92/C1 | Colombo Americano
+
+* Full Stack & Soluciones Inteligentes
+  Detalles: Dev Senior Code (Miami, FL) | Spring Boot • Angular • FastAPI • Scikit-Learn
+
+[ EDUCACIÓN ]
+------------------------------------------------------------------------------
+* Ingeniería de Sistemas (2022 - Presente)
+  Institución: Universidad Autónoma de Occidente [En curso]
+  Enfoque    : Arquitectura de software, estructuras de datos, cálculo y bases de datos
+
+* Bachiller Técnico en Dibujo Técnico (2014 - 2021)
+  Institución: Instituto Técnico Industrial San Juan Bosco [Graduado]
+  Enfoque    : Diseño técnico de precisión, interpretación de planos y metodología analítica
+
+[ EXPERIENCIA & LOGROS ]
+------------------------------------------------------------------------------
+* Voluntario Técnico y Soporte Operativo — Juegos Panamericanos Juveniles Cali 2021
+  Periodo: Noviembre 2021 - Diciembre 2021
+  Responsabilidades:
+   - Soporte técnico integral y despliegue logístico en operaciones clave de infraestructura.
+   - Montaje, diagnóstico y verificación de equipos y conectividad técnica de red en tiempo real.
+   - Asistencia técnica en transmisiones en vivo y monitoreo de sistemas audiovisuales multidisciplinarios.
+
+[ COMPETENCIAS TÉCNICAS ]
+------------------------------------------------------------------------------
+* Inteligencia Artificial & Datos:
+  Machine Learning • Scikit-Learn • Data Science • NLP Básico • Modelos Predictivos • Python Científico
+
+* Backend & Microservicios:
+  Spring Boot • FastAPI • Flask • Java • Python • PHP • APIs RESTful • Arquitectura por Capas
+
+* Bases de Datos & Persistencia:
+  SQL Relacional • Diseño y Modelado Entidad-Relación • PostgreSQL • MySQL • SQLite • SQLAlchemy
+
+* Frontend & Web UI:
+  Angular • React.js • JavaScript (ES6+) • HTML5 Semántico • CSS3 / Grid / Flexbox • Responsive Design
+
+* Herramientas & Entorno de Desarrollo:
+  Git & GitHub • Pip & Entornos Virtuales (Venv) • VS Code • Soporte Audiovisual • Dibujo Técnico Industrial
+
+[ HABILIDADES BLANDAS ]
+------------------------------------------------------------------------------
+Pensamiento crítico y analítico • Resolución estructurada de problemas • Trabajo en equipo multidisciplinario • Comunicación técnica asertiva • Planificación ágil de tareas
+
+[ IDIOMAS ]
+------------------------------------------------------------------------------
+* Español: Nativo — Lengua materna
+* Inglés : C1 — Avanzado profesional (Fluido en lectura, escritura y conversación técnica)
+  Acreditación: Oxford Placement Test (Score 93/120 — Nivel C1 CEFR)
+
+[ CERTIFICACIONES PROFESIONALES ]
+------------------------------------------------------------------------------
+* Professional Certificate: Full Stack Empresarial con Spring Boot y Angular
+  Emisor : Dev Senior Code (Miami, FL, USA) | Fecha: 16/09/2025
+  Info   : Certificación Oficial emitida bajo estándares empresariales internacionales
+
+* Certified Desarrollador Full Stack de Soluciones Inteligentes
+  Emisor : Dev Senior Code | Fecha: 11/07/2026
+  ID     : TLZZKQLTDGD-XYWWYXQQH-RLRJDTFKPK | Validez: 2026 - 2031
+  Info   : Acreditación en aplicaciones completas con integración de IA
+
+* Especialista en Fundamentos de IA, Ciencia de Datos y Machine Learning
+  Emisor : Dev Senior Code | Fecha: 14/03/2026
+  ID     : CLPPDQNQDYF-ZVKTSLZVK-XCWWTPHYRS | Validez: 2026 - 2031
+  Info   : Dominio de algoritmos predictivos, preprocesamiento y analítica de datos
+
+* Oxford Placement Test (OOPT) — Certificación de Nivel C1
+  Emisor : Oxford University Press / Colombo Americano | Fecha: 13/09/2021
+  Info   : Puntaje Global: 93/120 | Use of English: 93/C1 | Listening: 92/C1
+
+* Curso de FastAPI (Backend y Microservicios)
+  Emisor : Platzi | Fecha: 08/12/2024
+  ID     : d3442094-4a79-4f63-abed-acd4202f916
+  Info   : 19 horas de formación práctica en APIs asíncronas de alto rendimiento
+
+* Ruta Profesional de Python (Comprehensions, Funciones & PIP)
+  Emisor : Platzi | Fecha: 2021 - 2024
+  Info   : Acreditaciones verificadas en buenas prácticas, módulos y dependencias
+
+* Curso Práctico de Algoritmos & Análisis de Negocios para Data Science
+  Emisor : Platzi | Fecha: 2023 - 2024
+  Info   : Modelado algorítmico, lógica matemática y toma de decisiones basada en datos
+
+==============================================================================
+ Fin del documento — Formato Texto Plano
+==============================================================================

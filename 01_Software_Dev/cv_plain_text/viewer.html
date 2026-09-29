@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Plain Text Viewer — Eduard Criollo Yule (Software)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-body: #0d1117;
+            --bg-editor: #161b22;
+            --border-color: #30363d;
+            --text-color: #e6edf3;
+            --line-num-color: #6e7681;
+            --accent-color: #58a6ff;
+            --header-bg: #21262d;
+            --copy-success: #238636;
+        }
+
+        body.theme-light {
+            --bg-body: #f6f8fa;
+            --bg-editor: #ffffff;
+            --border-color: #d0d7de;
+            --text-color: #24292f;
+            --line-num-color: #8c959f;
+            --accent-color: #0969da;
+            --header-bg: #f3f4f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .viewer-container {
+            width: 100%;
+            max-width: 960px;
+            background-color: var(--bg-editor);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .viewer-header {
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .header-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .traffic-lights {
+            display: flex;
+            gap: 6px;
+        }
+        .light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .light.red { background: #ff5f56; }
+        .light.yellow { background: #ffbd2e; }
+        .light.green { background: #27c93f; }
+
+        .toolbar-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .tool-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: all 0.15s ease;
+            text-decoration: none;
+        }
+
+        .tool-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .tool-btn.primary {
+            background: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+            font-weight: 600;
+        }
+        body.theme-dark .tool-btn.primary, body:not(.theme-light) .tool-btn.primary {
+            color: #fff;
+        }
+
+        .editor-body {
+            display: flex;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 1.5rem 0;
+        }
+
+        .line-numbers {
+            user-select: none;
+            text-align: right;
+            padding: 0 1rem 0 1.25rem;
+            color: var(--line-num-color);
+            border-right: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            min-width: 3.5rem;
+        }
+
+        .line-numbers.hidden {
+            display: none;
+        }
+
+        .code-content {
+            padding: 0 1.5rem;
+            white-space: pre;
+            flex: 1;
+            font-family: 'JetBrains Mono', monospace;
+            outline: none;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--copy-success);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+            }
+            .viewer-container {
+                border: none !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+            }
+            .viewer-header, .line-numbers {
+                display: none !important;
+            }
+            .editor-body {
+                padding: 0 !important;
+            }
+            .code-content {
+                color: black !important;
+                font-size: 9pt !important;
+                line-height: 1.4 !important;
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="viewer-container">
+        <header class="viewer-header">
+            <div class="header-title">
+                <div class="traffic-lights">
+                    <span class="light red"></span>
+                    <span class="light yellow"></span>
+                    <span class="light green"></span>
+                </div>
+                <span>cv_software_ats.txt</span>
+                <span style="color: var(--line-num-color); font-size: 0.75rem;">(UTF-8 • Formato Plano Estructurado)</span>
+            </div>
+
+            <div class="toolbar-actions">
+                <button class="tool-btn primary" onclick="copyToClipboard()" title="Copiar todo el texto">
+                    📋 Copiar Texto
+                </button>
+                <button class="tool-btn" onclick="window.print()" title="Imprimir o Exportar PDF">
+                    🖨️ Imprimir PDF
+                </button>
+                <button class="tool-btn" onclick="toggleLineNumbers()" title="Mostrar/Ocultar Números de Línea">
+                    🔢 Líneas
+                </button>
+                <button class="tool-btn" onclick="toggleTheme()" title="Cambiar Tema Visual">
+                    🎨 Tema
+                </button>
+                <a href="../cv_web/cv_software.html" class="tool-btn" title="Volver al CV Web Estilizado">
+                    🌐 CV Web
+                </a>
+            </div>
+        </header>
+
+        <div class="editor-body">
+            <div class="line-numbers" id="lineNumbers"></div>
+            <pre class="code-content" id="plainTextContent">Cargando datos estructurados...</pre>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">✓ ¡Texto copiado con éxito!</div>
+
+    <!-- SCRIPT DE DATOS GLOBALES (Soporte Offline & Local file:///) -->
+    <script src="../../data/bundle.js"></script>
+
+    <script>
+        const ATS_FALLBACK = `==============================================================================
+ EDUARD CRIOLLO YULE
+ Desarrollador Full Stack • Especialista en IA & Data Science • Est. Ingeniería de Sistemas
+==============================================================================
+ Teléfono : +57 314 ••• ••••
+ Correo   : eduardcriolloyule2004@gmail.com
+ Ubicación: Cali, Valle del Cauca, Colombia
+ LinkedIn : https://www.linkedin.com/in/eduard-criollo-yule/
+ GitHub   : https://github.com/EduardCY
+ Platzi   : https://platzi.com/@EduardYule/
+ Idiomas  : Español (Nativo) | Inglés (C1 Avanzado - Oxford Placement Test 93/120)
+------------------------------------------------------------------------------
+
+[ PERFIL PROFESIONAL ]
+------------------------------------------------------------------------------
+Desarrollador de Software con doble enfoque en arquitectura Full Stack empresarial
+(Spring Boot & Angular) y desarrollo de soluciones predictivas con Inteligencia
+Artificial y Ciencia de Datos. Estudiante activo de Ingeniería de Sistemas en la
+Universidad Autónoma de Occidente, con base técnica rigurosa en diseño y
+normalización de bases de datos relacionales SQL, construcción de APIs asíncronas
+de alto rendimiento con FastAPI / Flask / Java y dominio avanzado del idioma inglés
+(Nivel C1 certificado por Oxford University Press). Capacidad demostrada en
+coordinación técnica multidisciplinaria, despliegue de infraestructura y resolución
+de incidencias en certámenes internacionales (Juegos Panamericanos Juveniles 2021).
+
+[ ACREDITACIONES PROFESIONALES ]
+------------------------------------------------------------------------------
+* Oxford Placement Test (OOPT): 93 / 120 (Nivel C1 CEFR)
+  Emisor: Oxford University Press / Colombo Americano
+  Detalles: Use of English: 93/C1 | Listening: 92/C1
+
+* Full Stack & Soluciones Inteligentes
+  Emisor: Dev Senior Code (Miami, FL, USA)
+  Detalles: Spring Boot • Angular • FastAPI • Scikit-Learn
+
+[ PROYECTOS TÉCNICOS DESTACADOS ]
+------------------------------------------------------------------------------
+* VeraMarket — Marketplace Universitario Geolocalizado (2025 - 2026)
+  Subcategoría: Full Stack, Geolocalización & Microservicios
+  Tecnologías: FastAPI (Python 3.11+), Next.js 14, TypeScript, PostgreSQL 15 + PostGIS, Docker Compose
+  Métricas: Geolocalización Espacial PostGIS • Monorepo Desacoplado • PWA Mobile-First
+  Descripción: Marketplace universitario con mapa interactivo del campus (UAO), FastAPI asíncrono, Next.js 14 y PostgreSQL PostGIS.
+  Repositorio: Privado / Confidencial (Código disponible bajo solicitud técnica)
+
+* Nexo — Plataforma de Rescate y Redistribución de Alimentos (2026)
+  Subcategoría: PWA Serverless & Impacto Social
+  Tecnologías: TypeScript, Next.js / React, PWA Serverless, Tailwind CSS, Node.js
+  Métricas: Bajo Impacto Operativo • Alta Eficiencia Social • Control de Cadena de Frío
+  Descripción: PWA serverless para conectar restaurantes donantes de Cali con comedores comunitarios y coordinar rutas de transporte para voluntarios.
+  Repositorio: Privado / Confidencial (Código disponible bajo solicitud técnica)
+
+* SERVICIUDAD Cali — Sistema Empresarial con Despliegues Canarios (2026)
+  Subcategoría: Arquitectura Empresarial & Despliegues Canarios
+  Tecnologías: Java 17+, Spring Boot 3, PostgreSQL, Docker Compose, NGINX Canary Proxy
+  Métricas: Enrutamiento Ponderado 90/10 • Cero Downtime • Arquitectura Transaccional ACID
+  Descripción: Sistema de gestión ciudadana con Spring Boot 3, PostgreSQL, Docker y despliegue canario ponderado en NGINX para cero caída de servicio.
+  Repositorio: https://github.com/EduardCY/UAO-Software2-ServiCiudad-CanaryDeploy
+
+* Infraestructura Cloud, Kubernetes & DevSecOps con OWASP ZAP (2026)
+  Subcategoría: Infraestructura Cloud, IaC & DevSecOps
+  Tecnologías: Kubernetes (k8s), Terraform (IaC / HCL), Prometheus, Grafana, OWASP ZAP, NGINX Ingress
+  Métricas: Aprovisionamiento Declarativo IaC • Telemetría en Tiempo Real • Auditoría DAST OWASP
+  Descripción: Aprovisionamiento de red y clúster K8s con Terraform, observabilidad con Prometheus/Grafana y análisis de seguridad DAST con OWASP ZAP.
+  Repositorio: https://github.com/EduardCY/UAO-DevOps-Kubernetes-Terraform-Pipeline
+
+* Pipeline DevOps Integral CI/CD con Herramientas Libres (2026)
+  Subcategoría: Automatización CI/CD & Cloud Delivery
+  Tecnologías: GitHub Actions, Docker, Node.js, Jest / Vitest, ESLint / Prettier, Render.com
+  Métricas: Flujo CI/CD Automatizado • Zero-Intervention Deploy • Verificación Estricta
+  Descripción: Pipeline automatizado de integración y entrega continua con validación de código, tests unitarios, build de imágenes Docker y deploy a Staging/Producción.
+  Repositorio: https://github.com/EduardCY/UAO-DevOps-Pipeline-CI-CD
+
+[ CERTIFICACIONES PROFESIONALES ]
+------------------------------------------------------------------------------
+* Professional Certificate: Full Stack Empresarial con Spring Boot y Angular
+  Emisor: Dev Senior Code | Fecha: 2025-09-16 | ID: DSC-FS-2025-0916
+* Certified Desarrollador Full Stack de Soluciones Inteligentes
+  Emisor: Dev Senior Code | Fecha: 2026-07-11 | ID: TLZZKQLTDGD-XYWWYXQQH
+* Especialista en Fundamentos de IA, Ciencia de Datos y Machine Learning
+  Emisor: Dev Senior Code | Fecha: 2026-03-14 | ID: CLPPDQNQDYF-ZVKTSLZVK
+* Certified Científico de Datos e Inteligencia Artificial Aplicada
+  Emisor: Dev Senior Code | Fecha: 2026-03-14 | ID: DSC-MASTER-IA-2026
+* Oxford Placement Test (OOPT) — Nivel C1 CEFR (Score 93/120)
+  Emisor: Oxford University Press | Fecha: 2021-09-13 | ID: OOPT-2021-93-C1
+* Curso de FastAPI a Fondo
+  Emisor: Platzi | Fecha: 2024-12-08 | ID: d3442094-4a79-4f63
+
+[ EDUCACIÓN ]
+------------------------------------------------------------------------------
+* Ingeniería de Sistemas (2022 - Presente)
+  Institución: Universidad Autónoma de Occidente [En curso]
+  Enfoque    : Arquitectura de software distribuido, estructuras de datos, cálculo y bases de datos
+
+* Bachiller Técnico en Dibujo Técnico (2014 - 2021)
+  Institución: Instituto Técnico Industrial San Juan Bosco [Graduado con Honores]
+  Enfoque    : Diseño técnico de precisión, interpretación de planos y metodología analítica
+
+[ EXPERIENCIA & COORDINACIÓN TÉCNICA ]
+------------------------------------------------------------------------------
+* Voluntario Técnico y Soporte Operativo — Juegos Panamericanos Juveniles Cali 2021
+  Periodo: Noviembre 2021 - Diciembre 2021
+  Responsabilidades:
+   - Soporte técnico integral y despliegue logístico en operaciones clave de infraestructura tecnológica.
+   - Montaje, diagnóstico y verificación de equipos y conectividad técnica de red en tiempo real.
+   - Asistencia técnica en transmisiones en vivo y monitoreo de sistemas audiovisuales multidisciplinarios.
+
+[ COMPETENCIAS TÉCNICAS ]
+------------------------------------------------------------------------------
+* Inteligencia Artificial & Datos:
+  Machine Learning • Scikit-Learn • Data Science • NLP Básico • Modelos Predictivos • Python Científico
+
+* Backend & Microservicios:
+  Spring Boot • FastAPI • Flask • Java • Python • PHP • APIs RESTful • Arquitectura por Capas
+
+* Bases de Datos & Persistencia:
+  SQL Relacional • Diseño y Modelado Entidad-Relación • PostgreSQL • MySQL • SQLite • SQLAlchemy
+
+* Frontend & Web UI:
+  Angular • TypeScript • JavaScript (ES6+) • HTML5 Semántico • CSS3 / Grid / Flexbox • Responsive Design
+
+* Herramientas & Entorno de Desarrollo:
+  Git & GitHub • Pip & Entornos Virtuales (Venv) • VS Code • Soporte Audiovisual • Dibujo Técnico Industrial
+
+[ HABILIDADES BLANDAS ]
+------------------------------------------------------------------------------
+Pensamiento crítico y analítico • Resolución estructurada de problemas • Trabajo en equipo multidisciplinario • Comunicación técnica asertiva • Planificación ágil de tareas
+
+[ IDIOMAS ]
+------------------------------------------------------------------------------
+* Español: Nativo — Lengua materna
+* Inglés : C1 — Avanzado profesional (Fluido en lectura, escritura y conversación técnica)
+  Acreditación: Oxford Placement Test (Score 93/120 — Nivel C1 CEFR)
+
+==============================================================================
+ Fin del documento — Formato Texto Plano ATS Optimizado
+==============================================================================`;
+
+        let showLines = true;
+        let currentLang = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('ats_sw_lang') || 'es';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            localStorage.setItem('ats_sw_lang', currentLang);
+            updateLangButton();
+            loadData();
+        }
+
+        function updateLangButton() {
+            const btn = document.getElementById('langBtn');
+            if (btn) btn.textContent = currentLang === 'en' ? '🌐 Español' : '🌐 English';
+        }
+
+        async function loadData() {
+            updateLangButton();
+            let bundle = window.CV_DATA;
+            let langSource = (currentLang === 'en' && bundle?.en) ? bundle.en : (bundle?.es || bundle);
+
+            let profileData = langSource?.profile_software;
+            let projectsData = langSource?.projects || [];
+            let certsData = langSource?.certifications || [];
+
+            if (profileData) {
+                renderText(generateAtsString(profileData, projectsData, certsData, currentLang));
+            }
+
+            // HTTP fetch fallback / refresh
+            const suffix = currentLang === 'en' ? '_en' : '';
+            try {
+                const [resProf, resProj, resCerts] = await Promise.allSettled([
+                    fetch(`../../data/profile_software${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject()),
+                    fetch(`../../data/projects${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject()),
+                    fetch(`../../data/certifications${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject())
+                ]);
+
+                if (resProf.status === 'fulfilled') {
+                    profileData = resProf.value;
+                    if (resProj.status === 'fulfilled') projectsData = resProj.value.projects;
+                    if (resCerts.status === 'fulfilled') certsData = resCerts.value.certifications;
+                    renderText(generateAtsString(profileData, projectsData, certsData, currentLang));
+                }
+            } catch (_) {}
+        }
+
+        function generateAtsString(data, projects = [], certs = [], lang = 'es') {
+            const p = data.personal;
+            const c = p.contact || {};
+            const swProjects = projects.filter(pr => pr.category === 'software');
+            const swCerts = certs.filter(cr => (cr.track || []).includes('software') || (cr.track || []).includes('both'));
+            const isEn = lang === 'en';
+
+            if (isEn) {
+                return `==============================================================================
+ ${p.name.toUpperCase()}
+ ${p.headline}
+==============================================================================
+ Phone    : ${c.phone || '+57 314 ••• ••••'}
+ Email    : ${c.email || 'eduardcriolloyule2004@gmail.com'}
+ Location : ${p.location}
+ LinkedIn : ${c.linkedin || ''}
+ GitHub   : ${c.github || ''}
+ Platzi   : ${c.platzi || ''}
+ Languages: Spanish (Native) | English (C1 Advanced - Oxford Placement Test 93/120)
+------------------------------------------------------------------------------
+
+[ PROFESSIONAL PROFILE ]
+------------------------------------------------------------------------------
+${p.summary_hook}
+
+[ PROFESSIONAL ACCREDITATIONS ]
+------------------------------------------------------------------------------
+${(data.metrics || []).map(m => `* ${m.title}: ${m.score}
+  ${m.level} | ${m.breakdown || ''}`).join('
+
+')}
+
+[ FEATURED TECHNICAL PROJECTS ]
+------------------------------------------------------------------------------
+${swProjects.map(pr => `* ${pr.title} (${pr.date || '2025'})
+  Track: ${pr.sub_category || 'Software Engineering'}
+  Tech Stack: ${(pr.tech_stack || []).join(' • ')}
+  Metrics: ${pr.metrics || ''}
+  Summary: ${pr.summary_executive || pr.description}
+  Repository: ${pr.is_private ? 'Private / Confidential (Code demo available upon technical request)' : (pr.links?.github || 'Private / Confidential')}`).join('
+
+')}
+
+[ PROFESSIONAL CERTIFICATIONS ]
+------------------------------------------------------------------------------
+${swCerts.map(cr => `* ${cr.title}
+  Issuer: ${cr.institution} | Date: ${cr.issue_date || 'Accredited'} ${cr.code ? '| ID: ' + cr.code : ''}${cr.credential_url ? '
+  Verification: ' + cr.credential_url : ''}`).join('
+
+')}
+
+[ FORMAL EDUCATION ]
+------------------------------------------------------------------------------
+${(data.education || []).map(e => `* ${e.degree} (${e.period})
+  Institution: ${e.institution}
+  ${(e.highlights || []).join(' • ')}`).join('
+
+')}
+
+[ EXPERIENCE & TECHNICAL SUPPORT ]
+------------------------------------------------------------------------------
+${(data.experience || []).map(exp => `* ${exp.role} — ${exp.organization || exp.company}
+  Period: ${exp.period}
+  Key Responsibilities:
+${(exp.responsibilities || []).map(r => `   - ${r}`).join('
+')}`).join('
+
+')}
+
+[ TECHNICAL COMPETENCIES / SKILLS MATRIX ]
+------------------------------------------------------------------------------
+${Object.values(data.skills_matrix || {}).map(g => `* ${g.category}:
+  ${g.skills.join(' • ')}`).join('
+
+')}
+
+[ SOFT SKILLS ]
+------------------------------------------------------------------------------
+${(data.soft_skills || []).join(' • ')}
+
+[ LANGUAGES ]
+------------------------------------------------------------------------------
+${(data.languages || []).map(l => `* ${l.language}: ${l.level} ${l.certification ? `(${l.certification})` : ''}`).join('
+')}
+
+==============================================================================
+ End of Document — Optimized ATS Plain Text Resume (English Edition)
+==============================================================================`;
+            }
+
+            return `==============================================================================
+ ${p.name.toUpperCase()}
+ ${p.headline}
+==============================================================================
+ Teléfono : ${c.phone || '+57 314 ••• ••••'}
+ Correo   : ${c.email || 'eduardcriolloyule2004@gmail.com'}
+ Ubicación: ${p.location}
+ LinkedIn : ${c.linkedin || ''}
+ GitHub   : ${c.github || ''}
+ Platzi   : ${c.platzi || ''}
+ Idiomas  : Español (Nativo) | Inglés (C1 Avanzado - Oxford Placement Test 93/120)
+------------------------------------------------------------------------------
+
+[ PERFIL PROFESIONAL ]
+------------------------------------------------------------------------------
+${p.summary_hook}
+
+[ ACREDITACIONES PROFESIONALES ]
+------------------------------------------------------------------------------
+${(data.metrics || []).map(m => `* ${m.title}: ${m.score}
+  ${m.level} | ${m.breakdown || ''}`).join('
+
+')}
+
+[ PROYECTOS TÉCNICOS DESTACADOS ]
+------------------------------------------------------------------------------
+${swProjects.map(pr => `* ${pr.title} (${pr.date || '2025'})
+  Subcategoría: ${pr.sub_category || 'Ingeniería de Software'}
+  Stack: ${(pr.tech_stack || []).join(' • ')}
+  Métricas: ${pr.metrics || ''}
+  Descripción: ${pr.summary_executive || pr.description}
+  Repositorio: ${pr.is_private ? 'Privado / Confidencial (Código disponible bajo solicitud técnica)' : (pr.links?.github || 'Privado / Confidencial')}`).join('
+
+')}
+
+[ CERTIFICACIONES PROFESIONALES ]
+------------------------------------------------------------------------------
+${swCerts.map(cr => `* ${cr.title}
+  Emisor: ${cr.institution} | Fecha: ${cr.issue_date || 'Acreditado'} ${cr.code ? '| ID: ' + cr.code : ''}${cr.credential_url ? '
+  Verificación: ' + cr.credential_url : ''}`).join('
+
+')}
+
+[ EDUCACIÓN ]
+------------------------------------------------------------------------------
+${(data.education || []).map(e => `* ${e.degree} (${e.period})
+  Institución: ${e.institution}
+  ${(e.highlights || []).join(' • ')}`).join('
+
+')}
+
+[ EXPERIENCIA & COORDINACIÓN TÉCNICA ]
+------------------------------------------------------------------------------
+${(data.experience || []).map(exp => `* ${exp.role} — ${exp.organization || exp.company}
+  Periodo: ${exp.period}
+  Responsabilidades:
+${(exp.responsibilities || []).map(r => `   - ${r}`).join('
+')}`).join('
+
+')}
+
+[ COMPETENCIAS TÉCNICAS ]
+------------------------------------------------------------------------------
+${Object.values(data.skills_matrix || {}).map(g => `* ${g.category}:
+  ${g.skills.join(' • ')}`).join('
+
+')}
+
+[ HABILIDADES BLANDAS ]
+------------------------------------------------------------------------------
+${(data.soft_skills || []).join(' • ')}
+
+[ IDIOMAS ]
+------------------------------------------------------------------------------
+${(data.languages || []).map(l => `* ${l.language}: ${l.level} ${l.certification ? `(${l.certification})` : ''}`).join('
+')}
+
+==============================================================================
+ Fin del documento — Generado Dinámicamente desde /data/
+==============================================================================`;
+        }
+
+        function renderText(text) {
+            const pre = document.getElementById('plainTextContent');
+            if (pre) pre.textContent = text;
+
+            const lines = text.split('
+');
+            const numContainer = document.getElementById('lineNumbers');
+            if (numContainer) numContainer.innerHTML = lines.map((_, i) => i + 1).join('<br>');
+        }
+
+        function copyToClipboard() {
+            const text = document.getElementById('plainTextContent').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2500);
+            });
+        }
+
+        function toggleLineNumbers() {
+            showLines = !showLines;
+            document.getElementById('lineNumbers').classList.toggle('hidden', !showLines);
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('theme-light');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>

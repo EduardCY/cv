@@ -1,0 +1,27 @@
+# ==============================================================================
+# GOBIERNO DE PRIVACIDAD Y ARCHIVOS PRIVADOS (PII - HABÉAS DATA)
+# ==============================================================================
+# Documentos oficiales sin censurar (reservados exclusivamente para contratación formal)
+pdf_archive_private/
+private_data/
+*.private.*
+*.private.pdf
+
+# ==============================================================================
+# ENTORNO Y HERRAMIENTAS LOCALES
+# ==============================================================================
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Configuraciones de IDE y agentes
+.vscode/
+.idea/
+.gemini/
+scratch/
+tmp/
+temp/

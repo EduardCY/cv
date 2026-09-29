@@ -1,0 +1,216 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "_comment": "==============================================================================\n ARCHIVO MADRE: PERFIL CREATIVE ARTS (FUENTE ÚNICA DE VERDAD)\n Ubicación: /data/profile_creative.json\n Propósito: Centralizar la trayectoria artística, visual, audiovisual y narrativa\n            de Eduard Criollo Yule en las áreas de Ilustración, Animación y Escritura.\n==============================================================================",
+  "personal": {
+    "name": "Eduard Criollo Yule",
+    "headline": "Ilustrador, Animador 2D/3D & Escritor Creativo",
+    "subtitle": "Bachiller Técnico en Dibujo Industrial • Producción Audiovisual & Narrativa",
+    "location": "Cali, Valle del Cauca, Colombia",
+    "photo": "../../data/img/Creative_Arts/CreativeProfile.png",
+    "contact": {
+      "phone": "+57 314 ••• ••••",
+      "email": "eduardcriolloyule2004@gmail.com",
+      "platzi": "https://platzi.com/@EduardYule/",
+      "github": "https://github.com/EduardCY",
+      "linkedin": "https://www.linkedin.com/in/eduard-criollo-arts/",
+      "artstation": "https://artstation.com/eduardyule",
+      "behance": "https://behance.net/eduardcriollo",
+      "phone_note": "Disponible bajo solicitud profesional / Available upon request"
+    },
+    "social_links": [
+      {
+        "name": "ArtStation",
+        "url": "https://artstation.com/eduardyule",
+        "icon": "artstation",
+        "label": "Galería y Portafolio Visual en ArtStation"
+      },
+      {
+        "name": "Behance",
+        "url": "https://behance.net/eduardcriollo",
+        "icon": "behance",
+        "label": "Proyectos de Diseño y Animación en Behance"
+      },
+      {
+        "name": "LinkedIn (Creative Arts)",
+        "url": "https://www.linkedin.com/in/eduard-criollo-arts/",
+        "icon": "linkedin",
+        "label": "Perfil Profesional Creativo en LinkedIn"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/EduardCY",
+        "icon": "github",
+        "label": "Herramientas y Scripts de Automatización"
+      },
+      {
+        "name": "Correo Electrónico",
+        "url": "mailto:eduardcriolloyule2004@gmail.com",
+        "icon": "email",
+        "label": "Contacto Directo"
+      }
+    ],
+    "summary_hook": "Creador visual y narrador multidisciplinario con formación técnica sólida en Dibujo Técnico Industrial (Instituto San Juan Bosco) y estudios en Ingeniería de Sistemas. Fusiono el rigor geométrico, la perspectiva y el modelado espacial con la expresión plástica en ilustración digital, animación 2D/3D y construcción de mundos narrativos.\n\nGalardonado en certámenes literarios y beneficiario de distinciones académicas por excelencia creativa y analítica. Experiencia en producción audiovisual, soporte técnico en transmisiones en vivo y gestión de eventos de escala internacional (Juegos Panamericanos Juveniles 2021)."
+  },
+  "artistic_disciplines": [
+    {
+      "name": "Dibujo Técnico & Ilustración Digital",
+      "description": "Dominio de dibujo técnico de precisión, geometría descriptiva, perspectiva axonométrica, diseño de personajes (character concept art), entintado digital y renderizado de iluminación volumétrica.",
+      "tools": [
+        "AutoCAD",
+        "Clip Studio Paint",
+        "Adobe Photoshop",
+        "Adobe Illustrator",
+        "Tabletas Gráficas / Display Pen"
+      ]
+    },
+    {
+      "name": "Animación 2D/3D & Motion Graphics",
+      "description": "Principios fundamentales de animación (timing, spacing, anticipation, squash & stretch), modelado poligonal 3D, rigging básico, animación de keyframes y composición de motion design para piezas audiovisuales.",
+      "tools": [
+        "Blender 3D",
+        "Adobe After Effects",
+        "Adobe Premiere Pro",
+        "Audacity",
+        "OpenToonz"
+      ]
+    },
+    {
+      "name": "Guionismo, Worldbuilding & Creación Literaria",
+      "description": "Estructuración dramática, arcos de personajes, diseño de universos fantásticos y de ciencia ficción, redacción de narrativa corta, guiones técnicos audiovisuales y narrativa interactiva.",
+      "tools": [
+        "Scrivener",
+        "Notion",
+        "Trello",
+        "Celtx",
+        "Markdown / LaTeX"
+      ]
+    }
+  ],
+  "awards_recognitions": [
+    {
+      "title": "Ganador de Certámenes Literarios & Creación de Cuentos",
+      "organization": "Concursos de Expresión Literaria y Narrativa Juvenil",
+      "year": "2019 - 2021",
+      "description": "Primer lugar y menciones de honor en concursos intercolegiales de narrativa corta, ensayo y creación de mundos fantásticos."
+    },
+    {
+      "title": "Beca de Excelencia Académica y Creativa",
+      "organization": "Instituto Técnico Industrial San Juan Bosco",
+      "year": "2014 - 2021",
+      "description": "Reconocimiento continuo por alto rendimiento en dibujo técnico, proyectos de diseño y redacción académica."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachiller Técnico en Dibujo Técnico e Industrial",
+      "institution": "Instituto Técnico Industrial San Juan Bosco",
+      "period": "2014 - 2021",
+      "status": "Graduado con Mención de Honor",
+      "location": "Cali, Colombia",
+      "highlights": [
+        "7 años de entrenamiento intensivo en dibujo geométrico, proyecciones ortogonales, cortes, vistas y dimensionamiento.",
+        "Manejo de instrumentos tradicionales (estilógrafos, reglas T, compases de precisión) y software CAD computarizado.",
+        "Fundamentos de estética visual, proporción áurea y composición volumétrica."
+      ]
+    },
+    {
+      "degree": "Ingeniería de Sistemas",
+      "institution": "Universidad Autónoma de Occidente (UAO)",
+      "period": "2022 - Presente",
+      "status": "En curso",
+      "location": "Cali, Colombia",
+      "highlights": [
+        "Integración de lógica algorítmica, renderizado computacional, gráficos 3D por computadora y tecnologías interactivas.",
+        "Desarrollo de interfaces visuales avanzadas y aplicaciones interactivas multimedia."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Asistente Técnico Audiovisual & Soporte Operativo",
+      "organization": "Juegos Panamericanos Juveniles Cali 2021",
+      "period": "Noviembre 2021 - Diciembre 2021",
+      "location": "Cali, Colombia",
+      "responsibilities": [
+        "Apoyo operativo y técnico en transmisiones en vivo, monitoreo de cámaras y mesas de control audiovisual.",
+        "Montaje de escenarios, cableado de señal multimedia y verificación de pantallas gigantes y displays técnicos.",
+        "Colaboración con equipos creativos y de difusión mediática para cobertura en tiempo real del certamen."
+      ],
+      "technologies": [
+        "Producción Audiovisual",
+        "Sistemas de Transmisión",
+        "Equipos de Cámaras y Sonido",
+        "Coordinación de Escenario"
+      ]
+    }
+  ],
+  "creative_skills_matrix": {
+    "visual_arts": {
+      "category": "Artes Visuales & Dibujo",
+      "skills": [
+        "Dibujo Técnico & Planos",
+        "Perspectiva Cónica y Axonométrica",
+        "Ilustración Digital",
+        "Diseño de Personajes (Concept Art)",
+        "Teoría del Color",
+        "Composición Visual"
+      ]
+    },
+    "animation_video": {
+      "category": "Animación & Posproducción Audiovisual",
+      "skills": [
+        "Modelado 3D (Blender)",
+        "Animación 2D Frame-by-Frame",
+        "Motion Graphics (After Effects)",
+        "Edición de Video (Premiere)",
+        "Diseño Sonoro & Foley",
+        "Storyboarding"
+      ]
+    },
+    "writing_storytelling": {
+      "category": "Escritura, Guionismo & Narrativa",
+      "skills": [
+        "Guion Audiovisual",
+        "Worldbuilding (Creación de Mundos)",
+        "Narrativa de Ficción & Sci-Fi",
+        "Desarrollo de Arcos Dramáticos",
+        "Escritura Bilingüe (Español / Inglés)",
+        "Corrección de Estilo"
+      ]
+    },
+    "digital_tools": {
+      "category": "Software & Entorno Creativo",
+      "skills": [
+        "Blender 3D",
+        "Photoshop",
+        "Illustrator",
+        "After Effects",
+        "Premiere Pro",
+        "Clip Studio Paint",
+        "AutoCAD",
+        "Git / Versionado de Assets"
+      ]
+    }
+  },
+  "soft_skills": [
+    "Creatividad e imaginación visual",
+    "Atención minuciosa al detalle y precisión",
+    "Capacidad de sintetizar conceptos abstractos en piezas visuales",
+    "Narración y comunicación emocional efectiva",
+    "Gestión de tiempos de entrega en proyectos creativos",
+    "Colaboración armónica en equipos de producción"
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "level": "Nativo",
+      "notes": "Redacción literaria de alto nivel y expresión narrativa"
+    },
+    {
+      "language": "Inglés",
+      "level": "C1 Avanzado Profesional",
+      "certification": "Oxford Placement Test (Score 93/120 — CEFR C1)",
+      "notes": "Capacidad de guionizar, redactar ficción y dialogar en inglés con fluidez internacional"
+    }
+  ]
+}

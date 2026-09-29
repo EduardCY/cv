@@ -1,0 +1,1437 @@
+/**
+ * ==============================================================================
+ * PORTAFOLIO PROFESIONAL — WINDOWS 97 EDITION
+ * ==============================================================================
+ * Hoja de estilos basada en el diseño clásico de interfaces de Windows 95/97/98.
+ * Implementa biselados 3D exactos, paleta cromática del sistema Win9x,
+ * gestor de ventanas, barra de tareas, menú inicio y explorador de archivos.
+ * 
+ * @author Eduard Criollo Yule
+ */
+
+/* ==========================================================================
+   RESET & VARIABLES GLOBALES DEL SISTEMA
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Paleta Windows 97 Oficial */
+    --win-gray: #c0c0c0;
+    --win-gray-light: #dfdfdf;
+    --win-gray-dark: #808080;
+    --win-black: #000000;
+    --win-white: #ffffff;
+    --win-navy: #000080;
+    --win-navy-light: #1084d0;
+    --win-teal: #008080;
+    --win-blue-sel: #000080;
+    --win-text-sel: #ffffff;
+    --win-font: 'MS Sans Serif', Tahoma, 'Segoe UI', Arial, sans-serif;
+    --win-font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    --taskbar-height: 32px;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--win-font);
+    font-size: 11px;
+    color: var(--win-black);
+    user-select: none;
+    background-color: var(--win-teal);
+}
+
+/* Temas de Fondo de Pantalla */
+body.theme-classic-teal {
+    background-color: #008080;
+}
+body.theme-clouds {
+    background: linear-gradient(135deg, #1e528e 0%, #2672b8 50%, #72a6d8 100%);
+}
+body.theme-slate {
+    background-color: #3a6ea5;
+}
+body.theme-matrix {
+    background-color: #021408;
+    background-image: radial-gradient(rgba(0, 255, 65, 0.15) 1px, transparent 1px);
+    background-size: 16px 16px;
+}
+
+/* ==========================================================================
+   ESCRITORIO
+   ========================================================================== */
+.desktop {
+    width: 100vw;
+    height: calc(100vh - var(--taskbar-height));
+    position: relative;
+    overflow: hidden;
+}
+
+/* Contenedor de iconos en el escritorio */
+.desktop-icons {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 1;
+}
+
+.desktop-icon {
+    width: 74px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4px;
+    cursor: pointer;
+    border: 1px dotted transparent;
+}
+
+.desktop-icon:focus,
+.desktop-icon.active-icon {
+    outline: none;
+}
+
+.desktop-icon:focus .icon-label,
+.desktop-icon.active-icon .icon-label {
+    background-color: var(--win-blue-sel);
+    color: var(--win-text-sel);
+    border: 1px dotted #ffff80;
+}
+
+.desktop-icon:focus .icon-graphic,
+.desktop-icon.active-icon .icon-graphic {
+    filter: drop-shadow(0 0 2px rgba(0,0,128,0.8));
+}
+
+.icon-graphic {
+    width: 36px;
+    height: 36px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 4px;
+}
+
+.icon-label {
+    font-size: 11px;
+    color: var(--win-white);
+    text-shadow: 1px 1px 2px #000000;
+    line-height: 1.2;
+    padding: 1px 3px;
+    border-radius: 1px;
+    word-break: break-word;
+}
+
+/* Gráficos de Iconos en SVG inline / CSS puro */
+.icon-computer {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='20' fill='%23c0c0c0' stroke='%23000' stroke-width='1.5'/%3E%3Crect x='5' y='5' width='22' height='16' fill='%23000080'/%3E%3Cpath d='M8 9h16v1H8zM8 12h12v1H8z' fill='%23fff'/%3E%3Cpath d='M10 23h12v3H10z' fill='%23808080' stroke='%23000' stroke-width='1'/%3E%3Cpath d='M6 26h20v3H6z' fill='%23dfdfdf' stroke='%23000' stroke-width='1.5'/%3E%3Ccircle cx='23' cy='27.5' r='1' fill='%2300ff00'/%3E%3C/svg%3E");
+}
+
+.icon-folder-projects {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M2 6h11l2 3h15v19H2z' fill='%23e0c060' stroke='%23000' stroke-width='1.5'/%3E%3Cpath d='M4 11h24l-3 15H1z' fill='%23ffdb70' stroke='%23000' stroke-width='1.2'/%3E%3Cpath d='M10 15h12v2H10zM10 19h8v2h-8z' fill='%23000080'/%3E%3C/svg%3E");
+}
+
+.icon-certs {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='5' y='3' width='22' height='26' fill='%23ffffff' stroke='%23000' stroke-width='1.5'/%3E%3Cpath d='M9 7h14M9 11h14M9 15h10M9 19h14' stroke='%23808080' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='21' cy='22' r='4' fill='%23d90429' stroke='%23800000' stroke-width='1'/%3E%3Cpath d='M19 25l-2 5 4-2 4 2-2-5' fill='%23d90429'/%3E%3C/svg%3E");
+}
+
+.icon-paint {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M5 24c0-7 5-18 11-18 5 0 9 4 9 9 0 6-6 13-13 13-3 0-7-2-7-4z' fill='%23dfdfdf' stroke='%23000' stroke-width='1.5'/%3E%3Ccircle cx='10' cy='12' r='2.5' fill='%23ff0000'/%3E%3Ccircle cx='16' cy='9' r='2.5' fill='%230000ff'/%3E%3Ccircle cx='21' cy='13' r='2.5' fill='%23ffff00'/%3E%3Ccircle cx='18' cy='18' r='2.5' fill='%2300ff00'/%3E%3Cpath d='M6 26l12-12 3 3-12 12z' fill='%238b5a2b' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+.icon-ie {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%231084d0' stroke='%23000080' stroke-width='1.5'/%3E%3Cellipse cx='16' cy='16' rx='13' ry='5' fill='none' stroke='%23ffffff' stroke-width='2' transform='rotate(-25 16 16)'/%3E%3Cpath d='M10 14c2-4 9-4 12 1s-4 9-10 7' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.icon-doc {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 3h13l7 7v19H6z' fill='%23ffffff' stroke='%23000' stroke-width='1.5'/%3E%3Cpath d='M19 3v7h7' fill='%23c0c0c0' stroke='%23000' stroke-width='1.2'/%3E%3Cpath d='M10 13h12M10 17h12M10 21h12M10 25h8' stroke='%23000080' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+.icon-trash {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M9 10h14l-2 18H11z' fill='%23c0c0c0' stroke='%23000' stroke-width='1.5'/%3E%3Cpath d='M6 7h20v3H6z' fill='%23808080' stroke='%23000' stroke-width='1.2'/%3E%3Cpath d='M12 4h8v3h-8z' fill='%23dfdfdf' stroke='%23000' stroke-width='1.2'/%3E%3Cline x1='13' y1='14' x2='13' y2='24' stroke='%23808080' stroke-width='1.5'/%3E%3Cline x1='16' y1='14' x2='16' y2='24' stroke='%23808080' stroke-width='1.5'/%3E%3Cline x1='19' y1='14' x2='19' y2='24' stroke='%23808080' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+/* Iconos miniaturas para titlebar / taskbar */
+.win97-icon-mini {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+}
+.icon-computer-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='10' fill='%23c0c0c0' stroke='%23000'/%3E%3Crect x='2' y='2' width='12' height='8' fill='%23000080'/%3E%3Cpath d='M4 12h8v2H4z' fill='%23808080'/%3E%3Cpath d='M2 14h12v1H2z' fill='%23000'/%3E%3C/svg%3E"); }
+.icon-folder-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1 2h6l1.5 2H15v10H1z' fill='%23ffdb70' stroke='%23000'/%3E%3C/svg%3E"); }
+.icon-certs-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='2' y='1' width='12' height='14' fill='%23fff' stroke='%23000'/%3E%3Cpath d='M4 4h8M4 7h8M4 10h5' stroke='%23808080'/%3E%3Ccircle cx='11' cy='11' r='2' fill='%23d90429'/%3E%3C/svg%3E"); }
+.icon-paint-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23dfdfdf' stroke='%23000'/%3E%3Ccircle cx='5' cy='6' r='1.5' fill='%23ff0000'/%3E%3Ccircle cx='9' cy='5' r='1.5' fill='%230000ff'/%3E%3Ccircle cx='11' cy='8' r='1.5' fill='%23ffff00'/%3E%3C/svg%3E"); }
+.icon-ie-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%231084d0' stroke='%23000080'/%3E%3Cellipse cx='8' cy='8' rx='7' ry='2.5' fill='none' stroke='%23fff' transform='rotate(-25 8 8)'/%3E%3C/svg%3E"); }
+.icon-doc-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 1h7l4 4v10H3z' fill='%23fff' stroke='%23000'/%3E%3Cpath d='M5 6h6M5 9h6M5 12h4' stroke='%23000080'/%3E%3C/svg%3E"); }
+.icon-trash-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 5h8l-1 9H5z' fill='%23c0c0c0' stroke='%23000'/%3E%3Cpath d='M2 3h12v2H2z' fill='%23808080' stroke='%23000'/%3E%3C/svg%3E"); }
+.icon-hub-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1 7l7-5 7 5v8H1z' fill='%23dfdfdf' stroke='%23000'/%3E%3Crect x='6' y='9' width='4' height='6' fill='%238b5a2b'/%3E%3C/svg%3E"); }
+.icon-settings-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='4' fill='%23808080' stroke='%23000'/%3E%3Cpath d='M8 1v2M8 13v2M1 8h2M13 8h2' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E"); }
+.icon-info-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23000080' stroke='%23000'/%3E%3Ctext x='8' y='12' fill='%23fff' font-family='sans-serif' font-weight='bold' font-size='11' text-anchor='middle'%3Ei%3C/text%3E%3C/svg%3E"); }
+.icon-shutdown-mini { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%23d90429' stroke='%23000'/%3E%3Cline x1='8' y1='4' x2='8' y2='8' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E"); }
+
+
+/* ==========================================================================
+   BISELADO 3D Y VENTANAS WINDOWS 97
+   ========================================================================== */
+.win97-window {
+    position: absolute;
+    background-color: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark);
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    min-height: 200px;
+    max-width: 98vw;
+    max-height: calc(100vh - var(--taskbar-height) - 6px);
+    overflow: hidden;
+
+    /* Variables dinámicas reactivas al tamaño de la ventana (ancho y alto) */
+    --win-w: 640px;
+    --win-h: 440px;
+    --win-scale: 1;
+    --win-font-base: 11px;
+    --win-font-sm: 10px;
+    --win-font-lg: 12px;
+    --win-line-height: 1.4;
+    --project-desc-lines: 3;
+}
+
+.win97-window.active {
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark), 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Barra de Título */
+.win97-titlebar {
+    height: 20px;
+    flex-shrink: 0;
+    background: var(--win-gray-dark);
+    color: #d4d0c8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 3px;
+    margin: 2px 2px 0 2px;
+    cursor: default;
+}
+
+.win97-window.active .win97-titlebar {
+    background: linear-gradient(90deg, var(--win-navy) 0%, var(--win-navy-light) 100%);
+    color: var(--win-white);
+}
+
+.titlebar-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    pointer-events: none;
+}
+
+.titlebar-text {
+    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+}
+
+.titlebar-controls {
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.win97-btn-box {
+    width: 16px;
+    height: 14px;
+    background: var(--win-gray);
+    border: 1px solid;
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark);
+    font-family: var(--win-font);
+    font-size: 9px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    color: var(--win-black);
+}
+
+.win97-btn-box:active {
+    border-color: var(--win-black) var(--win-gray-light) var(--win-gray-light) var(--win-black);
+    box-shadow: inset 1px 1px 0 var(--win-gray-dark);
+    padding: 1px 0 0 1px;
+}
+
+.win97-btn-box.btn-close {
+    font-size: 10px;
+}
+
+/* Barra de Menú Superior */
+.win97-menubar {
+    display: flex;
+    flex-shrink: 0;
+    background: var(--win-gray);
+    padding: 2px 6px;
+    border-bottom: 1px solid var(--win-gray-dark);
+    gap: 12px;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: 2px 4px;
+    font-size: var(--win-font-base, 11px);
+}
+
+.menu-item:hover {
+    background-color: var(--win-navy);
+    color: var(--win-white);
+}
+
+/* Barra de Herramientas */
+.win97-toolbar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+    background: var(--win-gray);
+    border-bottom: 1px solid var(--win-gray-dark);
+}
+
+.tb-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 6px;
+    background: var(--win-gray);
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: var(--win-font);
+    font-size: var(--win-font-base, 11px);
+}
+
+.tb-btn:hover {
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark);
+}
+
+.tb-btn:active,
+.tb-btn.active {
+    border-color: var(--win-black) var(--win-gray-light) var(--win-gray-light) var(--win-black);
+    box-shadow: inset 1px 1px 0 var(--win-gray-dark);
+    background: #d4d0c8;
+}
+
+.tb-sep {
+    width: 2px;
+    height: 18px;
+    background: var(--win-gray-dark);
+    border-right: 1px solid var(--win-white);
+    margin: 0 4px;
+}
+
+/* Barra de Dirección */
+.win97-addressbar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 6px;
+    background: var(--win-gray);
+    border-bottom: 1px solid var(--win-gray-dark);
+}
+
+.address-label {
+    font-size: var(--win-font-base, 11px);
+    color: var(--win-gray-dark);
+}
+
+.address-input {
+    flex: 1;
+    background: var(--win-white);
+    border: 2px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 var(--win-black);
+    padding: 2px 6px;
+    font-family: var(--win-font);
+    font-size: var(--win-font-base, 11px);
+    color: var(--win-black);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Cuerpo de la Ventana */
+.win97-window-body {
+    padding: 8px;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background: var(--win-gray);
+}
+
+/* Barra de Estado Inferior */
+.win97-statusbar {
+    display: flex;
+    flex-shrink: 0;
+    gap: 3px;
+    padding: 2px;
+    background: var(--win-gray);
+    border-top: 1px solid var(--win-gray-light);
+}
+
+.status-cell {
+    border: 1px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 #a0a0a0;
+    padding: 2px 6px;
+    font-size: var(--win-font-sm, 10px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ==========================================================================
+   PESTAÑAS (TABSTRIP WINDOWS 97)
+   ========================================================================== */
+.tab-strip {
+    display: flex;
+    flex-shrink: 0;
+    gap: 2px;
+    border-bottom: 1px solid var(--win-gray-dark);
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.tab-button {
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--win-gray-light) var(--win-black) transparent var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px 0 0 var(--win-gray-dark);
+    padding: 4px 10px;
+    font-family: var(--win-font);
+    font-size: var(--win-font-base, 11px);
+    cursor: pointer;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    position: relative;
+    top: 1px;
+}
+
+.tab-button.active {
+    font-weight: bold;
+    background: var(--win-gray);
+    border-bottom: 2px solid var(--win-gray);
+    top: 2px;
+    z-index: 3;
+    padding-bottom: 5px;
+}
+
+.tab-content-area {
+    border: 2px solid;
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark);
+    background: var(--win-gray);
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.tab-pane {
+    display: none;
+    flex: 1 1 auto;
+    min-height: 0;
+    flex-direction: column;
+}
+.tab-pane.active {
+    display: flex;
+}
+
+
+/* ==========================================================================
+   GROUPBOX WINDOWS 97
+   ========================================================================== */
+.win97-groupbox {
+    border: 2px groove var(--win-gray-light);
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    background: var(--win-gray);
+}
+
+.win97-groupbox legend {
+    padding: 0 4px;
+    font-weight: bold;
+    color: var(--win-black);
+    font-size: var(--win-font-base, 11px);
+}
+
+
+/* ==========================================================================
+   BOTONES ESTÁNDAR WINDOWS 97
+   ========================================================================== */
+.win97-btn {
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark);
+    padding: 4px 12px;
+    font-family: var(--win-font);
+    font-size: var(--win-font-base, 11px);
+    color: var(--win-black);
+    cursor: pointer;
+    min-width: 75px;
+    text-align: center;
+}
+
+.win97-btn:active {
+    border-color: var(--win-black) var(--win-gray-light) var(--win-gray-light) var(--win-black);
+    box-shadow: inset 1px 1px 0 var(--win-gray-dark);
+    padding: 5px 11px 3px 13px;
+}
+
+.win97-btn.default-btn {
+    border: 2px solid var(--win-black);
+    outline: 1px solid var(--win-black);
+    font-weight: bold;
+}
+
+.dialog-button-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 8px;
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================================
+   DETALLES DE PERFIL & ESPECIFICACIONES (VENTANA MI PC)
+   ========================================================================== */
+.profile-sys-grid {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 12px;
+    align-items: start;
+    flex-shrink: 0;
+}
+
+.profile-photo-frame {
+    background: var(--win-white);
+    border: 2px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 var(--win-black);
+    padding: 3px;
+    text-align: center;
+}
+
+.win97-profile-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+}
+
+.photo-caption {
+    font-family: var(--win-font-mono);
+    font-size: 9px;
+    color: var(--win-navy);
+    margin-top: 3px;
+    font-weight: bold;
+}
+
+.sys-strong {
+    font-weight: bold;
+    font-size: var(--win-font-lg, 12px);
+    margin-bottom: 2px;
+    color: var(--win-navy);
+}
+
+.sys-detail {
+    font-size: var(--win-font-base, 11px);
+    line-height: var(--win-line-height, 1.4);
+    color: var(--win-black);
+}
+
+.sys-summary-text {
+    font-size: var(--win-font-base, 11px);
+    line-height: var(--win-line-height, 1.5);
+    color: #1a1a1a;
+    background: var(--win-white);
+    border: 2px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 var(--win-black);
+    padding: 6px 8px;
+    flex: 1 1 auto;
+    min-height: 80px;
+    max-height: none;
+    overflow-y: auto;
+}
+
+#generalTab .win97-groupbox:last-of-type {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#hardwareTab .win97-groupbox {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#metricsTab .win97-groupbox:first-of-type {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.metrics-sys-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.metric-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: flex-start;
+}
+
+.m-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.m-text strong {
+    color: var(--win-navy);
+    font-size: var(--win-font-base, 11px);
+}
+
+.m-text p {
+    font-size: var(--win-font-sm, 10.5px);
+    color: #333;
+}
+
+.tech-tree {
+    background: var(--win-white);
+    border: 2px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 var(--win-black);
+    padding: 8px;
+    flex: 1 1 auto;
+    min-height: 120px;
+    max-height: none;
+    overflow-y: auto;
+    font-size: var(--win-font-base, 11px);
+    line-height: var(--win-line-height, 1.4);
+}
+
+.tree-node {
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.tree-val {
+    color: #0b4a72;
+    display: block;
+    margin-left: 20px;
+    font-family: var(--win-font-mono);
+    font-size: var(--win-font-sm, 10px);
+}
+
+.social-sys-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+.social-sys-buttons .social-link {
+    text-align: left;
+    text-decoration: none;
+    display: block;
+    padding: 6px 10px;
+}
+
+
+/* ==========================================================================
+   EXPLORADOR DE PROYECTOS (DUAL PANE FLEXIBLE)
+   ========================================================================== */
+.explorer-body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 180px;
+    background: var(--win-gray);
+    overflow: hidden;
+}
+
+/* Panel izquierdo: Árbol */
+.explorer-tree {
+    background: var(--win-white);
+    border: 2px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 var(--win-black);
+    padding: 6px 4px;
+    overflow-y: auto;
+    height: 100%;
+    min-height: 0;
+    font-size: var(--win-font-base, 11px);
+    line-height: var(--win-line-height, 1.4);
+}
+
+.tree-item {
+    padding: 2px 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px dotted transparent;
+    font-size: var(--win-font-base, 11px);
+}
+
+.tree-item:hover {
+    color: var(--win-navy);
+}
+
+.tree-item.active-folder {
+    background-color: var(--win-blue-sel);
+    color: var(--win-text-sel);
+    border-color: #ffff80;
+}
+
+.indent-1 { padding-left: 14px; }
+.indent-2 { padding-left: 24px; }
+.indent-3 { padding-left: 36px; }
+
+/* Panel derecho: Archivos / Proyectos */
+.explorer-files-view {
+    background: var(--win-white);
+    border: 2px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 var(--win-black);
+    padding: 10px;
+    overflow-y: auto;
+    height: 100%;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-auto-rows: min-content;
+    gap: 12px;
+    align-content: start;
+}
+
+/* Tarjeta de Proyecto en Estilo Win97 */
+.win97-project-card {
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+}
+
+.project-card-header {
+    background: linear-gradient(90deg, #1084d0 0%, #2e5984 100%);
+    color: var(--win-white);
+    padding: 2px 4px;
+    font-weight: bold;
+    font-size: var(--win-font-sm, 10px);
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.project-preview-wrap {
+    background: #090d14;
+    border: 1px solid var(--win-gray-dark);
+    margin-bottom: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.project-preview-wrap svg {
+    width: 100%;
+    height: auto;
+    max-height: 80px;
+    display: block;
+}
+
+.project-card-title {
+    font-size: var(--win-font-lg, 12px);
+    font-weight: bold;
+    color: var(--win-navy);
+    margin-bottom: 4px;
+}
+
+.project-card-desc {
+    font-size: var(--win-font-sm, 10.5px);
+    line-height: var(--win-line-height, 1.35);
+    color: #222;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--project-desc-lines, 3);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1 1 auto;
+}
+
+.project-card-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+}
+
+.win97-chip {
+    background: #e4e4e4;
+    border: 1px solid var(--win-gray-dark);
+    padding: 1px 4px;
+    font-size: 9px;
+    font-family: var(--win-font-mono);
+}
+
+.project-card-actions {
+    display: flex;
+    gap: 4px;
+    margin-top: auto;
+    padding-top: 4px;
+    flex-shrink: 0;
+}
+
+.project-card-actions .win97-btn {
+    flex: 1;
+    padding: 2px 4px;
+    font-size: 10px;
+    min-width: 0;
+}
+
+
+/* ==========================================================================
+   TABLA DE CERTIFICACIONES (FLEXIBLE VERTICALMENTE)
+   ========================================================================== */
+.table-scroll-wrap {
+    background: var(--win-white);
+    border: 2px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 var(--win-black);
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 120px;
+    max-height: none;
+    overflow-y: auto;
+}
+
+.win97-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--win-font-base, 11px);
+    line-height: var(--win-line-height, 1.4);
+}
+
+.win97-table th {
+    background: var(--win-gray);
+    border: 1px solid;
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark);
+    padding: 3px 6px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.win97-table td {
+    padding: 3px 6px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #f0f0f0;
+}
+
+.win97-table tr:hover {
+    background-color: #e8f0fe;
+}
+
+.win97-table-link {
+    color: var(--win-navy);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   VISOR MULTIMEDIA (BANNER & FOTOGRAFÍA - AUTOESCALADO)
+   ========================================================================== */
+.viewer-tabs {
+    display: flex;
+    flex-shrink: 0;
+    gap: 2px;
+    margin-bottom: 6px;
+}
+
+.viewer-display-box {
+    background: #000000;
+    border: 2px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 #222;
+    padding: 6px;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.viewer-img-container {
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 160px;
+    max-height: none;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+}
+
+.viewer-content-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    border: 1px solid #333;
+}
+
+.viewer-meta {
+    background: var(--win-gray);
+    border-top: 1px solid var(--win-gray-dark);
+    padding: 4px 6px;
+    font-size: var(--win-font-sm, 10px);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================================
+   INTERNET EXPLORER RETRO
+   ========================================================================== */
+#winBrowser .win97-groupbox {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.ie-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    align-content: start;
+}
+
+.ie-link-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: var(--win-white);
+    border: 1px solid var(--win-gray-dark);
+    text-decoration: none;
+    color: var(--win-black);
+}
+
+.ie-link-card:hover {
+    background: #e8f0fe;
+    border-color: var(--win-navy);
+}
+
+.ie-card-icon {
+    font-size: 24px;
+}
+
+.ie-link-card strong {
+    color: var(--win-navy);
+    font-size: var(--win-font-base, 11px);
+}
+
+.ie-link-card p {
+    font-size: var(--win-font-sm, 10px);
+    color: #444;
+}
+
+
+/* ==========================================================================
+   PAPELERA DE RECICLAJE
+   ========================================================================== */
+#winTrash .win97-groupbox {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.trash-list {
+    list-style: none;
+    font-family: var(--win-font-mono);
+    font-size: var(--win-font-sm, 10px);
+    line-height: var(--win-line-height, 1.8);
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+
+/* ==========================================================================
+   MODAL PROPIEDADES DE PROYECTO
+   ========================================================================== */
+.win97-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.win97-modal-backdrop.active {
+    display: flex;
+}
+
+.modal-window {
+    width: 500px;
+    position: relative;
+    max-height: 90vh;
+    height: min(620px, 90vh);
+    display: flex;
+    flex-direction: column;
+}
+
+#modalContentArea {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+
+/* ==========================================================================
+   MENÚ INICIO (START MENU)
+   ========================================================================== */
+.win97-start-menu {
+    position: fixed;
+    bottom: var(--taskbar-height);
+    left: 2px;
+    width: 210px;
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark), 2px 2px 12px rgba(0,0,0,0.6);
+    display: none;
+    z-index: 9999;
+}
+
+.win97-start-menu.active {
+    display: flex;
+}
+
+.start-menu-sidebar {
+    width: 24px;
+    background: linear-gradient(180deg, #000080 0%, #1084d0 100%);
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 8px;
+    justify-content: center;
+}
+
+.start-banner-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--win-white);
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+.start-banner-text strong {
+    font-weight: 900;
+}
+
+.start-menu-items {
+    flex: 1;
+    padding: 3px 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.start-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.start-item:hover {
+    background-color: var(--win-navy);
+    color: var(--win-white);
+}
+
+.start-divider {
+    height: 1px;
+    background: var(--win-gray-dark);
+    border-bottom: 1px solid var(--win-white);
+    margin: 3px 2px;
+}
+
+
+/* ==========================================================================
+   BARRA DE TAREAS (TASKBAR WINDOWS 97)
+   ========================================================================== */
+.win97-taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--taskbar-height);
+    background: var(--win-gray);
+    border-top: 2px solid var(--win-white);
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    z-index: 9000;
+    gap: 4px;
+}
+
+/* Botón Inicio */
+.start-button {
+    height: 24px;
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 6px;
+    cursor: pointer;
+    font-family: var(--win-font);
+    font-weight: bold;
+    font-size: 11px;
+    color: var(--win-black);
+}
+
+.start-button:active,
+.start-button.active {
+    border-color: var(--win-black) var(--win-gray-light) var(--win-gray-light) var(--win-black);
+    box-shadow: inset 1px 1px 0 var(--win-gray-dark);
+    padding: 1px 5px 0 7px;
+}
+
+.win97-flag-icon {
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2h5v5H2z' fill='%23ff0000'/%3E%3Cpath d='M8 2h5v5H8z' fill='%2300b050'/%3E%3Cpath d='M2 8h5v5H2z' fill='%230070c0'/%3E%3Cpath d='M8 8h5v5H8z' fill='%23ffc000'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.taskbar-divider {
+    width: 2px;
+    height: 22px;
+    background: var(--win-gray-dark);
+    border-right: 1px solid var(--win-white);
+    margin: 0 2px;
+}
+
+/* Pestañas de Ventanas en la Barra de Tareas */
+.taskbar-window-tabs {
+    flex: 1;
+    display: flex;
+    gap: 3px;
+    overflow-x: auto;
+}
+
+.taskbar-tab {
+    height: 24px;
+    min-width: 110px;
+    max-width: 160px;
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--win-gray-light) var(--win-black) var(--win-black) var(--win-gray-light);
+    box-shadow: inset 1px 1px 0 var(--win-white), inset -1px -1px 0 var(--win-gray-dark);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 6px;
+    font-family: var(--win-font);
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--win-black);
+}
+
+.taskbar-tab.active {
+    background: #d4d0c8;
+    border-color: var(--win-black) var(--win-gray-light) var(--win-gray-light) var(--win-black);
+    box-shadow: inset 1px 1px 0 var(--win-gray-dark);
+    font-weight: bold;
+    padding: 1px 5px 0 7px;
+}
+
+.taskbar-tab.hidden-tab {
+    display: none;
+}
+
+/* Bandeja del Sistema (System Tray / Reloj) */
+.system-tray {
+    border: 1px solid;
+    border-color: var(--win-gray-dark) var(--win-white) var(--win-white) var(--win-gray-dark);
+    box-shadow: inset 1px 1px 0 #a0a0a0;
+    padding: 2px 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+.tray-icon {
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.tray-time {
+    font-family: var(--win-font);
+    font-size: 11px;
+    color: var(--win-black);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (DISPOSITIVOS PEQUEÑOS Y MÓVILES)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .desktop-icons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: calc(100vw - 20px);
+        gap: 8px;
+    }
+
+    .desktop-icon {
+        width: 60px;
+    }
+
+    .win97-window {
+        left: 4px !important;
+        top: 4px !important;
+        width: calc(100vw - 8px) !important;
+        max-width: calc(100vw - 8px) !important;
+        height: calc(100vh - var(--taskbar-height) - 10px) !important;
+    }
+
+    .explorer-body {
+        grid-template-columns: 1fr;
+    }
+
+    .explorer-tree {
+        display: none;
+    }
+
+    .profile-sys-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ie-links-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================================================
+   WINDOW RESIZING, AUTO-ADJUSTMENT & RETRO CONTROLS (ENHANCED DYNAMICS)
+   ========================================================================== */
+
+/* Tiradores de Redimensionamiento Libre (8 Direcciones) */
+.win97-resizer {
+    position: absolute;
+    z-index: 30;
+    touch-action: none;
+}
+.win97-resizer.resizer-t { top: 0; left: 8px; right: 8px; height: 6px; cursor: n-resize; }
+.win97-resizer.resizer-b { bottom: 0; left: 8px; right: 8px; height: 6px; cursor: s-resize; }
+.win97-resizer.resizer-l { left: 0; top: 8px; bottom: 8px; width: 6px; cursor: w-resize; }
+.win97-resizer.resizer-r { right: 0; top: 8px; bottom: 8px; width: 6px; cursor: e-resize; }
+.win97-resizer.resizer-tl { top: 0; left: 0; width: 12px; height: 12px; cursor: nw-resize; }
+.win97-resizer.resizer-tr { top: 0; right: 0; width: 12px; height: 12px; cursor: ne-resize; }
+.win97-resizer.resizer-bl { bottom: 0; left: 0; width: 12px; height: 12px; cursor: sw-resize; }
+.win97-resizer.resizer-br {
+    bottom: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    cursor: se-resize;
+}
+
+/* Textura diagonal retro de agarre en la esquina inferior derecha */
+.win97-resizer.resizer-br::after {
+    content: '';
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    width: 10px;
+    height: 10px;
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--win-gray-dark) 0px,
+        var(--win-gray-dark) 1px,
+        transparent 1px,
+        transparent 3px,
+        var(--win-white) 3px,
+        var(--win-white) 4px
+    );
+    pointer-events: none;
+}
+
+.win97-window.maximized .win97-resizer {
+    display: none !important;
+}
+
+/* Indicador Fantasma de Autoajuste / Snapping a bordes */
+.win97-snap-preview {
+    position: absolute;
+    display: none;
+    border: 2px dashed #ffffff;
+    background: rgba(0, 0, 128, 0.28);
+    backdrop-filter: blur(2px);
+    z-index: 998;
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.45);
+    transition: all 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.win97-snap-preview.active {
+    display: block;
+}
+
+/* Botón de Organización de Ventanas en la Barra de Tareas */
+.taskbar-btn-layout {
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--win-white) var(--win-black) var(--win-black) var(--win-white);
+    box-shadow: inset 1px 1px 0 var(--win-gray-light), inset -1px -1px 0 var(--win-gray-dark);
+    font-family: var(--win-font);
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-right: 6px;
+    user-select: none;
+    color: var(--win-black);
+}
+.taskbar-btn-layout:active,
+.taskbar-btn-layout.active {
+    border-color: var(--win-black) var(--win-white) var(--win-white) var(--win-black);
+    box-shadow: inset 1px 1px 0 var(--win-black);
+    background: var(--win-gray-light);
+}
+
+/* Menú Contextual Clásico de Windows 97 */
+.win97-context-menu {
+    position: fixed;
+    display: none;
+    background-color: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--win-white) var(--win-black) var(--win-black) var(--win-white);
+    box-shadow: inset 1px 1px 0 var(--win-gray-light), inset -1px -1px 0 var(--win-gray-dark), 3px 3px 10px rgba(0,0,0,0.5);
+    z-index: 9999;
+    min-width: 200px;
+    padding: 2px;
+    font-family: var(--win-font);
+    font-size: 11px;
+    user-select: none;
+}
+.win97-context-menu.active {
+    display: block;
+}
+.context-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 14px 4px 8px;
+    cursor: pointer;
+    color: var(--win-black);
+}
+.context-item:hover {
+    background-color: var(--win-blue-sel);
+    color: var(--win-text-sel);
+}
+.context-divider {
+    height: 1px;
+    background: var(--win-gray-dark);
+    border-bottom: 1px solid var(--win-white);
+    margin: 4px 2px;
+}
+.context-icon {
+    font-size: 13px;
+    width: 16px;
+    text-align: center;
+}
+
+/* Evitar selección de texto durante redimensionado activo */
+body.is-resizing {
+    user-select: none !important;
+}
+body.is-resizing iframe,
+body.is-resizing object {
+    pointer-events: none !important;
+}

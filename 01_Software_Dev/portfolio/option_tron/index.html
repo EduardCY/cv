@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduard Criollo Yule — Portafolio Profesional Windows 97 Edition</title>
+
+    <!-- Retro Windows Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-classic-teal">
+
+    <!-- ESCRITORIO WINDOWS 97 -->
+    <div class="desktop" id="desktop">
+
+        <!-- CONTORNO FANTASMA PARA AUTOSNAPPING -->
+        <div class="win97-snap-preview" id="snapPreview"></div>
+
+        <!-- ICONOS DEL ESCRITORIO -->
+        <div class="desktop-icons" id="desktopIcons">
+            <div class="desktop-icon active-icon" tabindex="0" data-window="winProfile" title="Doble clic para abrir Perfil del Sistema">
+                <div class="icon-graphic icon-computer"></div>
+                <span class="icon-label">Mi PC</span>
+            </div>
+
+            <div class="desktop-icon" tabindex="0" data-window="winProjects" title="Doble clic para abrir Explorador de Proyectos">
+                <div class="icon-graphic icon-folder-projects"></div>
+                <span class="icon-label">Mis Proyectos</span>
+            </div>
+
+            <div class="desktop-icon" tabindex="0" data-window="winCerts" title="Doble clic para abrir Base de Certificados">
+                <div class="icon-graphic icon-certs"></div>
+                <span class="icon-label">Certificados.mdb</span>
+            </div>
+
+            <div class="desktop-icon" tabindex="0" data-window="winViewer" title="Doble clic para abrir Visor Multimedia">
+                <div class="icon-graphic icon-paint"></div>
+                <span class="icon-label">Visor Multimedia</span>
+            </div>
+
+            <div class="desktop-icon" tabindex="0" data-window="winBrowser" title="Doble clic para abrir Internet Explorer">
+                <div class="icon-graphic icon-ie"></div>
+                <span class="icon-label">Internet Explorer</span>
+            </div>
+
+            <div class="desktop-icon" tabindex="0" onclick="window.location.href='../../cv_web/cv_software.html'" title="Ir a Hoja de Vida Software">
+                <div class="icon-graphic icon-doc"></div>
+                <span class="icon-label">CV_Software.doc</span>
+            </div>
+
+            <div class="desktop-icon" tabindex="0" data-window="winTrash" title="Papelera de reciclaje">
+                <div class="icon-graphic icon-trash"></div>
+                <span class="icon-label">Papelera</span>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             VENTANA 1: MI PC — PROPIEDADES DEL SISTEMA Y PERFIL EJECUTIVO
+             ==================================================================== -->
+        <section class="win97-window active" id="winProfile" style="top: 35px; left: 60px; width: 640px; height: 500px; z-index: 10;">
+            <header class="win97-titlebar" data-drag-handle>
+                <div class="titlebar-left">
+                    <span class="win97-icon-mini icon-computer-mini"></span>
+                    <span class="titlebar-text">Propiedades del Sistema — Eduard Criollo Yule</span>
+                </div>
+                <div class="titlebar-controls">
+                    <button class="win97-btn-box" onclick="minimizeWindow('winProfile')" title="Minimizar">_</button>
+                    <button class="win97-btn-box" onclick="maximizeWindow('winProfile')" title="Maximizar">□</button>
+                    <button class="win97-btn-box btn-close" onclick="closeWindow('winProfile')" title="Cerrar">✕</button>
+                </div>
+            </header>
+
+            <!-- Menú de la ventana -->
+            <nav class="win97-menubar">
+                <span class="menu-item"><u>A</u>rchivo</span>
+                <span class="menu-item"><u>E</u>dición</span>
+                <span class="menu-item"><u>V</u>er</span>
+                <span class="menu-item"><u>A</u>yuda</span>
+            </nav>
+
+            <!-- Contenido con pestañas de Sistema -->
+            <div class="win97-window-body">
+                <div class="tab-strip">
+                    <button class="tab-button active" onclick="switchProfileTab('generalTab', this)">General</button>
+                    <button class="tab-button" onclick="switchProfileTab('metricsTab', this)">Métricas & Idiomas</button>
+                    <button class="tab-button" onclick="switchProfileTab('hardwareTab', this)">Pila Técnica</button>
+                    <button class="tab-button" onclick="switchProfileTab('contactTab', this)">Contacto & Redes</button>
+                </div>
+
+                <div class="tab-content-area">
+                    <!-- Tab General -->
+                    <div class="tab-pane active" id="generalTab">
+                        <div class="profile-sys-grid">
+                            <div class="profile-photo-frame">
+                                <img src="../../../data/img/FotoPerfil_01.JPG" alt="Eduard Criollo Yule" class="win97-profile-img" onerror="this.src='../../../data/assets/foto.png'">
+                                <div class="photo-caption">EDUARD_YULE.JPG</div>
+                            </div>
+                            <div class="profile-sys-info">
+                                <fieldset class="win97-groupbox">
+                                    <legend>Sistema Operativo Profesional</legend>
+                                    <p class="sys-strong">Eduard Criollo Yule v4.0 (Edición 2026)</p>
+                                    <p class="sys-detail">Desarrollador Full Stack & Especialista en IA</p>
+                                    <p class="sys-detail">Cali, Valle del Cauca, Colombia</p>
+                                </fieldset>
+
+                                <fieldset class="win97-groupbox" style="margin-top: 8px;">
+                                    <legend>Especificaciones de Formación</legend>
+                                    <p class="sys-detail"><strong>Universidad:</strong> Univ. Autónoma de Occidente (UAO)</p>
+                                    <p class="sys-detail"><strong>Programa:</strong> Ingeniería de Sistemas (Activo)</p>
+                                    <p class="sys-detail"><strong>Certificación C1:</strong> Oxford Placement Test (Score 93/120)</p>
+                                    <p class="sys-detail"><strong>Acreditación:</strong> Dev Senior Code (Full Stack & IA - Miami)</p>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <fieldset class="win97-groupbox" style="margin-top: 10px;">
+                            <legend>Resumen Ejecutivo / Hook Profesional</legend>
+                            <p class="sys-summary-text" id="sysSummaryText">
+                                Desarrollador de Software con doble enfoque en arquitectura Full Stack empresarial (Spring Boot & Angular) y soluciones predictivas con Inteligencia Artificial (FastAPI, Scikit-Learn). Experiencia comprobada en modelado relacional estricto, microservicios distribuidos y resolución de incidencias en certámenes internacionales.
+                            </p>
+                        </fieldset>
+                    </div>
+
+                    <!-- Tab Métricas & Idiomas -->
+                    <div class="tab-pane" id="metricsTab">
+                        <fieldset class="win97-groupbox">
+                            <legend>Acreditaciones & Métricas Oficiales</legend>
+                            <div class="metrics-sys-list">
+                                <div class="metric-row">
+                                    <span class="m-icon">🏆</span>
+                                    <div class="m-text">
+                                        <strong>Oxford University Press — CEFR C1 Avanzado</strong>
+                                        <p>Calificación: 93/120 puntos (Listening 92/C1, Use of English 93/C1).</p>
+                                    </div>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="m-icon">🎖️</span>
+                                    <div class="m-text">
+                                        <strong>Dev Senior Code — Especialista Full Stack & IA Empresarial</strong>
+                                        <p>Acreditado en Spring Boot 3, Angular 17+, FastAPI y Pipelines de ML.</p>
+                                    </div>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="m-icon">🏅</span>
+                                    <div class="m-text">
+                                        <strong>Juegos Panamericanos Juveniles Cali 2021</strong>
+                                        <p>Reconocimiento a soporte técnico y despliegue de infraestructura crítica de red.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="win97-groupbox" style="margin-top: 10px;">
+                            <legend>Competencia Lingüística</legend>
+                            <p class="sys-detail"><strong>Español:</strong> Nativo (Lengua materna)</p>
+                            <p class="sys-detail"><strong>Inglés:</strong> C1 Avanzado Profesional (Certificado por Oxford University Press)</p>
+                        </fieldset>
+                    </div>
+
+                    <!-- Tab Hardware / Pila Técnica -->
+                    <div class="tab-pane" id="hardwareTab">
+                        <fieldset class="win97-groupbox">
+                            <legend>Controladores & Tecnologías Instaladas</legend>
+                            <div class="tech-tree">
+                                <div class="tree-node">
+                                    <span class="tree-bullet">📁</span> <strong>Inteligencia Artificial:</strong>
+                                    <span class="tree-val">Machine Learning, Scikit-Learn, FastAPI, Pandas, NumPy, Pydantic</span>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="tree-bullet">📁</span> <strong>Backend Empresarial:</strong>
+                                    <span class="tree-val">Spring Boot 3, Java 17+, Spring Security, JWT, Flask, RESTful APIs</span>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="tree-bullet">📁</span> <strong>Bases de Datos & Persistencia:</strong>
+                                    <span class="tree-val">PostgreSQL, MySQL, SQLite, SQLAlchemy, Transacciones ACID, 3NF</span>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="tree-bullet">📁</span> <strong>Frontend Web:</strong>
+                                    <span class="tree-val">Angular, TypeScript, JavaScript ES6+, HTML5 Semántico, CSS3 Flex/Grid</span>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="tree-bullet">📁</span> <strong>Infraestructura & Herramientas:</strong>
+                                    <span class="tree-val">Git, GitHub, Linux, PowerShell, Virtualenv, VS Code, Dibujo Técnico</span>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Tab Contacto & Redes -->
+                    <div class="tab-pane" id="contactTab">
+                        <fieldset class="win97-groupbox">
+                            <legend>Comunicaciones & Enlaces Externos</legend>
+                            <div class="social-sys-buttons">
+                                <a href="https://www.linkedin.com/in/eduard-criollo-yule/" target="_blank" class="win97-btn social-link">
+                                    💼 Conectar en LinkedIn
+                                </a>
+                                <a href="https://github.com/EduardCY" target="_blank" class="win97-btn social-link">
+                                    🐙 Explorar Código en GitHub
+                                </a>
+                                <a href="https://platzi.com/@EduardYule/" target="_blank" class="win97-btn social-link">
+                                    🟢 Diplomas y Rutas Platzi
+                                </a>
+                                <a href="mailto:eduardcriolloyule2004@gmail.com" class="win97-btn social-link">
+                                    ✉️ Enviar Correo Directo
+                                </a>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <!-- Botones inferiores de diálogo -->
+                <div class="dialog-button-row">
+                    <button class="win97-btn default-btn" onclick="openWindow('winProjects')">Ver Proyectos ›</button>
+                    <button class="win97-btn" onclick="window.location.href='../../cv_web/cv_software.html'">Abrir CV Web</button>
+                    <button class="win97-btn" onclick="closeWindow('winProfile')">Aceptar</button>
+                </div>
+            </div>
+
+            <!-- Barra de estado -->
+            <footer class="win97-statusbar">
+                <span class="status-cell" style="flex: 2;">Sistema preparado • Memoria RAM: 64 MB</span>
+                <span class="status-cell" style="flex: 1;">Mi PC</span>
+            </footer>
+        </section>
+
+
+        <!-- ====================================================================
+             VENTANA 2: EXPLORADOR DE PROYECTOS (C:\EDUARD_YULE\PROYECTOS)
+             ==================================================================== -->
+        <section class="win97-window" id="winProjects" style="top: 65px; left: 160px; width: 820px; height: 530px; z-index: 12;">
+            <header class="win97-titlebar" data-drag-handle>
+                <div class="titlebar-left">
+                    <span class="win97-icon-mini icon-folder-mini"></span>
+                    <span class="titlebar-text">Explorando — C:\Eduard_Yule\Proyectos_Software</span>
+                </div>
+                <div class="titlebar-controls">
+                    <button class="win97-btn-box" onclick="minimizeWindow('winProjects')" title="Minimizar">_</button>
+                    <button class="win97-btn-box" onclick="maximizeWindow('winProjects')" title="Maximizar">□</button>
+                    <button class="win97-btn-box btn-close" onclick="closeWindow('winProjects')" title="Cerrar">✕</button>
+                </div>
+            </header>
+
+            <!-- Menú -->
+            <nav class="win97-menubar">
+                <span class="menu-item"><u>A</u>rchivo</span>
+                <span class="menu-item"><u>E</u>dición</span>
+                <span class="menu-item"><u>V</u>er</span>
+                <span class="menu-item"><u>F</u>avoritos</span>
+                <span class="menu-item"><u>A</u>yuda</span>
+            </nav>
+
+            <!-- Barra de herramientas con iconos retro -->
+            <div class="win97-toolbar">
+                <button class="tb-btn" onclick="filterProjects('all')" id="btnFilterAll" title="Ver todos">
+                    <span class="tb-icon icon-tb-all"></span>
+                    <span class="tb-text">Todos</span>
+                </button>
+                <button class="tb-btn" onclick="filterProjects('ai')" id="btnFilterAI" title="Inteligencia Artificial">
+                    <span class="tb-icon icon-tb-ai"></span>
+                    <span class="tb-text">IA & ML</span>
+                </button>
+                <button class="tb-btn" onclick="filterProjects('backend')" id="btnFilterBackend" title="Backend y APIs">
+                    <span class="tb-icon icon-tb-backend"></span>
+                    <span class="tb-text">Backend</span>
+                </button>
+                <button class="tb-btn" onclick="filterProjects('fullstack')" id="btnFilterFullstack" title="Full Stack">
+                    <span class="tb-icon icon-tb-fullstack"></span>
+                    <span class="tb-text">Full Stack</span>
+                </button>
+                <span class="tb-sep"></span>
+                <button class="tb-btn" onclick="refreshProjects()" title="Actualizar datos">
+                    <span class="tb-icon icon-tb-refresh"></span>
+                    <span class="tb-text">Actualizar</span>
+                </button>
+            </div>
+
+            <!-- Barra de dirección C:\... -->
+            <div class="win97-addressbar">
+                <span class="address-label">Dirección:</span>
+                <div class="address-input" id="addressInput">C:\Eduard_Yule\Proyectos_Software</div>
+            </div>
+
+            <!-- Cuerpo del explorador (árbol lateral + lista de archivos) -->
+            <div class="explorer-body">
+                <!-- Panel izquierdo: Árbol de carpetas -->
+                <aside class="explorer-tree">
+                    <div class="tree-item" onclick="filterProjects('all')">
+                        <span class="tree-bullet">🖥️</span> Mi PC
+                    </div>
+                    <div class="tree-item indent-1" onclick="filterProjects('all')">
+                        <span class="tree-bullet">💽</span> Disco Local (C:)
+                    </div>
+                    <div class="tree-item indent-2 active-folder" id="treeFolderProjs" onclick="filterProjects('all')">
+                        <span class="tree-bullet">📁</span> Proyectos
+                    </div>
+                    <div class="tree-item indent-3" onclick="filterProjects('ai')">
+                        <span class="tree-bullet">📂</span> [AI] Modelos
+                    </div>
+                    <div class="tree-item indent-3" onclick="filterProjects('backend')">
+                        <span class="tree-bullet">📂</span> [API] Backend
+                    </div>
+                    <div class="tree-item indent-3" onclick="filterProjects('fullstack')">
+                        <span class="tree-bullet">📂</span> [WEB] Full Stack
+                    </div>
+                    <div class="tree-item indent-2" onclick="openWindow('winCerts')">
+                        <span class="tree-bullet">📁</span> Certificaciones
+                    </div>
+                    <div class="tree-item indent-2" onclick="openWindow('winViewer')">
+                        <span class="tree-bullet">📁</span> Multimedia
+                    </div>
+                </aside>
+
+                <!-- Panel derecho: Lista de proyectos -->
+                <main class="explorer-files-view" id="projectsContainer">
+                    <div class="loading-box">Cargando catálogo de proyectos desde la fuente madre...</div>
+                </main>
+            </div>
+
+            <!-- Barra de estado -->
+            <footer class="win97-statusbar">
+                <span class="status-cell" id="projectsCountStatus" style="flex: 2;">Iniciando explorador...</span>
+                <span class="status-cell" style="flex: 1;">1.44 MB libres</span>
+                <span class="status-cell" style="flex: 1;">Mi PC</span>
+            </footer>
+        </section>
+
+
+        <!-- ====================================================================
+             VENTANA 3: CERTIFICACIONES & ACREDITACIONES (BASE DE DATOS)
+             ==================================================================== -->
+        <section class="win97-window" id="winCerts" style="top: 95px; left: 220px; width: 720px; height: 490px; z-index: 11; display: none;">
+            <header class="win97-titlebar" data-drag-handle>
+                <div class="titlebar-left">
+                    <span class="win97-icon-mini icon-certs-mini"></span>
+                    <span class="titlebar-text">Certificaciones.mdb — Catálogo de Acreditaciones</span>
+                </div>
+                <div class="titlebar-controls">
+                    <button class="win97-btn-box" onclick="minimizeWindow('winCerts')" title="Minimizar">_</button>
+                    <button class="win97-btn-box" onclick="maximizeWindow('winCerts')" title="Maximizar">□</button>
+                    <button class="win97-btn-box btn-close" onclick="closeWindow('winCerts')" title="Cerrar">✕</button>
+                </div>
+            </header>
+
+            <nav class="win97-menubar">
+                <span class="menu-item"><u>T</u>abla</span>
+                <span class="menu-item"><u>F</u>iltro</span>
+                <span class="menu-item"><u>R</u>egistro</span>
+                <span class="menu-item"><u>A</u>yuda</span>
+            </nav>
+
+            <div class="win97-window-body">
+                <p style="font-size: 11px; margin-bottom: 8px;">
+                    Registros certificados por instituciones académicas e internacionales. Doble clic en cualquier fila para inspeccionar o verificar credencial:
+                </p>
+
+                <div class="table-scroll-wrap">
+                    <table class="win97-table" id="certsTable">
+                        <thead>
+                            <tr>
+                                <th>Institución</th>
+                                <th>Acreditación / Título</th>
+                                <th>Fecha / ID</th>
+                                <th>Verificación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="certsTableBody">
+                            <tr><td colspan="4" style="text-align: center;">Cargando certificaciones...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="dialog-button-row" style="margin-top: 10px;">
+                    <button class="win97-btn" onclick="openWindow('winProjects')">Explorar Proyectos</button>
+                    <button class="win97-btn" onclick="closeWindow('winCerts')">Cerrar</button>
+                </div>
+            </div>
+
+            <footer class="win97-statusbar">
+                <span class="status-cell" id="certsStatusCell" style="flex: 2;">Total registros: 18</span>
+                <span class="status-cell" style="flex: 1;">Solo Lectura</span>
+            </footer>
+        </section>
+
+
+        <!-- ====================================================================
+             VENTANA 4: VISOR MULTIMEDIA (BANNER & FOTOGRAFÍA OFICIAL)
+             ==================================================================== -->
+        <section class="win97-window" id="winViewer" style="top: 80px; left: 140px; width: 740px; height: 520px; z-index: 13; display: none;">
+            <header class="win97-titlebar" data-drag-handle>
+                <div class="titlebar-left">
+                    <span class="win97-icon-mini icon-paint-mini"></span>
+                    <span class="titlebar-text">Visor de Imágenes — Banner y Fotografía de Perfil</span>
+                </div>
+                <div class="titlebar-controls">
+                    <button class="win97-btn-box" onclick="minimizeWindow('winViewer')" title="Minimizar">_</button>
+                    <button class="win97-btn-box" onclick="maximizeWindow('winViewer')" title="Maximizar">□</button>
+                    <button class="win97-btn-box btn-close" onclick="closeWindow('winViewer')" title="Cerrar">✕</button>
+                </div>
+            </header>
+
+            <nav class="win97-menubar">
+                <span class="menu-item"><u>A</u>rchivo</span>
+                <span class="menu-item"><u>I</u>magen</span>
+                <span class="menu-item"><u>V</u>er</span>
+                <span class="menu-item"><u>A</u>yuda</span>
+            </nav>
+
+            <div class="win97-window-body">
+                <div class="viewer-tabs">
+                    <button class="tab-button active" onclick="switchViewerTab('viewBanner', this)">Banner Panorámico (banner.jpg)</button>
+                    <button class="tab-button" onclick="switchViewerTab('viewPhoto', this)">Fotografía de Perfil (FotoPerfil_01.JPG)</button>
+                </div>
+
+                <div class="viewer-display-box" id="viewBanner">
+                    <div class="viewer-img-container">
+                        <img src="../../../data/img/banner.jpg" alt="Banner Eduard Criollo Yule" class="viewer-content-img" onerror="this.src='../../../data/assets/foto.png'">
+                    </div>
+                    <div class="viewer-meta">
+                        <span>Archivo: <strong>banner.jpg</strong></span>
+                        <span>Resolución: 4128 × 1024 px</span>
+                        <span>Uso: Encabezado generalizado</span>
+                    </div>
+                </div>
+
+                <div class="viewer-display-box" id="viewPhoto" style="display: none;">
+                    <div class="viewer-img-container">
+                        <img src="../../../data/img/FotoPerfil_01.JPG" alt="Foto Perfil Eduard Criollo Yule" class="viewer-content-img" onerror="this.src='../../../data/assets/foto.png'">
+                    </div>
+                    <div class="viewer-meta">
+                        <span>Archivo: <strong>FotoPerfil_01.JPG</strong></span>
+                        <span>Resolución: 6000 × 4000 px</span>
+                        <span>Uso: Foto de perfil centralizada</span>
+                    </div>
+                </div>
+
+                <div class="dialog-button-row" style="margin-top: 8px;">
+                    <button class="win97-btn" onclick="closeWindow('winViewer')">Cerrar Visor</button>
+                </div>
+            </div>
+
+            <footer class="win97-statusbar">
+                <span class="status-cell" style="flex: 2;">100% Zoom • 24 bits Color</span>
+                <span class="status-cell" style="flex: 1;">Listo</span>
+            </footer>
+        </section>
+
+
+        <!-- ====================================================================
+             VENTANA 5: INTERNET EXPLORER RETRO
+             ==================================================================== -->
+        <section class="win97-window" id="winBrowser" style="top: 50px; left: 100px; width: 680px; height: 460px; z-index: 14; display: none;">
+            <header class="win97-titlebar" data-drag-handle>
+                <div class="titlebar-left">
+                    <span class="win97-icon-mini icon-ie-mini"></span>
+                    <span class="titlebar-text">Microsoft Internet Explorer — Red Profesional</span>
+                </div>
+                <div class="titlebar-controls">
+                    <button class="win97-btn-box" onclick="minimizeWindow('winBrowser')">_</button>
+                    <button class="win97-btn-box" onclick="maximizeWindow('winBrowser')">□</button>
+                    <button class="win97-btn-box btn-close" onclick="closeWindow('winBrowser')">✕</button>
+                </div>
+            </header>
+
+            <div class="win97-addressbar">
+                <span class="address-label">URL:</span>
+                <div class="address-input">http://eduardyule.local/portal_hub.htm</div>
+            </div>
+
+            <div class="win97-window-body">
+                <fieldset class="win97-groupbox">
+                    <legend>Portales & Documentos Disponibles</legend>
+                    <div class="ie-links-grid">
+                        <a href="../../../CV_Eduard_Criollo_Yule.html" class="ie-link-card">
+                            <span class="ie-card-icon">🏛️</span>
+                            <div>
+                                <strong>Hub Principal</strong>
+                                <p>Portal central de carreras y tracks profesionales.</p>
+                            </div>
+                        </a>
+
+                        <a href="../../cv_web/cv_software.html" class="ie-link-card">
+                            <span class="ie-card-icon">💻</span>
+                            <div>
+                                <strong>Curriculum Vitae Software</strong>
+                                <p>Hoja de vida ejecutiva Full Stack & Especialista en IA.</p>
+                            </div>
+                        </a>
+
+                        <a href="../../../02_Creative_Arts/cv_web/cv_creative.html" class="ie-link-card">
+                            <span class="ie-card-icon">🎨</span>
+                            <div>
+                                <strong>Curriculum Vitae Creativo</strong>
+                                <p>Hoja de vida en Ilustración, Animación 3D y Narrativa.</p>
+                            </div>
+                        </a>
+
+                        <a href="../option_gothic/index.html" class="ie-link-card">
+                            <span class="ie-card-icon">⚜️</span>
+                            <div>
+                                <strong>Portafolio Edición Gothic</strong>
+                                <p>Diseño arquitectónico con estética gótica y rosáceas.</p>
+                            </div>
+                        </a>
+                    </div>
+                </fieldset>
+
+                <div class="dialog-button-row" style="margin-top: 10px;">
+                    <button class="win97-btn" onclick="closeWindow('winBrowser')">Cerrar Navegador</button>
+                </div>
+            </div>
+
+            <footer class="win97-statusbar">
+                <span class="status-cell" style="flex: 2;">Página cargada correctamente</span>
+                <span class="status-cell" style="flex: 1;">Zona Internet</span>
+            </footer>
+        </section>
+
+
+        <!-- ====================================================================
+             VENTANA 6: PAPELERA DE RECICLAJE
+             ==================================================================== -->
+        <section class="win97-window" id="winTrash" style="top: 120px; left: 220px; width: 460px; height: 340px; z-index: 15; display: none;">
+            <header class="win97-titlebar" data-drag-handle>
+                <div class="titlebar-left">
+                    <span class="win97-icon-mini icon-trash-mini"></span>
+                    <span class="titlebar-text">Papelera de reciclaje</span>
+                </div>
+                <div class="titlebar-controls">
+                    <button class="win97-btn-box" onclick="closeWindow('winTrash')">✕</button>
+                </div>
+            </header>
+
+            <div class="win97-window-body">
+                <fieldset class="win97-groupbox">
+                    <legend>Elementos Depurados</legend>
+                    <ul class="trash-list">
+                        <li>🐛 <code>NullPointerException</code> (Eliminado mediante pruebas exhaustivas)</li>
+                        <li>🐛 <code>SQL_Injection_Vulnerability</code> (Eliminado mediante ORM y consultas parametrizadas)</li>
+                        <li>🐛 <code>Legacy_Monolith_Spaghetti</code> (Reemplazado por arquitectura en capas y microservicios)</li>
+                        <li>🐛 <code>Race_Condition_Thread</code> (Resuelto mediante asincronía y locks)</li>
+                    </ul>
+                </fieldset>
+                <div class="dialog-button-row" style="margin-top: 10px;">
+                    <button class="win97-btn" onclick="closeWindow('winTrash')">Vaciar Papelera</button>
+                </div>
+            </div>
+            <footer class="win97-statusbar">
+                <span class="status-cell">4 objetos seleccionados</span>
+            </footer>
+        </section>
+
+
+        <!-- ====================================================================
+             DIÁLOGO MODAL: PROPIEDADES DE UN PROYECTO SELECCIONADO
+             ==================================================================== -->
+        <div class="win97-modal-backdrop" id="projectModal" onclick="closeModalOnBackdrop(event)">
+            <div class="win97-window modal-window" id="projectModalWindow">
+                <header class="win97-titlebar">
+                    <div class="titlebar-left">
+                        <span class="win97-icon-mini icon-doc-mini"></span>
+                        <span class="titlebar-text" id="modalTitlebarText">Propiedades del Proyecto</span>
+                    </div>
+                    <div class="titlebar-controls">
+                        <button class="win97-btn-box btn-close" onclick="closeProjectModal()">✕</button>
+                    </div>
+                </header>
+
+                <div class="win97-window-body">
+                    <div class="tab-strip">
+                        <button class="tab-button active" onclick="switchModalTab('modGeneral', this)">General</button>
+                        <button class="tab-button" onclick="switchModalTab('modArch', this)">Arquitectura</button>
+                        <button class="tab-button" onclick="switchModalTab('modTech', this)">Tecnologías</button>
+                    </div>
+
+                    <div class="tab-content-area" id="modalContentArea">
+                        <!-- Inyectado dinámicamente -->
+                    </div>
+
+                    <div class="dialog-button-row" style="margin-top: 10px;">
+                        <a href="#" id="modalGithubBtn" target="_blank" class="win97-btn" style="text-decoration: none;">Ver Repositorio GitHub</a>
+                        <button class="win97-btn default-btn" onclick="closeProjectModal()">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- FIN .desktop -->
+
+
+    <!-- ====================================================================
+         MENÚ INICIO (START MENU)
+         ==================================================================== -->
+    <div class="win97-start-menu" id="startMenu">
+        <div class="start-menu-sidebar">
+            <span class="start-banner-text">Windows<strong>97</strong></span>
+        </div>
+        <div class="start-menu-items">
+            <div class="start-item" onclick="openWindow('winProjects'); toggleStartMenu();">
+                <span class="start-icon icon-folder-mini"></span>
+                <span class="start-label">Mis <u>P</u>royectos</span>
+            </div>
+
+            <div class="start-item" onclick="openWindow('winProfile'); toggleStartMenu();">
+                <span class="start-icon icon-computer-mini"></span>
+                <span class="start-label"><u>M</u>i PC / Perfil</span>
+            </div>
+
+            <div class="start-item" onclick="openWindow('winCerts'); toggleStartMenu();">
+                <span class="start-icon icon-certs-mini"></span>
+                <span class="start-label"><u>C</u>ertificaciones</span>
+            </div>
+
+            <div class="start-item" onclick="openWindow('winViewer'); toggleStartMenu();">
+                <span class="start-icon icon-paint-mini"></span>
+                <span class="start-label"><u>V</u>isor de Imágenes</span>
+            </div>
+
+            <div class="start-item" onclick="openWindow('winBrowser'); toggleStartMenu();">
+                <span class="start-icon icon-ie-mini"></span>
+                <span class="start-label"><u>I</u>nternet Explorer</span>
+            </div>
+
+            <div class="start-divider"></div>
+
+            <div class="start-item" onclick="window.location.href='../../cv_web/cv_software.html'">
+                <span class="start-icon icon-doc-mini"></span>
+                <span class="start-label">CV Software (Web)</span>
+            </div>
+
+            <div class="start-item" onclick="window.location.href='../../../CV_Eduard_Criollo_Yule.html'">
+                <span class="start-icon icon-hub-mini"></span>
+                <span class="start-label">🏛️ Hub Principal</span>
+            </div>
+
+            <div class="start-divider"></div>
+
+            <div class="start-item" onclick="toggleTaskbarContextMenu(event); toggleStartMenu();">
+                <span class="start-icon icon-settings-mini"></span>
+                <span class="start-label">📐 <u>O</u>rganizar Ventanas...</span>
+            </div>
+            <div class="start-item" onclick="toggleDesktopWallpaper(); toggleStartMenu();">
+                <span class="start-icon icon-settings-mini"></span>
+                <span class="start-label">Cambiar <u>F</u>ondo...</span>
+            </div>
+
+            <div class="start-item" onclick="showAboutDialog(); toggleStartMenu();">
+                <span class="start-icon icon-info-mini"></span>
+                <span class="start-label"><u>A</u>cerca de Eduard Yule</span>
+            </div>
+
+            <div class="start-divider"></div>
+
+            <div class="start-item" onclick="showShutdownDialog(); toggleStartMenu();">
+                <span class="start-icon icon-shutdown-mini"></span>
+                <span class="start-label">A<u>p</u>agar el sistema...</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ====================================================================
+         BARRA DE TAREAS (TASKBAR WINDOWS 97)
+         ==================================================================== -->
+    <footer class="win97-taskbar">
+        <!-- Botón de Inicio -->
+        <button class="start-button" id="startButton" onclick="toggleStartMenu()">
+            <span class="win97-flag-icon"></span>
+            <span class="start-text">Inicio</span>
+        </button>
+
+        <span class="taskbar-divider"></span>
+
+        <!-- Pestañas de ventanas activas -->
+        <div class="taskbar-window-tabs" id="taskbarTabs">
+            <button class="taskbar-tab active" id="tab-winProfile" onclick="toggleWindowFromTaskbar('winProfile')">
+                <span class="win97-icon-mini icon-computer-mini"></span>
+                <span>Mi PC</span>
+            </button>
+            <button class="taskbar-tab" id="tab-winProjects" onclick="toggleWindowFromTaskbar('winProjects')">
+                <span class="win97-icon-mini icon-folder-mini"></span>
+                <span>Mis Proyectos</span>
+            </button>
+            <button class="taskbar-tab hidden-tab" id="tab-winCerts" onclick="toggleWindowFromTaskbar('winCerts')">
+                <span class="win97-icon-mini icon-certs-mini"></span>
+                <span>Certificados</span>
+            </button>
+            <button class="taskbar-tab hidden-tab" id="tab-winViewer" onclick="toggleWindowFromTaskbar('winViewer')">
+                <span class="win97-icon-mini icon-paint-mini"></span>
+                <span>Visor</span>
+            </button>
+            <button class="taskbar-tab hidden-tab" id="tab-winBrowser" onclick="toggleWindowFromTaskbar('winBrowser')">
+                <span class="win97-icon-mini icon-ie-mini"></span>
+                <span>Explorer</span>
+            </button>
+        </div>
+
+        <!-- Botón de Autoajuste y Disposición de Ventanas -->
+        <button class="taskbar-btn-layout" id="btnWindowLayouts" onclick="toggleTaskbarContextMenu(event)" title="Organizar y Autoajustar Ventanas (Cascada, Mosaico, Autoajuste)">
+            <span>📐</span>
+            <span>Organizar</span>
+        </button>
+
+        <!-- Área de notificación / Reloj del sistema -->
+        <div class="system-tray">
+            <span class="tray-icon tray-volume" title="Volumen del Sistema">🔊</span>
+            <span class="tray-icon tray-net" title="Conexión de red: 100 Mbps">🖧</span>
+            <span class="tray-time" id="systemClock">12:00 PM</span>
+        </div>
+    </footer>
+
+
+    <!-- ====================================================================
+         SCRIPTS: DATOS GLOBALES & MOTOR WINDOWS 97
+         ==================================================================== -->
+    <script src="../../../data/bundle.js"></script>
+    <script src="app.js"></script>
+
+    <!-- MENÚ CONTEXTUAL PARA AUTODISPOSICIÓN DE VENTANAS (TASKBAR & DESKTOP) -->
+    <div class="win97-context-menu" id="taskbarContextMenu">
+        <div class="context-item" onclick="cascadeWindows()">
+            <span class="context-icon">🗔</span>
+            <span>Ventanas en <u>c</u>ascada</span>
+        </div>
+        <div class="context-item" onclick="tileWindowsHorizontally()">
+            <span class="context-icon">🗖</span>
+            <span>Mosaico <u>h</u>orizontal</span>
+        </div>
+        <div class="context-item" onclick="tileWindowsVertically()">
+            <span class="context-icon">🗗</span>
+            <span>Mosaico <u>v</u>ertical</span>
+        </div>
+        <div class="context-item" onclick="autoFitActiveWindow()">
+            <span class="context-icon">📐</span>
+            <span><u>A</u>utoajustar ventana activa</span>
+        </div>
+        <div class="context-divider"></div>
+        <div class="context-item" onclick="minimizeAllWindows()">
+            <span class="context-icon">🗕</span>
+            <span><u>M</u>inimizar todas las ventanas</span>
+        </div>
+        <div class="context-item" onclick="restoreAllWindows()">
+            <span class="context-icon">🗖</span>
+            <span><u>R</u>estaurar todas las ventanas</span>
+        </div>
+    </div>
+
+</body>
+</html>

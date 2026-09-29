@@ -1,0 +1,77 @@
+EDUARD CRIOLLO YULE
+Titulo: Técnico en Bases de Datos / Asp. Ingeniería de Sistemas
+
+Contacto
+- Teléfono: +57 314 ••• ••••
+- Email: eduardcriolloyule2004@gmail.com
+
+Resumen breve (1-2 frases)
+- Técnico en Bases de Datos con formación en Dibujo Técnico y estudios en
+  Ingeniería de Sistemas (en curso). Experiencia como voluntario técnico en
+  eventos deportivos y habilidades en gestión de bases de datos, desarrollo
+  (Java, PHP, Python) y soporte audiovisual.
+
+Formación académica (con fechas)
+- Bachiller Técnico en Dibujo Técnico — Instituto San Juan Bosco (2014–2021)
+- Ingeniería de Sistemas — Universidad Autónoma del Occidente (2022–Presente)
+
+Experiencia relevante (puntos breves)
+- Voluntario Técnico — Juegos Panamericanos Juveniles 2021 (Nov 2021 — Dic 2021)
+  • Soporte técnico y logístico, montaje y verificación de equipos,
+    apoyo en producción audiovisual y coordinación con equipos.
+
+Habilidades técnicas (lista compacta)
+- Bases de datos: diseño y consultas SQL
+- Lenguajes: Java, PHP, Python, JavaScript, C++
+- Web y APIs: HTML, CSS, conocimientos básicos en FastAPI/Flask
+- Herramientas: edición audiovisual básica, ofimática
+
+Habilidades blandas
+- Pensamiento crítico, trabajo en equipo, planificación de eventos, comunicación
+
+Idiomas
+- Español: nativo
+- Inglés: fluido (reading & writing)
+
+Certificaciones y cursos (archivos detectados — verificar pertenencia antes de
+incluir oficialmente)
+DevSeniorCode (pdf/txt detectados):
+- CertificaciónAcadémicaIA.pdf / txt/DevSeniorCode/CertificaciónAcadémicaIA.txt
+  (nota: el texto interno muestra nombre "Hugo Alejandro Rodríguez" — verificar)
+- CertificaciónInternacionalIA.pdf / txt/DevSeniorCode/CertificaciónInternacionalIA.txt
+- certificate-cmf75oet500p7rpm7ietvzkr0-cmf8idpeo02blrpm7266jps5b.pdf
+- Máster en IA & Data Science DSC.pdf / txt/DevSeniorCode/"Máster en IA & Data Science DSC.txt"
+
+Platzi (pdf detectados):
+- diploma-python.pdf
+- diploma-python-2019.pdf
+- diploma-python-basico.pdf
+- diploma-python-cs.pdf
+- diploma-python-funciones.pdf
+- diploma-python-pip.pdf
+- diploma-algoritmos-practico.pdf
+- diploma-aprender-data-ia.pdf
+- diploma-computacion-basica.pdf
+- diploma-fastapi.pdf
+- diploma-fundamentos-matematicas-2018.pdf
+- diploma-ingles-basico-2018.pdf
+- diploma-negocios-data-science-2020.pdf
+
+Instrucciones para usar este archivo como "prompt base" (evitar redundancias):
+1) Reemplazar campos entre <> con datos verificados (fechas exactas, nombres
+   de instituciones si difieren, cargos precisos).
+2) Sólo incorporar certificaciones/diplomas que el usuario confirme.
+3) No repetir información; usar frases cortas y accionables (máx. 2 líneas por
+   entrada en experiencia y 4-6 bullets en habilidades).
+4) Tono: profesional, directo y orientado a roles técnicos (bases de datos,
+   soporte técnico, desarrollo). Longitud objetivo: 1 página (A4) / ~350–450 palabras.
+
+Campos opcionales (añadir sólo si se confirma)
+- Proyectos relevantes (nombre, breve descripción, tecnologías y rol)
+- Enlaces: GitHub, LinkedIn, portafolio
+- Referencias (disponibles a solicitud)
+
+Rutas a archivos verificados (si el usuario confirma, indicar ruta relativa):
+Ejemplo: pdf/DevSeniorCode/CertificaciónAcadémicaIA.pdf
+
+-- FIN: archivo compacto, listo para usar como prompt al generar el CV final --

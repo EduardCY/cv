@@ -1,0 +1,359 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "_comment": "==============================================================================\n MASTER FILE: GLOBAL PROJECTS REPOSITORY (ENGLISH - SOFTWARE & CREATIVE ARTS)\n Location: /data/projects_en.json\n Purpose: Centralize detailed projects with executive summaries, technical specs,\n          and direct links to GitHub repositories and live demos.\n==============================================================================",
+  "projects": [
+    {
+      "id": "proj-sw-001",
+      "category": "software",
+      "sub_category": "Full Stack, Geolocation & Microservices",
+      "title": "VeraMarket — Geolocated University Marketplace",
+      "tagline": "Campus marketplace with interactive mapping, direct student negotiation, and async backend",
+      "summary_executive": "Geolocated e-commerce platform built for the Universidad Autónoma de Occidente (UAO) community. Integrates real-time campus spatial navigation with Leaflet and OpenStreetMap, reactive state management in Next.js 14, and a high-performance RESTful API in FastAPI with PostgreSQL and PostGIS extensions.",
+      "description": "Modern monorepo architecture with clean separation of concerns. The presentation layer is built with Next.js 14 (App Router), TypeScript, Tailwind CSS, and Zustand for lightweight state management, supporting PWA features for instant mobile usage. The asynchronous backend, built in Python 3.11 with FastAPI and Pydantic v2, handles persistence via SQLAlchemy 2.0 async on PostgreSQL 15 with PostGIS for proximity queries, alongside JWT token authentication and bcrypt hashing.",
+      "highlights": [
+        "Geospatial indexing with PostGIS for precise delivery and trading spots across campus grounds.",
+        "Decoupled monorepo architecture with strict OpenAPI contract validation and Alembic schema migrations.",
+        "Mobile-first PWA design with ultra-fast page load times and offline caching."
+      ],
+      "architecture_details": "Next.js 14 App Router with Zustand frontend; FastAPI with SQLAlchemy 2.0 Async, PostGIS, and Docker Compose backend.",
+      "tech_stack": ["FastAPI (Python 3.11+)", "Next.js 14 (App Router)", "TypeScript", "PostgreSQL 15 + PostGIS", "SQLAlchemy 2.0 (async)", "Leaflet.js / OSM", "Docker Compose", "Tailwind CSS"],
+      "metrics": "PostGIS Spatial Geolocation • Decoupled Monorepo • Mobile-First PWA • JWT/bcrypt Auth",
+      "is_private": true,
+      "visibility": "private",
+      "access_note": "Private and confidential repository. Technical demonstration and source code available upon professional request.",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><path d='M40 120 L 120 40 L 200 90 L 280 30 L 360 100' fill='none' stroke='#10b981' stroke-width='3'/><circle cx='120' cy='40' r='5' fill='#34d399'/><circle cx='200' cy='90' r='5' fill='#34d399'/><circle cx='280' cy='30' r='5' fill='#34d399'/><text x='30' y='30' fill='#34d399' font-family='monospace' font-size='11' font-weight='bold'>[VERAMARKET // PRIVATE REPOSITORY]</text><text x='30' y='145' fill='#94a3b8' font-family='sans-serif' font-size='10'>Next.js 14 • PostGIS • Leaflet OSM • FastAPI Async • 🔒 Private</text></svg>",
+      "links": {
+        "contact": "mailto:eduardcriolloyule2004@gmail.com?subject=Technical%20Demo%20Request%20-%20VeraMarket"
+      },
+      "date": "2025 – 2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-002",
+      "category": "software",
+      "sub_category": "Serverless PWA & Social Impact",
+      "title": "Nexo — Food Rescue & Redistribution Platform",
+      "tagline": "Serverless Progressive Web App for real-time connection between food donors and community kitchens",
+      "summary_executive": "High-impact civic technology designed to mitigate perishable food waste in Cali, Colombia. Connects food donors (restaurants, wholesale vendors) with community kitchens and recipient foundations in real time, enforcing strict cold chain compliance and route optimization for volunteers.",
+      "description": "Architected as a serverless Progressive Web App (PWA) optimized for low-to-mid-range mobile devices. Allows donors to publish food availability in under 60 seconds with automated refrigeration classification, ensuring perishable food is only routed to kitchens with verified cold-storage capabilities. Coordinates volunteer pickups without redundant dispatches and produces audit-ready impact metrics.",
+      "highlights": [
+        "Automated cold chain verification and conditional assignment based on verified kitchen refrigeration.",
+        "Intelligent volunteer dispatch algorithm preventing duplicate logistics runs.",
+        "Instant generation of auditable social impact reports (kilograms rescued, beneficiaries served)."
+      ],
+      "architecture_details": "Serverless PWA with TypeScript, decoupled modules, reactive synchronization, and low-bandwidth footprint.",
+      "tech_stack": ["TypeScript", "Next.js / React", "Serverless PWA", "Tailwind CSS", "Node.js", "Civic Tech Architecture"],
+      "metrics": "Low Operational Overhead • High Social Efficiency • Cold Chain Enforcement • Auditable Reports",
+      "is_private": true,
+      "visibility": "private",
+      "access_note": "Institutional private repository (Nexo Cívico Studio). Source code and walkthrough available upon request.",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><rect x='30' y='35' width='90' height='90' rx='6' fill='#1e293b' stroke='#f59e0b' stroke-width='1.5'/><rect x='155' y='35' width='90' height='90' rx='6' fill='#1e293b' stroke='#10b981' stroke-width='1.5'/><rect x='280' y='35' width='90' height='90' rx='6' fill='#1e293b' stroke='#3b82f6' stroke-width='1.5'/><path d='M120 80 L 155 80' stroke='#f59e0b' stroke-width='2'/><path d='M245 80 L 280 80' stroke='#10b981' stroke-width='2'/><text x='48' y='85' fill='#fbbf24' font-family='sans-serif' font-size='10' font-weight='bold'>DONOR</text><text x='170' y='85' fill='#34d399' font-family='sans-serif' font-size='10' font-weight='bold'>LOGISTICS</text><text x='293' y='85' fill='#38bdf8' font-family='sans-serif' font-size='10' font-weight='bold'>KITCHEN</text><text x='30' y='22' fill='#94a3b8' font-family='monospace' font-size='10'>FOOD RESCUE // 🔒 PRIVATE REPOSITORY</text></svg>",
+      "links": {
+        "contact": "mailto:eduardcriolloyule2004@gmail.com?subject=Technical%20Demo%20Request%20-%20Nexo%20Food%20Rescue"
+      },
+      "date": "2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-003",
+      "category": "software",
+      "sub_category": "Enterprise Architecture & Canary Deployments",
+      "title": "SERVICIUDAD Cali — Enterprise System with Canary Deployments",
+      "tagline": "Citizen services management system with Spring Boot 3, PostgreSQL, Docker, and NGINX canary proxy",
+      "summary_executive": "Corporate information system designed for municipal citizen services in Cali. Implements a layered Spring Boot 3 backend architecture with PostgreSQL, full Docker containerization, and a weighted Canary Deployment strategy via NGINX reverse proxy for zero-downtime releases.",
+      "description": "Three-tier enterprise architecture enforcing strict Controller-Service-Repository boundaries. Employs Spring Data JPA for ACID-compliant transactional persistence on PostgreSQL. Production traffic is split via NGINX weighted routing (90% stable production v1.0, 10% canary release v2.0), enabling live monitoring and telemetry before broad rollout without service interruption.",
+      "highlights": [
+        "Weighted Canary Deployment with NGINX reverse proxy for seamless Zero-Downtime updates.",
+        "ACID-compliant transactional persistence and referential integrity via Spring Data JPA and PostgreSQL.",
+        "Container lifecycle orchestration for database, backend, and proxy services with Docker Compose."
+      ],
+      "architecture_details": "Spring Boot 3 on Java 17+, Docker Compose, NGINX Reverse Proxy with weighted canary routing, PostgreSQL database.",
+      "tech_stack": ["Java 17+", "Spring Boot 3", "PostgreSQL", "Docker Compose", "NGINX (Canary Reverse Proxy)", "PowerShell", "HTML5"],
+      "metrics": "Weighted Routing: 90/10 • Zero Downtime • ACID Transactional Core • Docker Orchestration",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><rect x='30' y='45' width='100' height='70' rx='6' fill='#1e293b' stroke='#3b82f6' stroke-width='1.5'/><rect x='270' y='25' width='100' height='50' rx='6' fill='#1e293b' stroke='#10b981' stroke-width='1.5'/><rect x='270' y='85' width='100' height='50' rx='6' fill='#1e293b' stroke='#eab308' stroke-width='1.5'/><path d='M130 70 L 200 70 L 200 50 L 270 50' stroke='#10b981' stroke-width='2'/><path d='M130 90 L 200 90 L 200 110 L 270 110' stroke='#eab308' stroke-width='2' stroke-dasharray='3 3'/><text x='45' y='85' fill='#38bdf8' font-family='sans-serif' font-size='10' font-weight='bold'>NGINX (PROXY)</text><text x='280' y='55' fill='#34d399' font-family='sans-serif' font-size='9' font-weight='bold'>PROD v1 (90%)</text><text x='278' y='115' fill='#fde047' font-family='sans-serif' font-size='9' font-weight='bold'>CANARY v2 (10%)</text><text x='30' y='25' fill='#94a3b8' font-family='monospace' font-size='10'>CANARY DEPLOYMENT // SPRING BOOT 3</text></svg>",
+      "links": {
+        "github": "https://github.com/EduardCY/UAO-Software2-ServiCiudad-CanaryDeploy",
+        "demo": "https://github.com/EduardCY/UAO-Software2-ServiCiudad-CanaryDeploy",
+        "docs": "https://github.com/EduardCY/UAO-Software2-ServiCiudad-CanaryDeploy#readme"
+      },
+      "date": "2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-004",
+      "category": "software",
+      "sub_category": "Cloud Infrastructure, IaC & DevSecOps",
+      "title": "Cloud Infrastructure, Kubernetes & DevSecOps with OWASP ZAP",
+      "tagline": "Declarative IaC with Terraform, Kubernetes k8s orchestration, observability, and DAST security scanning",
+      "summary_executive": "End-to-end Infrastructure as Code (IaC), container orchestration, and DevSecOps platform. Automates VPC and Kubernetes cluster provisioning with Terraform, configures NGINX Ingress controllers, establishes continuous telemetry with Prometheus and Grafana, and integrates automated DAST security scanning with OWASP ZAP.",
+      "description": "Comprehensive cloud operations and security implementation. Defines reproducible Terraform (HCL) modules for VPCs, subnets, and K8s clusters. Manages decoupled workloads inside Kubernetes with Deployments, Services, ConfigMaps, and encrypted Secrets. Deploys Prometheus telemetry agents and interactive Grafana dashboards for observability, backed by an automated OWASP ZAP dynamic vulnerability scanner.",
+      "highlights": [
+        "Declarative, idempotent cloud infrastructure provisioning using Terraform (HCL).",
+        "Microservices orchestration in Kubernetes with autoscaling policies and NGINX Ingress load balancing.",
+        "Real-time cluster observability via Prometheus + Grafana and automated DAST auditing with OWASP ZAP."
+      ],
+      "architecture_details": "Terraform for IaC; Kubernetes for orchestration; Prometheus & Grafana for telemetry; OWASP ZAP for DAST security.",
+      "tech_stack": ["Kubernetes (k8s)", "Terraform (IaC / HCL)", "Prometheus", "Grafana", "OWASP ZAP", "NGINX Ingress", "Docker", "Shell Scripting"],
+      "metrics": "Declarative IaC • Real-Time Telemetry • OWASP DAST Security Audit • k8s Orchestration",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><rect x='30' y='40' width='80' height='80' rx='6' fill='#1e293b' stroke='#7c3aed' stroke-width='1.5'/><rect x='160' y='40' width='80' height='80' rx='6' fill='#1e293b' stroke='#3b82f6' stroke-width='1.5'/><rect x='290' y='40' width='80' height='80' rx='6' fill='#1e293b' stroke='#e11d48' stroke-width='1.5'/><path d='M110 80 L 160 80' stroke='#7c3aed' stroke-width='2'/><path d='M240 80 L 290 80' stroke='#3b82f6' stroke-width='2'/><text x='40' y='85' fill='#c084fc' font-family='monospace' font-size='10' font-weight='bold'>TERRAFORM</text><text x='170' y='85' fill='#38bdf8' font-family='monospace' font-size='10' font-weight='bold'>K8S CLUSTER</text><text x='305' y='85' fill='#fda4af' font-family='monospace' font-size='10' font-weight='bold'>OWASP ZAP</text><text x='30' y='25' fill='#94a3b8' font-family='monospace' font-size='10'>DEVSECOPS PIPELINE // KUBERNETES & IAC</text></svg>",
+      "links": {
+        "github": "https://github.com/EduardCY/UAO-DevOps-Kubernetes-Terraform-Pipeline",
+        "demo": "https://github.com/EduardCY/UAO-DevOps-Kubernetes-Terraform-Pipeline",
+        "docs": "https://github.com/EduardCY/UAO-DevOps-Kubernetes-Terraform-Pipeline#readme"
+      },
+      "date": "2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-005",
+      "category": "software",
+      "sub_category": "CI/CD Automation & Cloud Delivery",
+      "title": "Comprehensive CI/CD DevOps Pipeline with Open Source Tooling",
+      "tagline": "Automated continuous integration and delivery pipeline with GitHub Actions, Docker, Node.js, and Render",
+      "summary_executive": "Production-grade DevOps workflow engineered exclusively with Open Source tools and free-tier cloud infrastructure. Automates static code quality checks via linters, executes automated unit testing suites, compiles multi-stage Docker container images, and executes zero-intervention deployments to Staging and Production.",
+      "description": "Multi-stage pipeline architecture orchestrated with GitHub Actions. On code push or pull request events, the workflow executes ESLint and Prettier for code quality, runs unit tests with Jest/Vitest, compiles optimized multi-stage Docker images, pushes images to container registries, and deploys directly to cloud hosting platforms with continuous health checks.",
+      "highlights": [
+        "End-to-end automation from git commit to verified production deployment without manual intervention.",
+        "Multi-stage Dockerfile compilation producing ultra-lightweight, secure, and fast-starting container images.",
+        "Strict separation of environment variables and deployment secrets using GitHub Secrets."
+      ],
+      "architecture_details": "GitHub Actions for CI/CD orchestration; Docker for container packaging; Render.com for cloud service hosting.",
+      "tech_stack": ["GitHub Actions", "Docker / Container Registry", "Node.js", "Jest / Vitest", "ESLint / Prettier", "Render.com", "PowerShell"],
+      "metrics": "Automated CI/CD Workflow • Zero-Intervention Deploy • Strict Code Quality Gate",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><circle cx='60' cy='80' r='25' fill='#1e293b' stroke='#2088ff' stroke-width='2'/><circle cx='150' cy='80' r='25' fill='#1e293b' stroke='#2496ed' stroke-width='2'/><circle cx='240' cy='80' r='25' fill='#1e293b' stroke='#10b981' stroke-width='2'/><circle cx='330' cy='80' r='25' fill='#1e293b' stroke='#8b5cf6' stroke-width='2'/><path d='M85 80 L 125 80 M 175 80 L 215 80 M 265 80 L 305 80' stroke='#94a3b8' stroke-width='2'/><text x='48' y='84' fill='#60a5fa' font-family='monospace' font-size='9' font-weight='bold'>LINT</text><text x='138' y='84' fill='#38bdf8' font-family='monospace' font-size='9' font-weight='bold'>TEST</text><text x='226' y='84' fill='#34d399' font-family='monospace' font-size='9' font-weight='bold'>BUILD</text><text x='315' y='84' fill='#a78bfa' font-family='monospace' font-size='9' font-weight='bold'>PROD</text><text x='30' y='25' fill='#94a3b8' font-family='monospace' font-size='10'>CI/CD PIPELINE // GITHUB ACTIONS & DOCKER</text></svg>",
+      "links": {
+        "github": "https://github.com/EduardCY/UAO-DevOps-Pipeline-CI-CD",
+        "demo": "https://github.com/EduardCY/UAO-DevOps-Pipeline-CI-CD",
+        "docs": "https://github.com/EduardCY/UAO-DevOps-Pipeline-CI-CD#readme"
+      },
+      "date": "2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-006",
+      "category": "software",
+      "sub_category": "Advanced Data Structures & Graph Algorithms",
+      "title": "Enterprise Network Topology & Routing Optimization with Graphs",
+      "tagline": "Telecommunications network modeling platform with shortest-path algorithms (Dijkstra / Prim)",
+      "summary_executive": "Interactive analytics platform for topological modeling and traffic flow optimization across corporate network backbones. Formally models point-to-point connections between branches and datacenters as weighted graphs G=(V,E), computing lowest-latency routes and minimum spanning trees.",
+      "description": "Developed with React 19 and Vite for instant rendering performance on dense graphs. Implements Dijkstra's algorithm to compute optimal point-to-point paths factoring in bandwidth and latency, alongside Prim's and Kruskal's algorithms to design minimum-cost trunk infrastructure. Features an intuitive visual canvas with dynamic telemetry indicators.",
+      "highlights": [
+        "Efficient Dijkstra implementation using priority queues for optimal O(E log V) complexity.",
+        "Interactive Minimum Spanning Tree (MST) computation for infrastructure connectivity cost reduction.",
+        "Reactive rendering in React 19 with Tailwind CSS 4 and continuous integration pipeline via GitHub Actions."
+      ],
+      "architecture_details": "React 19 + Tailwind CSS 4 frontend; pure decoupled graph algorithms implemented in optimized modern JavaScript.",
+      "tech_stack": ["React 19", "JavaScript ES6+", "Tailwind CSS 4", "Vite", "Graph Algorithms (Dijkstra, Prim, Kruskal)", "GitHub Actions"],
+      "metrics": "Route Computation O(E log V) • Dynamic Topology Visualization • React 19 • CI Passing",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><circle cx='70' cy='80' r='18' fill='#1e293b' stroke='#06b6d4' stroke-width='2'/><circle cx='200' cy='45' r='18' fill='#1e293b' stroke='#3b82f6' stroke-width='2'/><circle cx='200' cy='115' r='18' fill='#1e293b' stroke='#10b981' stroke-width='2'/><circle cx='330' cy='80' r='18' fill='#1e293b' stroke='#8b5cf6' stroke-width='2'/><path d='M88 80 L 182 45 M 88 80 L 182 115 M 218 45 L 312 80 M 218 115 L 312 80' stroke='#38bdf8' stroke-width='1.5'/><text x='58' y='84' fill='#22d3ee' font-family='monospace' font-size='10' font-weight='bold'>CALI</text><text x='188' y='49' fill='#60a5fa' font-family='monospace' font-size='10' font-weight='bold'>DC-1</text><text x='188' y='119' fill='#34d399' font-family='monospace' font-size='10' font-weight='bold'>HUB</text><text x='318' y='84' fill='#c084fc' font-family='monospace' font-size='10' font-weight='bold'>BOG</text><text x='30' y='25' fill='#94a3b8' font-family='monospace' font-size='10'>ENTERPRISE GRAPH TOPOLOGY // DIJKSTRA ROUTING</text></svg>",
+      "links": {
+        "github": "https://github.com/EduardCY/UAO-EDA2-Red-Empresarial-Grafos",
+        "demo": "https://github.com/EduardCY/UAO-EDA2-Red-Empresarial-Grafos",
+        "docs": "https://github.com/EduardCY/UAO-EDA2-Red-Empresarial-Grafos#readme"
+      },
+      "date": "2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-007",
+      "category": "software",
+      "sub_category": "Linear Data Structures & Memory Simulation",
+      "title": "Library Management on Linear Data Structures (LDS)",
+      "tagline": "Circulation simulation system modeled on Doubly Linked Lists, LIFO Stacks, and FIFO Queues",
+      "summary_executive": "Simulation platform for library loans, returns, and reservations founded on formal Linear Data Structures. Eliminates reliance on static arrays by utilizing doubly linked lists for bidirectional traversal, priority queues for waitlists, and transactional stacks with full Undo/Redo capability.",
+      "description": "Models document circulation lifecycle with strict attention to dynamic memory management and optimal algorithmic complexity. Catalog traversal utilizes Doubly Linked Lists enabling O(1) insertions and deletions when holding node references. High-demand reservations are queued via FIFO queues, while return operations are stacked in LIFO for reversible transactional history.",
+      "highlights": [
+        "Linear data invariants formally maintained without buffer overflow or memory corruption risks.",
+        "Native Undo/Redo operation support via high-speed transactional LIFO stack.",
+        "Interactive UI developed in React 19 with Vite packaging."
+      ],
+      "architecture_details": "Dynamic linked nodes with prev/next pointers; independent FIFO queues and LIFO stacks with React 19 UI.",
+      "tech_stack": ["React 19", "JavaScript ES6+", "Vite", "Doubly Linked Lists", "Stacks (LIFO)", "Queues (FIFO)", "Modern CSS"],
+      "metrics": "O(1) Memory Invariants • Reversible History (Undo/Redo) • Zero Memory Leaks",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><rect x='40' y='50' width='80' height='60' rx='4' fill='#1e293b' stroke='#f59e0b' stroke-width='1.5'/><rect x='160' y='50' width='80' height='60' rx='4' fill='#1e293b' stroke='#3b82f6' stroke-width='1.5'/><rect x='280' y='50' width='80' height='60' rx='4' fill='#1e293b' stroke='#10b981' stroke-width='1.5'/><path d='M120 70 L 160 70 M 160 90 L 120 90 M 240 70 L 280 70 M 280 90 L 240 90' stroke='#94a3b8' stroke-width='1.5'/><text x='58' y='85' fill='#fbbf24' font-family='monospace' font-size='10'>NODE A</text><text x='178' y='85' fill='#60a5fa' font-family='monospace' font-size='10'>NODE B</text><text x='298' y='85' fill='#34d399' font-family='monospace' font-size='10'>NODE C</text><text x='30' y='25' fill='#94a3b8' font-family='monospace' font-size='10'>LINEAR DATA STRUCTURES // DOUBLY LINKED LIST</text></svg>",
+      "links": {
+        "github": "https://github.com/EduardCY/UAO-EDA2-Gestion-Bibliotecaria-EDL",
+        "demo": "https://github.com/EduardCY/UAO-EDA2-Gestion-Bibliotecaria-EDL",
+        "docs": "https://github.com/EduardCY/UAO-EDA2-Gestion-Bibliotecaria-EDL#readme"
+      },
+      "date": "2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-008",
+      "category": "software",
+      "sub_category": "Low-Level Operating Systems & Linux Kernel",
+      "title": "Linux Kernel Syscalls Research & Custom Kernel Compilation",
+      "tagline": "Custom system call implementation in C, sys_call_table dispatch customization, and kernel cross-compilation",
+      "summary_executive": "Operating systems research project exploring the internal architecture and context-switching mechanisms of the Linux Kernel. Implements new System Calls in C within Kernel Space (Ring 0), updates the sys_call_table dispatch map, and compiles a customized monolithic kernel.",
+      "description": "Experimental exploration of software interrupt dispatching (int 0x80 / syscall instruction) between User Space (Ring 3) and Kernel Space (Ring 0). Designed low-level C routines to capture process statistics, updated kernel headers and entry points, compiled the Linux kernel source with optimized module flags, and configured GRUB bootloader to boot the experimental kernel.",
+      "highlights": [
+        "Registration and execution of custom system calls inside the Linux kernel core.",
+        "Deep understanding of User Mode to Kernel Mode context switches (Ring 3 to Ring 0).",
+        "Successful compilation and testing of custom Linux kernel with bootloader integration."
+      ],
+      "architecture_details": "Low-level C programming; modification of kernel sys_call_table; GRUB bootloader management.",
+      "tech_stack": ["C (Kernel Space)", "Linux Kernel Source", "glibc", "Assembly (int 0x80 / syscall)", "GRUB", "Bash"],
+      "metrics": "Kernel Space (Ring 0) • Kernel Compilation • Custom Syscalls • Context Switching",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><rect x='30' y='35' width='160' height='40' rx='4' fill='#1e293b' stroke='#3b82f6' stroke-width='1.5'/><rect x='30' y='95' width='160' height='40' rx='4' fill='#1e293b' stroke='#f59e0b' stroke-width='1.5'/><rect x='230' y='35' width='140' height='100' rx='6' fill='#1e293b' stroke='#10b981' stroke-width='1.5'/><path d='M190 55 L 230 55 M 230 115 L 190 115' stroke='#94a3b8' stroke-width='2'/><text x='45' y='60' fill='#38bdf8' font-family='monospace' font-size='10'>USER SPACE (RING 3)</text><text x='45' y='120' fill='#fbbf24' font-family='monospace' font-size='10'>KERNEL SPACE (RING 0)</text><text x='250' y='75' fill='#34d399' font-family='monospace' font-size='10' font-weight='bold'>SYS_CALL_TABLE</text><text x='255' y='95' fill='#94a3b8' font-family='monospace' font-size='9'>sys_custom_call()</text><text x='30' y='22' fill='#94a3b8' font-family='monospace' font-size='10'>LINUX KERNEL // SYSTEM CALLS & RING 0</text></svg>",
+      "links": {
+        "github": "https://github.com/EduardCY/UAO-SistemasOperativos-Kernel-Linux",
+        "demo": "https://github.com/EduardCY/UAO-SistemasOperativos-Kernel-Linux",
+        "docs": "https://github.com/EduardCY/UAO-SistemasOperativos-Kernel-Linux#readme"
+      },
+      "date": "2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-009",
+      "category": "software",
+      "sub_category": "Cybersecurity, Networking & Virtualized Infrastructure",
+      "title": "Pentesting, Hardening & Secure Networks Lab with Vagrant",
+      "tagline": "Reproducible, isolated virtualized lab with Vagrant and VirtualBox for Linux security auditing and hardening",
+      "summary_executive": "Isolated, reproducible virtual laboratory built with declarative Vagrant specifications and Oracle VirtualBox. Designed for cybersecurity penetration testing, private network segmentation, and Linux server hardening using IPTables firewalls and Fail2ban brute-force protection.",
+      "description": "Client-server infrastructure defined in a parameterized Ruby `Vagrantfile`. Provisions two isolated VMs interconnected via Host-Only networking (`192.168.50.0/24`) with independent NAT gateways for outbound traffic. Applies rigorous defensive hardening policies on the target node: closing non-essential ports, packet filtering rules in IPTables, reactive alerting with Fail2ban, and packaging into portable Custom Boxes.",
+      "highlights": [
+        "Declarative multi-machine provisioning with Vagrant and complete Host-Only network isolation.",
+        "Linux hardening policies: IPTables packet filtering, SSH defense, and Fail2ban monitoring.",
+        "Exporting hardened virtual machines as portable Custom Boxes for distributed lab environments."
+      ],
+      "architecture_details": "Ruby Vagrantfile; VirtualBox Hypervisor; Ubuntu 22.04 LTS; IPTables and Fail2ban for defensive security.",
+      "tech_stack": ["Vagrant (IaC / Ruby)", "VirtualBox", "Ubuntu Linux", "IPTables", "Fail2ban", "Bash Scripting", "Hardening"],
+      "metrics": "100% Isolated & Reproducible Lab • Linux Hardening • Private Network Segmentation",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><rect x='30' y='45' width='100' height='70' rx='6' fill='#1e293b' stroke='#1563ff' stroke-width='1.5'/><rect x='160' y='30' width='80' height='100' rx='6' fill='#1e293b' stroke='#e95420' stroke-width='1.5'/><rect x='270' y='45' width='100' height='70' rx='6' fill='#1e293b' stroke='#10b981' stroke-width='1.5'/><path d='M130 80 L 160 80 M 240 80 L 270 80' stroke='#94a3b8' stroke-width='2'/><text x='52' y='85' fill='#60a5fa' font-family='monospace' font-size='10' font-weight='bold'>VAGRANT</text><text x='170' y='75' fill='#fb923c' font-family='monospace' font-size='9' font-weight='bold'>IPTABLES</text><text x='170' y='95' fill='#fb923c' font-family='monospace' font-size='9' font-weight='bold'>FAIL2BAN</text><text x='285' y='85' fill='#34d399' font-family='monospace' font-size='10' font-weight='bold'>HARDENED</text><text x='30' y='22' fill='#94a3b8' font-family='monospace' font-size='10'>SECURITY LAB // VAGRANT & LINUX HARDENING</text></svg>",
+      "links": {
+        "github": "https://github.com/EduardCY/UAO-SeguridadInformatica-Lab-Vagrant",
+        "demo": "https://github.com/EduardCY/UAO-SeguridadInformatica-Lab-Vagrant",
+        "docs": "https://github.com/EduardCY/UAO-SeguridadInformatica-Lab-Vagrant#readme"
+      },
+      "date": "2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-010",
+      "category": "software",
+      "sub_category": "Data Engineering, Healthcare & Async Microservices",
+      "title": "RIPS New 2025 — Healthcare Validation & Data Processing Engine",
+      "tagline": "Asynchronous engine for ingestion, regulatory validation, and bulk processing of healthcare RIPS records",
+      "summary_executive": "Data engineering pipeline for ingestion, syntactic/semantic validation, normalization, and bulk extraction of Individual Healthcare Service Records (RIPS) under the regulatory standards set by Colombia's Ministry of Health.",
+      "description": "Built in Python with FastAPI and background workers to ingest high-volume medical billing JSON batches without blocking the main event loop. Implements business validation rules for CUPS procedure codes, ICD-10 diagnoses, fee ceilings, and patient ID formats, persisting normalized records to PostgreSQL with real-time audit tracing.",
+      "highlights": [
+        "Asynchronous batch processing of large medical datasets with dedicated worker tasks and exception resilience.",
+        "Exhaustive regulatory validation against Colombian Ministry of Health RIPS standards.",
+        "Optimized relational persistence with composite indexing and analytical queries on PostgreSQL."
+      ],
+      "architecture_details": "FastAPI with Async Background Workers; PostgreSQL with normalized schemas and SQLAlchemy ORM.",
+      "tech_stack": ["Python 3.11+", "FastAPI", "Async Background Workers", "PostgreSQL", "SQLAlchemy", "Healthcare Data Validation"],
+      "metrics": "Async Batch Processing • Regulatory Health Compliance • 100% Data Integrity",
+      "is_private": true,
+      "visibility": "private",
+      "access_note": "Private corporate healthcare repository. Source code and architecture documentation available upon professional request.",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><rect x='35' y='40' width='80' height='80' rx='4' fill='#1e293b' stroke='#f59e0b' stroke-width='1.5'/><rect x='160' y='40' width='80' height='80' rx='4' fill='#1e293b' stroke='#38bdf8' stroke-width='1.5'/><rect x='285' y='40' width='80' height='80' rx='4' fill='#1e293b' stroke='#10b981' stroke-width='1.5'/><path d='M115 80 L 160 80' stroke='#f59e0b' stroke-width='2'/><path d='M240 80 L 285 80' stroke='#38bdf8' stroke-width='2'/><text x='52' y='85' fill='#fbbf24' font-family='monospace' font-size='10'>JSON_RIPS</text><text x='172' y='85' fill='#38bdf8' font-family='monospace' font-size='10'>VALIDATOR</text><text x='298' y='85' fill='#34d399' font-family='monospace' font-size='10'>POSTGRES</text><text x='35' y='25' fill='#94a3b8' font-family='monospace' font-size='10'>RIPS HEALTHCARE // 🔒 PRIVATE REPOSITORY</text></svg>",
+      "links": {
+        "contact": "mailto:eduardcriolloyule2004@gmail.com?subject=Technical%20Demo%20Request%20-%20RIPS%202025"
+      },
+      "date": "2025 – 2026",
+      "featured": true
+    },
+    {
+      "id": "proj-sw-011",
+      "category": "software",
+      "sub_category": "Frontend Architecture & Reactive Systems",
+      "title": "Decoupled Data-Driven Professional Suite",
+      "tagline": "Decoupled, reactive professional portfolio suite powered by a unified JSON Single Source of Truth",
+      "summary_executive": "Modular, enterprise-grade web suite structured to synchronize professional profiles, certifications, and project repositories in real time from a centralized JSON data core without heavyweight framework dependencies.",
+      "description": "Frontend solution built with extreme modularity, web accessibility (WCAG 2.1 AA), and peak performance in mind. Features multiple independent visual experiences (Windows 97 Desktop Portfolio, Gothic Cathedral Architecture, and Tron Grid) that reactively hydrate from the `/data/` SSOT core. Equipped with offline protocol support (`file:///`), headless PDF print stylesheets, and fluid typography.",
+      "highlights": [
+        "100% data decoupling: modifying any JSON file updates every portfolio theme and print target instantly.",
+        "Perfect Lighthouse benchmark score (100/100 in Performance, Accessibility, Best Practices, and SEO).",
+        "Responsive design with an interactive Windows 97 desktop simulator and multi-target PDF compiler."
+      ],
+      "architecture_details": "Vanilla JavaScript ES6+, semantic CSS custom properties, and full modern browser compatibility.",
+      "tech_stack": ["JavaScript ES6+", "Semantic HTML5", "Modern CSS (Variables & Grid)", "Data-Driven Architecture", "Python (Bundle Builder)"],
+      "metrics": "Lighthouse: 100/100 • Zero External Dependencies • Instant Cascading Synchronization",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#090d14' rx='8'/><circle cx='80' cy='80' r='35' fill='none' stroke='#38bdf8' stroke-width='2'/><circle cx='320' cy='80' r='35' fill='none' stroke='#10b981' stroke-width='2'/><rect x='160' y='55' width='80' height='50' rx='4' fill='#1e293b' stroke='#d4af37' stroke-width='1.5'/><path d='M115 80 L 160 80' stroke='#38bdf8' stroke-width='2'/><path d='M240 80 L 285 80' stroke='#10b981' stroke-width='2'/><text x='175' y='85' fill='#f3e5ab' font-family='monospace' font-size='10' font-weight='bold'>DATA CORE</text><text x='55' y='85' fill='#38bdf8' font-family='sans-serif' font-size='9'>GOTHIC</text><text x='305' y='85' fill='#34d399' font-family='sans-serif' font-size='9'>WIN97</text><text x='35' y='25' fill='#94a3b8' font-family='monospace' font-size='10'>REACTIVE CASCADE // SINGLE TRUTH ARCHITECTURE</text></svg>",
+      "links": {
+        "github": "https://github.com/EduardCY",
+        "demo": "https://github.com/EduardCY",
+        "docs": "https://github.com/EduardCY#readme"
+      },
+      "date": "2026",
+      "featured": true
+    },
+    {
+      "id": "proj-cr-001",
+      "category": "creative",
+      "sub_category": "Digital Illustration & Concept Art",
+      "title": "Chronicles of Aethelgard: Concept Art & Worldbuilding",
+      "tagline": "Precision character design, fantastic architecture, and high-fidelity environmental aesthetics",
+      "summary_executive": "Series of conceptual illustrations merging the discipline of industrial precision drafting with digital concept art to establish an arcanotechnical civilization and its volumetric architecture.",
+      "description": "Comprehensive visual worldbuilding project. Employs descriptive geometry and three-point conical perspective honed over 7 years of industrial drafting education to construct intricate fortresses, complex machinery, and urban landscapes. Combines this spatial precision with digital painting techniques in Clip Studio Paint and Photoshop for character design, organic textiles, and volumetric atmosphere.",
+      "highlights": [
+        "Development of character model sheets featuring front, side, and rear projections in exact proportion.",
+        "Construction of complex architectural backdrops with mathematically grounded geometric perspective.",
+        "Visual style guide and harmonious color palettes engineered for narrative continuity."
+      ],
+      "architecture_details": "Two-dimensional model sheets, 3-point conical perspective studies, and digital volumetric lighting.",
+      "tech_stack": ["Clip Studio Paint", "Adobe Photoshop", "AutoCAD", "Wacom Display Pen", "Color Theory"],
+      "metrics": "Collection of 18 High-Resolution Artworks • Institutional Recognition",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#0e0c12' rx='8'/><path d='M30 140 L 100 40 L 160 140 L 220 50 L 300 140 L 380 70' fill='none' stroke='#e11d48' stroke-width='2'/><circle cx='100' cy='40' r='4' fill='#fda4af'/><circle cx='220' cy='50' r='4' fill='#fda4af'/><circle cx='380' cy='70' r='4' fill='#fda4af'/><text x='30' y='30' fill='#fda4af' font-family='serif' font-size='12' font-weight='bold'>AETHELGARD // CONCEPT ART & PERSPECTIVE</text><text x='30' y='145' fill='#94a3b8' font-family='sans-serif' font-size='10'>Technical Drawing Precision • Digital Illustration Series</text></svg>",
+      "links": {
+        "artstation": "https://artstation.com/eduardyule",
+        "behance": "https://behance.net/eduardcriollo",
+        "github": "https://github.com/EduardCY"
+      },
+      "date": "2024 – 2025",
+      "featured": true
+    },
+    {
+      "id": "proj-cr-002",
+      "category": "creative",
+      "sub_category": "3D Animation & Cinematic Modeling",
+      "title": "Cyber-Genesis: 3D Mech Animation Reel",
+      "tagline": "Precision 3D modeling, mechanical rigging, and cinematic keyframe animation in Blender",
+      "summary_executive": "Cinematic short film centered on the articulation and assembly of a biomechanical exoskeleton. Demonstrates realistic mechanical physics, procedural PBR shading, and dynamic sound design.",
+      "description": "Complete 3D audiovisual production developed in Blender. Features sub-d polygonal modeling of mechanical components with exact manufacturing clearances, procedural PBR materials with emission shaders, and inverse kinematics (IK) rigging with realistic rotational constraints. Keyframe animation timed according to the twelve classical animation principles, rendered in Cycles and composited in After Effects.",
+      "highlights": [
+        "Rigging of over 40 interconnected rigid mechanical elements with collision-free rotational constraints.",
+        "Multi-pass Cycles rendering (Ambient Occlusion, Emission, Z-Depth) with professional color grading.",
+        "Sound design and foley synchronization delivered at 60 FPS in crisp 4K resolution."
+      ],
+      "architecture_details": "Sub-d modeling, inverse kinematics with mechanical constraints in Blender, and post-compositing in After Effects.",
+      "tech_stack": ["Blender 3D", "Adobe After Effects", "Adobe Premiere Pro", "Cycles Render Engine", "Audacity"],
+      "metrics": "60 FPS Animation • >40 Moving Mechanical Components • 4K Rendered",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#070b10' rx='8'/><rect x='40' y='40' width='80' height='80' rx='4' fill='none' stroke='#00ff66' stroke-width='1.5'/><circle cx='80' cy='80' r='25' fill='none' stroke='#00f3ff' stroke-width='1.5'/><path d='M140 80 L 370 80' stroke='#00ff66' stroke-width='1' stroke-dasharray='4 4'/><circle cx='180' cy='80' r='6' fill='#00ff66'/><circle cx='260' cy='80' r='6' fill='#00f3ff'/><circle cx='340' cy='80' r='6' fill='#00ff66'/><text x='40' y='25' fill='#00ff66' font-family='monospace' font-size='10'>BLENDER 3D // KINEMATICS RIGGING</text><text x='140' y='110' fill='#94a3b8' font-family='sans-serif' font-size='10'>60 FPS 4K Reel • Mechanical Constraints • PBR Cycles</text></svg>",
+      "links": {
+        "artstation": "https://artstation.com/eduardyule",
+        "behance": "https://behance.net/eduardcriollo",
+        "github": "https://github.com/EduardCY"
+      },
+      "date": "2025",
+      "featured": true
+    },
+    {
+      "id": "proj-cr-003",
+      "category": "creative",
+      "sub_category": "Literary Narrative & Screenwriting",
+      "title": "The Echo of Gears (Speculative Fiction Stories)",
+      "tagline": "Award-winning speculative fiction anthology and technical production screenplays",
+      "summary_executive": "Anthology of short speculative fiction stories and technical film screenplays exploring the intersection of human consciousness, mechanical automation, and social memory in retrofuturistic societies.",
+      "description": "Literary work and narrative compendium awarded in regional short fiction and essay contests. Employs classical three-act dramatic structure, deep psychological character motivation, and nuanced dialogue subtext. Includes the technical adaptation of two stories into production-ready film scripts with camera directions, lighting cues, and audiovisual pacing.",
+      "highlights": [
+        "First prize winner in regional short fiction and speculative narrative competition.",
+        "Creation of cohesive fictional worlds with detailed societal and technological systems.",
+        "Structuring of bilingual production-ready screenplays (Spanish / English C1)."
+      ],
+      "architecture_details": "Three-act narrative structure, character dossiers, and standard industry technical screenwriting format.",
+      "tech_stack": ["Scrivener", "Celtx", "Notion", "LaTeX", "Cinematic Screenwriting"],
+      "metrics": "Anthology of 5 Complete Stories • First Prize in Youth Short Fiction Contest",
+      "image_svg_badge": "<svg viewBox='0 0 400 160' class='project-preview-svg'><rect width='400' height='160' fill='#100d12' rx='8'/><path d='M50 40 L 50 120 L 150 120 L 150 40 Z' fill='none' stroke='#f59e0b' stroke-width='1.5'/><line x1='65' y1='60' x2='135' y2='60' stroke='#f59e0b' stroke-width='1'/><line x1='65' y1='80' x2='135' y2='80' stroke='#f59e0b' stroke-width='1'/><line x1='65' y1='100' x2='110' y2='100' stroke='#f59e0b' stroke-width='1'/><text x='180' y='65' fill='#f3e5ab' font-family='serif' font-size='14' font-weight='bold'>LITERARY AWARDS</text><text x='180' y='85' fill='#f59e0b' font-family='sans-serif' font-size='10'>First Prize Short Story Contest</text><text x='180' y='105' fill='#94a3b8' font-family='sans-serif' font-size='10'>5 Stories • Animation Screenplays</text></svg>",
+      "links": {
+        "behance": "https://behance.net/eduardcriollo",
+        "artstation": "https://artstation.com/eduardyule",
+        "github": "https://github.com/EduardCY"
+      },
+      "date": "2020 – 2024",
+      "featured": true
+    }
+  ]
+}

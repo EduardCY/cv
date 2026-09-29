@@ -1,0 +1,21 @@
+# ==============================================================================
+# ROBOTS.TXT — CONTROL DE INDEXACIÓN Y GOBIERNO DE PRIVACIDAD
+# Portal Profesional: Eduard Criollo Yule
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Allow: /01_Software_Dev/
+Allow: /02_Creative_Arts/
+Allow: /pdf_archive/
+Allow: /data/
+
+# Bloqueo explícito de carpetas privadas, herramientas internas y archivos de construcción
+Disallow: /pdf_archive_private/
+Disallow: /tools/
+Disallow: /docs/txt/
+Disallow: /scratch/
+Disallow: /private_data/
+
+# Declaración de mapa del sitio para motores de búsqueda (Google, Bing)
+Sitemap: https://eduardcy.github.io/cv/sitemap.xml

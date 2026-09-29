@@ -1,0 +1,278 @@
+/**
+ * @fileoverview Typed definition of Eduard Criollo Yule's Creative Resume
+ * for Illustration, 2D/3D Animation, and Creative Writing (English Edition).
+ * 
+ * @module CreativeResumeEN
+ * @author Eduard Criollo Yule
+ * @version 2.1.0
+ * @see {'../../data/profile_creative_en.json'} SSOT Data Source
+ */
+
+export interface CreativeContactInfo {
+  phone: string;
+  email: string;
+  location: string;
+  artstation: string;
+  behance: string;
+  linkedin: string;
+  github: string;
+}
+
+export interface ArtisticDiscipline {
+  name: string;
+  description: string;
+  tools: string[];
+}
+
+export interface AwardRecognition {
+  title: string;
+  description: string;
+  year?: string;
+  organization?: string;
+}
+
+export interface CreativeEducationEntry {
+  degree: string;
+  institution: string;
+  period: string;
+  highlights: string[];
+}
+
+export interface CreativeExperienceEntry {
+  role: string;
+  organization: string;
+  period: string;
+  responsibilities: string[];
+}
+
+export interface CreativeProfile {
+  personal: {
+    name: string;
+    headline: string;
+    location: string;
+    contact: CreativeContactInfo;
+    summary_hook: string;
+  };
+  artistic_disciplines: ArtisticDiscipline[];
+  awards_recognitions: AwardRecognition[];
+  education: CreativeEducationEntry[];
+  experience: CreativeExperienceEntry[];
+  creative_skills_matrix?: Record<string, any>;
+  languages: any[];
+}
+
+export const CREATIVE_PROFILE_DATA_EN: CreativeProfile = {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "_comment": "==============================================================================\n MASTER FILE: CREATIVE ARTS PROFILE (ENGLISH - SINGLE SOURCE OF TRUTH)\n Location: /data/profile_creative_en.json\n Purpose: Centralize artistic, visual, audiovisual, and narrative background\n          for Eduard Criollo Yule across Illustration, Animation, and Creative Writing.\n==============================================================================",
+  "personal": {
+    "name": "Eduard Criollo Yule",
+    "headline": "Illustrator, 2D/3D Animator & Creative Writer",
+    "subtitle": "Technical Baccalaureate in Industrial Drafting • Audiovisual & Narrative Production",
+    "location": "Cali, Valle del Cauca, Colombia",
+    "photo": "../../data/img/Creative_Arts/CreativeProfile.png",
+    "contact": {
+      "phone": "+57 314 ••• ••••",
+      "email": "eduardcriolloyule2004@gmail.com",
+      "platzi": "https://platzi.com/@EduardYule/",
+      "github": "https://github.com/EduardCY",
+      "linkedin": "https://www.linkedin.com/in/eduard-criollo-arts/",
+      "artstation": "https://artstation.com/eduardyule",
+      "behance": "https://behance.net/eduardcriollo"
+    },
+    "social_links": [
+      {
+        "name": "ArtStation",
+        "url": "https://artstation.com/eduardyule",
+        "icon": "artstation",
+        "label": "Visual Gallery & Portfolio on ArtStation"
+      },
+      {
+        "name": "Behance",
+        "url": "https://behance.net/eduardcriollo",
+        "icon": "behance",
+        "label": "Design & Animation Projects on Behance"
+      },
+      {
+        "name": "LinkedIn (Creative Arts)",
+        "url": "https://www.linkedin.com/in/eduard-criollo-arts/",
+        "icon": "linkedin",
+        "label": "Creative Professional Profile on LinkedIn"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/EduardCY",
+        "icon": "github",
+        "label": "Tools & Automation Scripts"
+      },
+      {
+        "name": "Email",
+        "url": "mailto:eduardcriolloyule2004@gmail.com",
+        "icon": "email",
+        "label": "Direct Contact"
+      }
+    ],
+    "summary_hook": "Multidisciplinary visual creator and storyteller with strong technical foundations in Industrial Precision Drafting (San Juan Bosco Technical Institute) and academic training in Systems Engineering. I merge geometric rigor, conical perspective, and spatial modeling with artistic expression in digital illustration, 2D/3D animation, and narrative worldbuilding.\n\nAwarded in regional literary and speculative fiction competitions, with multiple honors for academic and creative excellence. Practical background in live audiovisual broadcasting, technical camera and stage management, and international event logistics (2021 Junior Pan American Games)."
+  },
+  "artistic_disciplines": [
+    {
+      "name": "Technical Drafting & Digital Illustration",
+      "description": "Mastery of precision technical drafting, descriptive geometry, axonometric perspective, character concept art, digital inking, and volumetric lighting rendering.",
+      "tools": [
+        "AutoCAD",
+        "Clip Studio Paint",
+        "Adobe Photoshop",
+        "Adobe Illustrator",
+        "Graphic Tablets / Display Pen"
+      ]
+    },
+    {
+      "name": "2D/3D Animation & Motion Graphics",
+      "description": "Core animation principles (timing, spacing, anticipation, squash & stretch), 3D polygonal modeling, mechanical rigging, keyframe animation, and motion design composition.",
+      "tools": [
+        "Blender 3D",
+        "Adobe After Effects",
+        "Adobe Premiere Pro",
+        "Audacity",
+        "OpenToonz"
+      ]
+    },
+    {
+      "name": "Screenwriting, Worldbuilding & Literary Creation",
+      "description": "Dramatic structuring, character arcs, speculative fiction and sci-fi universe building, short narrative fiction, audiovisual technical scripts, and interactive storytelling.",
+      "tools": [
+        "Scrivener",
+        "Notion",
+        "Trello",
+        "Celtx",
+        "Markdown / LaTeX"
+      ]
+    }
+  ],
+  "awards_recognitions": [
+    {
+      "title": "Literary Contest Winner & Short Story Creation",
+      "organization": "Youth Literary Expression & Narrative Contests",
+      "year": "2019 – 2021",
+      "description": "First place and honorary mentions in regional competitions for short fiction, analytical essays, and imaginative worldbuilding."
+    },
+    {
+      "title": "Academic & Creative Excellence Scholarship",
+      "organization": "Instituto Técnico Industrial San Juan Bosco",
+      "year": "2014 – 2021",
+      "description": "Continuous recognition for outstanding performance in industrial drafting, architectural blueprints, and creative writing."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Technical Baccalaureate in Industrial Drafting",
+      "institution": "Instituto Técnico Industrial San Juan Bosco",
+      "period": "2014 – 2021",
+      "status": "Graduated with Honors",
+      "location": "Cali, Colombia",
+      "highlights": [
+        "7 years of intensive training in geometric drafting, orthographic projections, section cuts, blueprints, and dimensioning.",
+        "Proficiency in traditional drafting tools (rapidographs, T-squares, precision compasses) as well as modern computer-aided CAD.",
+        "Foundations of visual aesthetics, golden ratio, and volumetric composition."
+      ]
+    },
+    {
+      "degree": "B.S. in Systems Engineering",
+      "institution": "Universidad Autónoma de Occidente (UAO)",
+      "period": "2022 – Present",
+      "status": "In Progress (Active Student)",
+      "location": "Cali, Colombia",
+      "highlights": [
+        "Integration of algorithmic logic, computer rendering, 3D graphics, and interactive real-time multimedia systems.",
+        "Development of visual user interfaces and modern interactive frontends."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Audiovisual Technical Assistant & Stage Operations",
+      "organization": "I Junior Pan American Games Cali 2021",
+      "period": "Nov 2021 – Dec 2021",
+      "location": "Cali, Colombia",
+      "responsibilities": [
+        "Operated technical gear for live sports broadcasting, camera monitoring, and audiovisual control desks.",
+        "Installed stage cabling, signal distribution hardware, and large-format digital stadium displays.",
+        "Collaborated with media production teams for real-time live event streaming and coverage."
+      ],
+      "technologies": [
+        "Audiovisual Production",
+        "Broadcast Systems",
+        "Camera & Audio Gear",
+        "Stage Coordination"
+      ]
+    }
+  ],
+  "creative_skills_matrix": {
+    "visual_arts": {
+      "category": "Visual Arts & Precision Drafting",
+      "skills": [
+        "Technical Drafting & Blueprints",
+        "Conical & Axonometric Perspective",
+        "Digital Illustration",
+        "Character Concept Art",
+        "Color Theory",
+        "Visual Composition"
+      ]
+    },
+    "animation_video": {
+      "category": "Animation & Video Post-Production",
+      "skills": [
+        "3D Modeling (Blender)",
+        "Frame-by-Frame 2D Animation",
+        "Motion Graphics (After Effects)",
+        "Video Editing (Premiere Pro)",
+        "Sound Design & Foley",
+        "Storyboarding"
+      ]
+    },
+    "writing_storytelling": {
+      "category": "Writing, Screenwriting & Narrative",
+      "skills": [
+        "Audiovisual Scriptwriting",
+        "Worldbuilding",
+        "Speculative Fiction & Sci-Fi",
+        "Dramatic Arc Construction",
+        "Bilingual Writing (Spanish / English C1)",
+        "Style & Proofreading"
+      ]
+    },
+    "digital_tools": {
+      "category": "Software & Creative Toolset",
+      "skills": [
+        "Blender 3D",
+        "Photoshop",
+        "Illustrator",
+        "After Effects",
+        "Premiere Pro",
+        "Clip Studio Paint",
+        "AutoCAD",
+        "Git / Asset Versioning"
+      ]
+    }
+  },
+  "soft_skills": [
+    "Visual imagination and creative problem solving",
+    "Meticulous attention to detail and precision",
+    "Translating abstract concepts into compelling visual pieces",
+    "Emotionally resonant narrative and communication",
+    "Reliable delivery under production deadlines",
+    "Harmonious collaboration in multidisciplinary creative teams"
+  ],
+  "languages": [
+    {
+      "language": "Spanish",
+      "level": "Native",
+      "notes": "Mother tongue — High-level literary writing and storytelling"
+    },
+    {
+      "language": "English",
+      "level": "C1 (Advanced Professional)",
+      "certification": "Oxford Placement Test (Score 93/120 — CEFR C1)",
+      "notes": "Fluent scriptwriting, fiction composition, and technical communication in English"
+    }
+  ]
+};

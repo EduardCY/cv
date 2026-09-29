@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Plain Text Viewer — Eduard Criollo Yule (Creative Arts)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-body: #0f1117;
+            --bg-editor: #161a23;
+            --border-color: #2d3343;
+            --text-color: #f1f5f9;
+            --line-num-color: #64748b;
+            --accent-color: #f43f5e;
+            --header-bg: #1c212c;
+        }
+
+        body.theme-light {
+            --bg-body: #f8fafc;
+            --bg-editor: #ffffff;
+            --border-color: #cbd5e1;
+            --text-color: #1e293b;
+            --line-num-color: #94a3b8;
+            --accent-color: #e11d48;
+            --header-bg: #f1f5f9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .viewer-container {
+            width: 100%;
+            max-width: 960px;
+            background-color: var(--bg-editor);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+
+        .viewer-header {
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .header-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tool-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: all 0.15s;
+        }
+        .tool-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
+        .tool-btn.primary { background: var(--accent-color); color: white; border-color: var(--accent-color); }
+
+        .editor-body {
+            display: flex;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            padding: 1.5rem 0;
+        }
+
+        .line-numbers {
+            user-select: none;
+            text-align: right;
+            padding: 0 1rem 0 1.25rem;
+            color: var(--line-num-color);
+            border-right: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            min-width: 3.5rem;
+        }
+        .line-numbers.hidden { display: none; }
+
+        .code-content {
+            padding: 0 1.5rem;
+            white-space: pre;
+            flex: 1;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #10b981;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+        .toast.show { opacity: 1; transform: translateY(0); }
+
+        @media print {
+            body { background: white !important; padding: 0 !important; }
+            .viewer-container { border: none !important; box-shadow: none !important; max-width: 100% !important; }
+            .viewer-header, .line-numbers { display: none !important; }
+            .editor-body { padding: 0 !important; }
+            .code-content { color: black !important; font-size: 9pt !important; line-height: 1.4 !important; padding: 0 !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="viewer-container">
+        <header class="viewer-header">
+            <div class="header-title">
+                <span>cv_creative_ats.txt</span>
+                <span style="color: var(--line-num-color); font-size: 0.75rem;">(Perfil Creativo & Artístico)</span>
+            </div>
+
+            <div style="display:flex; gap:0.5rem;">
+                <button class="tool-btn primary" onclick="copyText()">📋 Copiar Texto</button>
+                <button class="tool-btn" onclick="window.print()">🖨️ Imprimir PDF</button>
+                <button class="tool-btn" onclick="toggleLines()">🔢 Líneas</button>
+                <button class="tool-btn" onclick="toggleTheme()">🎨 Tema</button>
+                <a href="../cv_web/cv_creative.html" class="tool-btn">🎨 CV Creativo</a>
+            </div>
+        </header>
+
+        <div class="editor-body">
+            <div class="line-numbers" id="lineNums"></div>
+            <pre class="code-content" id="plainContent">Cargando datos creativos...</pre>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">✓ ¡Texto copiado con éxito!</div>
+
+    <!-- SCRIPT DE DATOS GLOBALES (Soporte Offline & Local file:///) -->
+    <script src="../../data/bundle.js"></script>
+
+    <script>
+        const FALLBACK_CREATIVE_TXT = `==============================================================================
+ EDUARD CRIOLLO YULE
+ Ilustrador, Animador 2D/3D & Escritor Creativo • Bachiller Técnico en Dibujo
+==============================================================================
+ Teléfono : +57 314 ••• ••••
+ Correo   : eduardcriolloyule2004@gmail.com
+ Ubicación: Cali, Valle del Cauca, Colombia
+ ArtStation: https://artstation.com/eduardyule
+ Behance  : https://behance.net/eduardcriollo
+ LinkedIn : https://www.linkedin.com/in/eduard-criollo-arts/
+ Idiomas  : Español (Nativo) | Inglés (C1 Avanzado - Oxford Placement Test 93/120)
+------------------------------------------------------------------------------
+
+[ PERFIL & DECLARACIÓN ARTÍSTICA ]
+------------------------------------------------------------------------------
+Creador visual y narrador multidisciplinario con formación técnica sólida en Dibujo
+Técnico Industrial (Instituto San Juan Bosco) y estudios en Ingeniería de Sistemas.
+Fusiono el rigor geométrico, la perspectiva y el modelado espacial con la expresión
+artística en ilustración digital, animación 2D/3D y construcción de mundos narrativos.
+Galardonado en certámenes literarios y beneficiario de distinciones académicas por
+excelencia creativa y analítica. Experiencia en producción audiovisual, soporte
+técnico en transmisiones en vivo y gestión de eventos de escala internacional (Juegos
+Panamericanos Juveniles 2021).
+
+[ DISTINCIONES & PREMIOS ]
+------------------------------------------------------------------------------
+* Ganador de Certámenes Literarios & Creación de Cuentos (2019 - 2021)
+  Primer lugar y menciones de honor en concursos de narrativa corta y ficción especulativa.
+
+* Beca de Excelencia Académica y Creativa — Instituto San Juan Bosco (2014 - 2021)
+  Reconocimiento continuo por excelencia en dibujo técnico de precisión y redacción.
+
+* Oxford Placement Test (OOPT) — Nivel C1 Avanzado (Score 93/120)
+  Fluidez internacional para guionismo bilingüe y producción audiovisual en inglés.
+
+[ OBRAS & PROYECTOS SELECCIONADOS ]
+------------------------------------------------------------------------------
+* Chronicles of Aethelgard: Concept Art & Worldbuilding (2024 - 2025)
+  Disciplina: Ilustración Digital & Concept Art
+  Herramientas: Clip Studio Paint, Photoshop, AutoCAD, Wacom Display Pen
+  Métricas: Colección de 18 Obras • Perspectiva de 3 Puntos
+  Descripción: Serie de concept art que fusiona dibujo técnico industrial con ilustración digital volumétrica.
+  Galería: https://artstation.com/eduardyule
+
+* Cyber-Genesis: 3D Mech Animation Reel (2025)
+  Disciplina: Animación 3D & Modelado Cinemático
+  Herramientas: Blender 3D, After Effects, Premiere Pro, Cycles Engine
+  Métricas: 60 FPS • >40 Componentes Móviles • 4K
+  Descripción: Cortometraje cinemático 3D con rigging biomecánico, restricciones cinemáticas y texturas PBR.
+  Galería: https://behance.net/eduardcriollo
+
+* El Eco de los Engranajes (Cuentos de Ficción Especulativa) (2020 - 2024)
+  Disciplina: Narrativa Literaria & Guionismo
+  Herramientas: Scrivener, Celtx, Notion, LaTeX
+  Métricas: 5 Relatos Completos • Primer Premio Concurso Juvenil
+  Descripción: Antología de relatos de ciencia ficción y guiones cinematográficos sobre automatización y memoria social.
+
+[ DISCIPLINAS ARTÍSTICAS & COMPETENCIAS ]
+------------------------------------------------------------------------------
+* Dibujo Técnico & Ilustración Digital:
+  Dibujo geométrico de precisión • Perspectiva axonométrica y cónica • Concept Art de personajes • Entintado digital • Iluminación volumétrica
+
+* Animación 2D/3D & Motion Graphics:
+  Modelado 3D poligonal (Blender) • Animación de keyframes • Timing & Spacing • Motion Graphics (After Effects) • Composición y corrección de color
+
+* Creación Literaria & Guionismo:
+  Worldbuilding • Desarrollo de arcos dramáticos • Guion técnico audiovisual • Ficción especulativa y Sci-Fi • Corrección de estilo
+
+[ HERRAMIENTAS & SOFTWARE CREATIVO ]
+------------------------------------------------------------------------------
+Blender 3D • Adobe Photoshop • Adobe Illustrator • Adobe After Effects • Adobe Premiere Pro • Clip Studio Paint • AutoCAD • Scrivener • Audacity
+
+[ FORMACIÓN ACADÉMICA & TÉCNICA ]
+------------------------------------------------------------------------------
+* Bachiller Técnico en Dibujo Técnico e Industrial (2014 - 2021)
+  Institución: Instituto Técnico Industrial San Juan Bosco [Graduado con Mención de Honor]
+  Enfoque    : 7 años de formación intensiva en diseño geométrico, proyecciones ortogonales y CAD
+
+* Ingeniería de Sistemas (2022 - Presente)
+  Institución: Universidad Autónoma de Occidente [En curso]
+  Enfoque    : Gráficos computacionales, renderizado 3D e interfaces interactivas
+
+[ EXPERIENCIA EN PRODUCCIÓN AUDIOVISUAL ]
+------------------------------------------------------------------------------
+* Asistente Técnico Audiovisual & Soporte Operativo — Juegos Panamericanos Juveniles 2021
+  Periodo: Noviembre 2021 - Diciembre 2021
+  Responsabilidades:
+   - Apoyo operativo y técnico en transmisiones en vivo y monitoreo de cámaras.
+   - Montaje de escenarios, cableado de señal multimedia y pantallas técnicas.
+
+==============================================================================
+ Fin del documento — Perfil Creativo en Formato Texto Plano ATS
+==============================================================================`;
+
+        let currentLang = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('ats_art_lang') || 'es';
+
+        function toggleArtLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            localStorage.setItem('ats_art_lang', currentLang);
+            updateArtLangBtn();
+            initViewer();
+        }
+
+        function updateArtLangBtn() {
+            const btn = document.getElementById('langArtAtsBtn');
+            if (btn) btn.textContent = currentLang === 'en' ? '🌐 Español' : '🌐 English';
+        }
+
+        function initViewer() {
+            updateArtLangBtn();
+            let bundle = window.CV_DATA;
+            let langSource = (currentLang === 'en' && bundle?.en) ? bundle.en : (bundle?.es || bundle);
+
+            let artData = langSource?.profile_creative;
+            let projData = langSource?.projects || [];
+            let certsData = langSource?.certifications || [];
+
+            if (artData) {
+                renderText(generateCreativeAtsString(artData, projData, certsData, currentLang));
+            }
+
+            const suffix = currentLang === 'en' ? '_en' : '';
+            try {
+                Promise.allSettled([
+                    fetch(`../../data/profile_creative${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject()),
+                    fetch(`../../data/projects${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject()),
+                    fetch(`../../data/certifications${suffix}.json`).then(r => r.ok ? r.json() : Promise.reject())
+                ]).then(([resArt, resProj, resCerts]) => {
+                    if (resArt.status === 'fulfilled') {
+                        artData = resArt.value;
+                        if (resProj.status === 'fulfilled') projData = resProj.value.projects;
+                        if (resCerts.status === 'fulfilled') certsData = resCerts.value.certifications;
+                        renderText(generateCreativeAtsString(artData, projData, certsData, currentLang));
+                    }
+                });
+            } catch (_) {}
+        }
+
+        function generateCreativeAtsString(data, projects = [], certs = [], lang = 'es') {
+            const p = data.personal;
+            const c = p.contact || {};
+            const artProjects = projects.filter(pr => pr.category === 'creative');
+            const artCerts = certs.filter(cr => (cr.track || []).includes('creative') || (cr.track || []).includes('both'));
+            const isEn = lang === 'en';
+
+            if (isEn) {
+                return `==============================================================================
+ ${p.name.toUpperCase()}
+ ${p.headline}
+==============================================================================
+ Phone     : ${c.phone || '+57 314 ••• ••••'}
+ Email     : ${c.email || 'eduardcriolloyule2004@gmail.com'}
+ Location  : ${p.location}
+ ArtStation: ${c.artstation || ''}
+ Behance   : ${c.behance || ''}
+ LinkedIn  : ${c.linkedin || ''}
+ Languages : Spanish (Native) | English (C1 Advanced - Oxford Placement Test 93/120)
+------------------------------------------------------------------------------
+
+[ ARTISTIC STATEMENT & VISION ]
+------------------------------------------------------------------------------
+${p.summary_hook}
+
+[ AWARDS & DISTINCTIONS ]
+------------------------------------------------------------------------------
+${(data.awards_recognitions || []).map(a => `* ${a.title} (${a.year || ''})
+  ${a.organization ? 'Organization: ' + a.organization + '
+  ' : ''}${a.description}`).join('
+
+')}
+
+[ ACCREDITATIONS & CERTIFICATIONS ]
+------------------------------------------------------------------------------
+${artCerts.map(cr => `* ${cr.title}
+  Issuer: ${cr.institution} | Date: ${cr.issue_date || 'Accredited'} ${cr.code ? '| ID: ' + cr.code : ''}${cr.credential_url ? '
+  Verification: ' + cr.credential_url : ''}`).join('
+
+')}
+
+[ SELECTED WORKS & CREATIVE PROJECTS ]
+------------------------------------------------------------------------------
+${artProjects.map(pr => `* ${pr.title} (${pr.date || '2025'})
+  Discipline: ${pr.sub_category || 'Digital Art'}
+  Tools: ${(pr.tech_stack || []).join(' • ')}
+  Metrics: ${pr.metrics || ''}
+  Summary: ${pr.summary_executive || pr.description}
+  Link: ${pr.links?.artstation || pr.links?.behance || pr.links?.github || ''}`).join('
+
+')}
+
+[ ARTISTIC DISCIPLINES & AREAS OF SPECIALIZATION ]
+------------------------------------------------------------------------------
+${(data.artistic_disciplines || []).map(d => `* ${d.name}:
+  ${d.description}
+  Tools: ${(d.tools || []).join(' • ')}`).join('
+
+')}
+
+[ ACADEMIC & TECHNICAL FORMATION ]
+------------------------------------------------------------------------------
+${(data.education || []).map(e => `* ${e.degree} (${e.period})
+  Institution: ${e.institution}
+  ${(e.highlights || []).join(' • ')}`).join('
+
+')}
+
+[ AUDIOVISUAL PRODUCTION & EVENT EXPERIENCE ]
+------------------------------------------------------------------------------
+${(data.experience || []).map(exp => `* ${exp.role} — ${exp.organization}
+  Period: ${exp.period}
+  Responsibilities:
+${(exp.responsibilities || []).map(r => `   - ${r}`).join('
+')}`).join('
+
+')}
+
+==============================================================================
+ End of Document — Creative Profile in Optimized ATS Plain Text (English)
+==============================================================================`;
+            }
+
+            return `==============================================================================
+ ${p.name.toUpperCase()}
+ ${p.headline}
+==============================================================================
+ Teléfono : ${c.phone || '+57 314 ••• ••••'}
+ Correo   : ${c.email || 'eduardcriolloyule2004@gmail.com'}
+ Ubicación: ${p.location}
+ ArtStation: ${c.artstation || ''}
+ Behance  : ${c.behance || ''}
+ LinkedIn : ${c.linkedin || ''}
+ Idiomas  : Español (Nativo) | Inglés (C1 Avanzado - Oxford Placement Test 93/120)
+------------------------------------------------------------------------------
+
+[ PERFIL & DECLARACIÓN ARTÍSTICA ]
+------------------------------------------------------------------------------
+${p.summary_hook}
+
+[ DISTINCIONES & PREMIOS ]
+------------------------------------------------------------------------------
+${(data.awards_recognitions || []).map(a => `* ${a.title} (${a.year || ''})
+  ${a.organization ? 'Organización: ' + a.organization + '
+  ' : ''}${a.description}`).join('
+
+')}
+
+[ ACREDITACIONES & CERTIFICACIONES ]
+------------------------------------------------------------------------------
+${artCerts.map(cr => `* ${cr.title}
+  Emisor: ${cr.institution} | Fecha: ${cr.issue_date || 'Acreditado'} ${cr.code ? '| ID: ' + cr.code : ''}${cr.credential_url ? '
+  Verificación: ' + cr.credential_url : ''}`).join('
+
+')}
+
+[ OBRAS & PROYECTOS SELECCIONADOS ]
+------------------------------------------------------------------------------
+${artProjects.map(pr => `* ${pr.title} (${pr.date || '2025'})
+  Disciplina: ${pr.sub_category || 'Artes Digitales'}
+  Herramientas: ${(pr.tech_stack || []).join(' • ')}
+  Métricas: ${pr.metrics || ''}
+  Descripción: ${pr.summary_executive || pr.description}
+  Enlace: ${pr.links?.artstation || pr.links?.behance || pr.links?.github || ''}`).join('
+
+')}
+
+[ DISCIPLINAS ARTÍSTICAS & COMPETENCIAS ]
+------------------------------------------------------------------------------
+${(data.artistic_disciplines || []).map(d => `* ${d.name}:
+  ${d.description}
+  Herramientas: ${(d.tools || []).join(' • ')}`).join('
+
+')}
+
+[ FORMACIÓN ACADÉMICA & TÉCNICA ]
+------------------------------------------------------------------------------
+${(data.education || []).map(e => `* ${e.degree} (${e.period})
+  Institución: ${e.institution}
+  ${(e.highlights || []).join(' • ')}`).join('
+
+')}
+
+[ EXPERIENCIA EN PRODUCCIÓN AUDIOVISUAL ]
+------------------------------------------------------------------------------
+${(data.experience || []).map(exp => `* ${exp.role} — ${exp.organization}
+  Periodo: ${exp.period}
+  Responsabilidades:
+${(exp.responsibilities || []).map(r => `   - ${r}`).join('
+')}`).join('
+
+')}
+
+==============================================================================
+ Fin del documento — Perfil Creativo en Formato Texto Plano ATS
+==============================================================================`;
+        }
+
+        function renderText(text) {
+            const pre = document.getElementById('plainContent');
+            if (pre) pre.textContent = text;
+            const lines = text.split('
+');
+            const lineNums = document.getElementById('lineNums');
+            if (lineNums) lineNums.innerHTML = lines.map((_, i) => i + 1).join('<br>');
+        }
+
+        function copyText() {
+            navigator.clipboard.writeText(document.getElementById('plainContent').textContent).then(() => {
+                const t = document.getElementById('toast');
+                t.classList.add('show');
+                setTimeout(() => t.classList.remove('show'), 2000);
+            });
+        }
+
+        function toggleLines() {
+            document.getElementById('lineNums').classList.toggle('hidden');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('theme-light');
+        }
+
+        document.addEventListener('DOMContentLoaded', initViewer);
+    </script>
+</body>
+</html>

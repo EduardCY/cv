@@ -1,0 +1,213 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "_comment": "==============================================================================\n ARCHIVO MADRE: PERFIL SOFTWARE DEVELOPMENT (FUENTE ÚNICA DE VERDAD)\n Ubicación: /data/profile_software.json\n Propósito: Centralizar la información profesional, académica, métricas y habilidades\n            de Eduard Criollo Yule para la rama de Ingeniería de Software e IA.\n==============================================================================",
+  "personal": {
+    "name": "Eduard Criollo Yule",
+    "headline": "Desarrollador Full Stack & Especialista en IA y Ciencia de Datos",
+    "subtitle": "Estudiante de Ingeniería de Sistemas • Acreditación C1 CEFR (Oxford)",
+    "location": "Cali, Valle del Cauca, Colombia",
+    "photo": "../../data/img/FotoPerfil_01.JPG",
+    "banner": "../../data/img/banner.jpg",
+    "contact": {
+      "phone": "+57 314 ••• ••••",
+      "email": "eduardcriolloyule2004@gmail.com",
+      "platzi": "https://platzi.com/@EduardYule/",
+      "github": "https://github.com/EduardCY",
+      "linkedin": "https://www.linkedin.com/in/eduard-criollo-yule/",
+      "phone_note": "Disponible bajo solicitud profesional / Available upon request"
+    },
+    "social_links": [
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/eduard-criollo-yule/",
+        "icon": "linkedin",
+        "label": "Perfil Profesional en LinkedIn"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/EduardCY",
+        "icon": "github",
+        "label": "Repositorios y Código Fuente"
+      },
+      {
+        "name": "Platzi",
+        "url": "https://platzi.com/@EduardYule/",
+        "icon": "platzi",
+        "label": "Rutas de Formación Verificadas"
+      },
+      {
+        "name": "Correo Electrónico",
+        "url": "mailto:eduardcriolloyule2004@gmail.com",
+        "icon": "email",
+        "label": "Contacto Directo"
+      }
+    ],
+    "summary_hook": "Desarrollador de Software con enfoque en el diseño y construcción de soluciones Full Stack orientadas a entornos empresariales, utilizando tecnologías como Spring Boot, Angular, FastAPI, Flask y Java. Complemento mi perfil con conocimientos en Inteligencia Artificial y Ciencia de Datos, orientados al desarrollo de soluciones predictivas y al análisis de información.\n\nActualmente soy estudiante de Ingeniería de Sistemas en la Universidad Autónoma de Occidente, con una sólida formación en diseño y normalización de bases de datos relacionales SQL, desarrollo de APIs y construcción de sistemas escalables. Cuento además con dominio avanzado del inglés (C1 certificado por Oxford University Press).\n\nHe participado en la coordinación técnica, despliegue de infraestructura y resolución de incidencias en entornos multidisciplinarios, incluyendo los Juegos Panamericanos Juveniles 2021."
+  },
+  "metrics": [
+    {
+      "id": "oopt",
+      "badge": "Dominio Lingüístico C1",
+      "title": "Oxford Placement Test (OOPT)",
+      "score": "93 / 120",
+      "level": "Nivel C1 CEFR (Avanzado Profesional)",
+      "breakdown": "Use of English: 93/C1 | Listening: 92/C1",
+      "institution": "Oxford University Press / Colombo Americano",
+      "date": "2021-09-13"
+    },
+    {
+      "id": "fullstack_ai_cert",
+      "badge": "Acreditación Empresarial",
+      "title": "Full Stack & Inteligencia Artificial",
+      "score": "Especialista Certificado",
+      "level": "Desarrollo Empresarial & Soluciones Inteligentes",
+      "breakdown": "Spring Boot • Angular • FastAPI • Scikit-Learn",
+      "institution": "Dev Senior Code (Miami, FL, USA)",
+      "date": "2025 - 2026"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Ingeniería de Sistemas",
+      "institution": "Universidad Autónoma de Occidente (UAO)",
+      "period": "2022 - Presente",
+      "status": "En curso",
+      "location": "Cali, Colombia",
+      "highlights": [
+        "Énfasis en arquitectura de software distribuido, estructuras de datos y algoritmos avanzados.",
+        "Modelado, diseño y normalización de bases de datos relacionales empresariales.",
+        "Desarrollo de proyectos con metodologías ágiles e integración de componentes analíticos."
+      ]
+    },
+    {
+      "degree": "Bachiller Técnico en Dibujo Técnico",
+      "institution": "Instituto Técnico Industrial San Juan Bosco",
+      "period": "2014 - 2021",
+      "status": "Graduado con Honores",
+      "location": "Cali, Colombia",
+      "highlights": [
+        "Formación en diseño geométrico de precisión, dibujo industrial e interpretación técnica de planos.",
+        "Desarrollo de pensamiento espacial, lógica matemática y disciplina analítica estructurada.",
+        "Reconocimiento al mérito académico y distinciones por excelencia analítica."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Voluntario Técnico y Soporte Operativo de Infraestructura",
+      "organization": "Juegos Panamericanos Juveniles Cali 2021",
+      "period": "Noviembre 2021 - Diciembre 2021",
+      "location": "Cali, Colombia",
+      "responsibilities": [
+        "Soporte técnico integral y despliegue logístico en operaciones clave de infraestructura tecnológica del certamen internacional.",
+        "Montaje, diagnóstico, resolución de fallas y verificación de conectividad y equipos técnicos de red en tiempo real.",
+        "Asistencia técnica operativa en transmisiones en vivo y monitoreo de sistemas audiovisuales multidisciplinarios para la cobertura del evento."
+      ],
+      "technologies": [
+        "Soporte Técnico de Red",
+        "Hardware Diagnóstico",
+        "Transmisión Audiovisual",
+        "Coordinación Operativa"
+      ]
+    }
+  ],
+  "skills_matrix": {
+    "ai_data_science": {
+      "category": "Inteligencia Artificial & Ciencia de Datos",
+      "skills": [
+        "Machine Learning",
+        "Scikit-Learn",
+        "Modelos Predictivos",
+        "Ciencia de Datos",
+        "NLP Básico",
+        "Python Científico (Pandas, NumPy)",
+        "FastAPI Microservicios"
+      ]
+    },
+    "backend_architecture": {
+      "category": "Backend & Arquitectura de Microservicios",
+      "skills": [
+        "Spring Boot 3",
+        "Java Empresarial",
+        "FastAPI Asíncrono",
+        "Flask",
+        "Python 3.11+",
+        "PHP",
+        "APIs RESTful",
+        "Arquitectura por Capas",
+        "Inyección de Dependencias"
+      ]
+    },
+    "devops_cloud_infrastructure": {
+      "category": "Cloud, DevOps & DevSecOps",
+      "skills": [
+        "Kubernetes (k8s)",
+        "Terraform (IaC / HCL)",
+        "Docker & Docker Compose",
+        "GitHub Actions (CI/CD)",
+        "NGINX (Canary Deployment / Ingress)",
+        "Prometheus & Grafana (Observabilidad)",
+        "OWASP ZAP (DAST Security)"
+      ]
+    },
+    "databases_persistence": {
+      "category": "Bases de Datos & Persistencia Relacional",
+      "skills": [
+        "SQL Avanzado",
+        "Diseño & Normalización Relacional",
+        "PostgreSQL 15 (+ PostGIS Geoespacial)",
+        "MySQL",
+        "SQLite",
+        "SQLAlchemy ORM (Async)",
+        "Optimización de Consultas"
+      ]
+    },
+    "frontend_ui": {
+      "category": "Frontend & Desarrollo Web",
+      "skills": [
+        "React 19 / Next.js 14",
+        "Angular",
+        "TypeScript",
+        "JavaScript ES6+",
+        "PWA Serverless",
+        "Tailwind CSS",
+        "HTML5 Semántico",
+        "CSS3 / Flexbox / Grid",
+        "Diseño Responsivo"
+      ]
+    },
+    "systems_low_level": {
+      "category": "Sistemas Operativos, Redes & Seguridad",
+      "skills": [
+        "Linux Kernel (C Syscalls / Ring 0)",
+        "Vagrant & Redes Virtuales (Host-Only)",
+        "Hardening Linux (IPTables / Fail2ban)",
+        "Shell / Bash / PowerShell",
+        "Git & GitHub",
+        "VS Code",
+        "Dibujo Técnico Industrial"
+      ]
+    }
+  },
+  "soft_skills": [
+    "Pensamiento crítico y analítico",
+    "Resolución estructurada de problemas complejos",
+    "Trabajo en equipo multidisciplinario",
+    "Comunicación técnica asertiva",
+    "Planificación y gestión ágil de tareas",
+    "Adaptabilidad y aprendizaje acelerado"
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "level": "Nativo",
+      "notes": "Lengua materna"
+    },
+    {
+      "language": "Inglés",
+      "level": "C1 Avanzado Profesional",
+      "certification": "Oxford Placement Test (Score 93/120 — CEFR C1)",
+      "notes": "Fluido en conversación técnica, comprensión auditiva y redacción técnica"
+    }
+  ]
+}

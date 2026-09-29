@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Creativo — Eduard Criollo Yule | Ilustrador, Animador & Escritor</title>
+    <!-- Google Fonts: Playfair Display, Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. DESIGN TOKENS CREATIVOS & EDITORIALES
+           ========================================================================== */
+        :root {
+            --primary-accent: #e11d48;       /* Rose Crimson */
+            --primary-accent-glow: rgba(225, 29, 72, 0.25);
+            --secondary-accent: #8b5cf6;     /* Purple Violet */
+            --dark-canvas: #0f1117;
+            --dark-card: #181b24;
+            --dark-card-glass: rgba(24, 27, 36, 0.85);
+            
+            --bg-body: #fafafa;
+            --surface-sheet: #ffffff;
+            --text-heading: #1e1b4b;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            --border-light: #e2e8f0;
+            
+            --font-serif: 'Playfair Display', serif;
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-classic: 'Cinzel', serif;
+            
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-art: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark-mode {
+            --bg-body: #0a0c10;
+            --surface-sheet: #12151e;
+            --text-heading: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-light: #1e2433;
+            --shadow-art: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            line-height: 1.65;
+            padding: 2.5rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        /* Barra flotante de acciones */
+        .art-action-bar {
+            position: fixed;
+            top: 1rem;
+            right: 1.5rem;
+            z-index: 100;
+            display: flex;
+            gap: 0.6rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 0.5rem 0.85rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-art);
+        }
+        body.dark-mode .art-action-bar {
+            background: rgba(18, 21, 30, 0.85);
+            border-color: #1e2433;
+        }
+
+        .art-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-heading);
+            padding: 0.45rem 0.95rem;
+            border-radius: 9999px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+        }
+        .art-btn:hover {
+            background: var(--primary-accent);
+            color: white;
+        }
+        .art-btn.primary {
+            background: var(--primary-accent);
+            color: white;
+        }
+
+        /* Contenedor del CV Creativo */
+        .cv-art-container {
+            width: 100%;
+            max-width: 1020px;
+            background: var(--surface-sheet);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-art);
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Sidebar Creativo */
+        .art-sidebar {
+            background: linear-gradient(180deg, #181b26 0%, #10121a 100%);
+            color: #ffffff;
+            padding: 2.5rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .art-profile-box {
+            text-align: center;
+        }
+
+        .art-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-accent);
+            box-shadow: 0 0 20px var(--primary-accent-glow);
+            margin: 0 auto 1.25rem;
+            display: block;
+        }
+
+        .art-name {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .art-headline {
+            color: #f43f5e;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.4rem;
+            letter-spacing: 0.5px;
+        }
+
+        .art-section-title {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #fda4af;
+            border-bottom: 1px solid rgba(244, 63, 94, 0.3);
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .art-contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            font-size: 0.82rem;
+        }
+
+        .art-contact-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+        .art-contact-link:hover { color: #f43f5e; }
+
+        .award-badge-card {
+            background: rgba(225, 29, 72, 0.08);
+            border: 1px solid rgba(225, 29, 72, 0.25);
+            padding: 0.85rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 0.75rem;
+        }
+
+        .award-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fecdd3;
+            margin-bottom: 0.2rem;
+        }
+
+        .award-desc {
+            font-size: 0.75rem;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        .art-tool-pill {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f1f5f9;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.55rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 0.2rem;
+        }
+
+        /* Contenido Principal */
+        .art-main {
+            padding: 2.75rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.25rem;
+        }
+
+        .main-heading-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .main-heading-wrap::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary-accent) 0%, transparent 100%);
+        }
+
+        .main-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: -0.3px;
+        }
+
+        .art-statement-box {
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.04) 0%, rgba(139, 92, 246, 0.04) 100%);
+            border-left: 4px solid var(--primary-accent);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-heading);
+            font-style: italic;
+        }
+
+        /* Disciplinas */
+        .discipline-card {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        body.dark-mode .discipline-card {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .discipline-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.35rem;
+        }
+
+        .discipline-desc {
+            font-size: 0.88rem;
+            color: var(--text-body);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Timeline Creativa */
+        .art-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding-left: 1.25rem;
+            border-left: 2px solid var(--border-light);
+        }
+
+        .art-timeline-item {
+            position: relative;
+        }
+        .art-timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem;
+            top: 0.4rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--surface-sheet);
+            border: 3px solid var(--primary-accent);
+        }
+
+        .art-role {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        .art-org {
+            color: var(--primary-accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .art-period {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-paragraph {
+            margin-bottom: 0.85rem;
+            line-height: 1.7;
+            color: var(--text-body);
+        }
+        .profile-paragraph:last-child {
+            margin-bottom: 0;
+        }
+
+        .explicit-url-creative {
+            font-size: 0.68rem;
+            color: #94a3b8;
+            font-family: monospace;
+            word-break: break-all;
+            display: block;
+            margin-top: 0.15rem;
+        }
+
+        .cert-verify-link-creative {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.72rem;
+            color: var(--primary-accent);
+            text-decoration: none;
+            margin-top: 0.35rem;
+            word-break: break-all;
+        }
+        .cert-verify-link-creative:hover { text-decoration: underline; }
+
+        /* ==========================================================================
+           MODO COMPACTO: 2 PÁGINAS ESTRICTAS
+           ========================================================================== */
+        body.compact-2p {
+            font-size: 8.8pt;
+        }
+        body.compact-2p .cv-art-container {
+            grid-template-columns: 250px 1fr;
+            max-width: 980px;
+        }
+        body.compact-2p .art-sidebar {
+            padding: 1.15rem 0.85rem;
+            gap: 0.95rem;
+        }
+        body.compact-2p .art-main {
+            padding: 1.15rem 1.35rem;
+            gap: 1rem;
+        }
+        body.compact-2p .main-title {
+            font-size: 1.05rem;
+        }
+        body.compact-2p .art-statement-box {
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+        body.compact-2p .profile-paragraph {
+            margin-bottom: 0.4rem;
+            line-height: 1.45;
+        }
+        body.compact-2p .discipline-card {
+            padding: 0.65rem 0.85rem;
+            margin-bottom: 0.45rem;
+        }
+        body.compact-2p .art-timeline-item {
+            margin-bottom: 0.55rem;
+        }
+        body.compact-2p .award-badge-card {
+            padding: 0.45rem 0.65rem;
+            margin-bottom: 0.35rem;
+        }
+        body.compact-2p .compact-page-break {
+            break-before: page;
+            page-break-before: always;
+        }
+
+        /* Impresión / PDF */
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            .art-action-bar { display: none !important; }
+            .cv-art-container {
+                box-shadow: none !important;
+                border: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                grid-template-columns: 270px 1fr !important;
+            }
+            .art-sidebar {
+                background: #181b26 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .discipline-card, .art-timeline-item, .award-badge-card {
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+            .main-heading-wrap {
+                break-after: avoid !important;
+                page-break-after: avoid !important;
+            }
+
+            body.compact-2p {
+                font-size: 8.4pt !important;
+            }
+            body.compact-2p .cv-art-container {
+                grid-template-columns: 240px 1fr !important;
+            }
+            body.compact-2p .compact-page-break {
+                break-before: page !important;
+                page-break-before: always !important;
+            }
+            body.compact-2p .art-sidebar {
+                padding: 1rem 0.75rem !important;
+            }
+            body.compact-2p .art-main {
+                padding: 1rem 1.25rem !important;
+            }
+            @page {
+                size: A4;
+                margin: 8mm 10mm;
+            }
+        }
+
+        /* ==========================================================================
+           MODAL INSPECTOR DE CERTIFICACIONES CREATIVAS & PREVIEW
+           ========================================================================== */
+        .art-modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 10, 15, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 2rem 1rem;
+            overflow-y: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        .art-modal-backdrop.active {
+            display: flex;
+        }
+        .art-modal-dialog {
+            background: var(--surface-sheet);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            max-width: 860px;
+            width: 100%;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            position: relative;
+            animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+        .art-modal-header {
+            padding: 1.25rem 1.75rem;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(225, 29, 72, 0.04);
+        }
+        .art-modal-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .art-modal-close {
+            background: rgba(125, 125, 125, 0.1);
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .art-modal-close:hover {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        .art-modal-content {
+            padding: 1.5rem 1.75rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .art-preview-frame {
+            width: 100%;
+            height: 480px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            background: #0b0f17;
+        }
+        .art-modal-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: rgba(225, 29, 72, 0.03);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+        }
+        .art-meta-item strong {
+            display: block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary-accent);
+            margin-bottom: 0.2rem;
+        }
+        .art-meta-item span {
+            font-size: 0.85rem;
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+        .art-modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .art-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .art-action-btn.primary {
+            background: var(--primary-accent);
+            color: white;
+            border: none;
+        }
+        .art-action-btn.secondary {
+            background: transparent;
+            color: var(--secondary-accent);
+            border: 1px solid var(--secondary-accent);
+        }
+        .art-action-btn:hover {
+            transform: translateY(-1px);
+        }
+        .art-cert-card-interactive {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .art-cert-card-interactive:hover {
+            border-color: var(--primary-accent) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.15);
+        }
+    
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE ACCIÓN -->
+    <div class="art-action-bar">
+        <button class="art-btn primary" id="btnArtExportPdf" onclick="window.print()" title="Imprimir o Guardar como PDF">
+            Exportar PDF
+        </button>
+        <button class="art-btn" id="compactArtToggleBtn" onclick="toggleArtCompactMode()" title="Alternar Vista Compacta de 2 Páginas">
+            Modo Compacto (2P)
+        </button>
+        <button class="art-btn" id="themeArtToggleBtn" onclick="toggleArtTheme()" title="Alternar Modo Oscuro/Claro">
+            Alternar Tema
+        </button>
+        <button class="art-btn" id="langArtToggleBtn" onclick="toggleArtLanguage()" title="Cambiar Idioma / Switch Language">
+            🌐 English
+        </button>
+        <a href="../../CV_Eduard_Criollo_Yule.html" class="art-btn" id="btnArtNavHub" title="Ir al Portal Hub Principal">
+            🏛️ Hub Principal
+        </a>
+        <a href="../../01_Software_Dev/cv_web/cv_software.html" class="art-btn" id="btnArtNavSoftware" title="Ver CV de Software">
+            💻 CV Software
+        </a>
+        <a href="../portfolio/atelier/index.html" class="art-btn" id="btnArtNavAtelier" title="Ver Portafolio Atelier">
+            Portafolio Atelier
+        </a>
+        <a href="../cv_plain_text/viewer.html" class="art-btn" id="btnArtNavAts" title="Ver Versión ATS en Texto Plano">
+            Visor ATS
+        </a>
+    </div>
+
+    <!-- CONTENEDOR CV -->
+    <div class="cv-art-container">
+        
+        <!-- SIDEBAR IZQUIERDO -->
+        <aside class="art-sidebar">
+            <div class="art-profile-box">
+                <img src="../../data/img/Creative_Arts/CreativeProfile.png" alt="Eduard Criollo Yule" class="art-photo" id="artPhoto" onerror="this.src='../../data/assets/foto.png'">
+                <h1 class="art-name" id="artName">Eduard Criollo Yule</h1>
+                <p class="art-headline" id="artHeadline">Ilustrador, Animador & Escritor</p>
+                <p style="font-size:0.8rem; color:#94a3b8; margin-top:0.25rem;">Cali, Colombia</p>
+            </div>
+
+            <!-- CONTACTO DINÁMICO -->
+            <div>
+                <h3 class="art-section-title" id="artSecContact">Contacto</h3>
+                <ul class="art-contact-list" id="artContactList">
+                    <!-- Inyectado dinámicamente con URLs explícitas -->
+                </ul>
+            </div>
+
+            <!-- DISTINCIONES Y PREMIOS -->
+            <div>
+                <h3 class="art-section-title" id="artSecAwards">Premios & Distinciones</h3>
+                <div id="artAwardsContainer">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+            </div>
+
+            <!-- SOFTWARE & HERRAMIENTAS CREATIVAS -->
+            <div>
+                <h3 class="art-section-title" id="artSecTools">Herramientas</h3>
+                <div id="artToolsContainer">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+            </div>
+
+            <!-- IDIOMAS DINÁMICO -->
+            <div>
+                <h3 class="art-section-title" id="artSecLanguages">Idiomas</h3>
+                <div id="artLanguagesContainer" style="font-size: 0.85rem; color:#f1f5f9;">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="art-main">
+            
+            <!-- DECLARACIÓN ARTÍSTICA / HOOK -->
+            <section>
+                <div class="main-heading-wrap">
+                    <h2 class="main-title" id="artSecStatement">Declaración Artística & Visión</h2>
+                </div>
+                <div class="art-statement-box" id="artStatement">
+                    Cargando perfil artístico desde la fuente madre (/data/profile_creative.json)...
+                </div>
+            </section>
+
+            <!-- DISCIPLINAS PRINCIPALES -->
+            <section>
+                <div class="main-heading-wrap">
+                    <h2 class="main-title" id="artSecDisciplines">Disciplinas de Especialización</h2>
+                </div>
+                <div id="disciplinesContainer">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+            </section>
+
+            <!-- FORMACIÓN TÉCNICA Y ACADÉMICA -->
+            <section>
+                <div class="main-heading-wrap">
+                    <h2 class="main-title" id="artSecEducation">Formación Académica & Técnica</h2>
+                </div>
+                <div class="art-timeline" id="artEducationContainer">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+            </section>
+
+            <!-- EXPERIENCIA EN PRODUCCIÓN AUDIOVISUAL -->
+            <section>
+                <div class="main-heading-wrap">
+                    <h2 class="main-title" id="artSecExperience">Producción Audiovisual & Eventos</h2>
+                </div>
+                <div class="art-timeline" id="artExperienceContainer">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+            </section>
+
+            <!-- PROYECTOS SELECCIONADOS & OBRAS -->
+            <section class="compact-page-break">
+                <div class="main-heading-wrap">
+                    <h2 class="main-title" id="artSecProjects">Proyectos Seleccionados & Obras</h2>
+                </div>
+                <div id="artProjectsContainer">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+            </section>
+
+            <!-- ACREDITACIONES Y CERTIFICACIONES -->
+            <section id="artCertsSection">
+                <div class="main-heading-wrap">
+                    <h2 class="main-title" id="artSecCerts">Acreditaciones & Certificaciones</h2>
+                </div>
+                <div id="artCertsContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem;">
+                    <!-- Inyectado dinámicamente desde certifications.json -->
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+
+    <!-- MODAL DE INSPECCIÓN DETALLADA DE CERTIFICACIONES CREATIVAS -->
+    <div class="art-modal-backdrop" id="artModalBackdrop" onclick="if(event.target === this) closeArtCertModal()">
+        <div class="art-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="artModalHeading">
+            <div class="art-modal-header">
+                <h3 class="art-modal-title" id="artModalHeading">
+                    <span>🎨</span> <span id="modalArtCertTitle">Detalles de Acreditación</span>
+                </h3>
+                <button class="art-modal-close" onclick="closeArtCertModal()" aria-label="Cerrar modal">✕</button>
+            </div>
+            <div class="art-modal-content" id="artModalContent">
+                <!-- Inyectado dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE DATOS GLOBALES (Soporte Offline & Local file:///) -->
+    <script src="../../data/bundle.js"></script>
+
+    <!-- SCRIPT DE CARGA REACTIVA Y BILINGÜE -->
+    <script>
+        /**
+         * @fileoverview DataLoader reactivo y bilingüe para el CV Creativo.
+         * Consume /data/bundle.js (local file:///) o /data/profile_creative.json (HTTP/HTTPS).
+         * 
+         * @author Eduard Criollo Yule
+         */
+
+        let currentLang = 'en';
+        let currentCreativeCerts = [];
+
+        const CREATIVE_UI_TEXT = {
+            es: {
+                pageTitle: "CV Creativo — Eduard Criollo Yule | Ilustrador, Animador & Escritor",
+                btnExportPdf: "Exportar PDF",
+                btnCompact: "Modo Compacto (2P)",
+                btnCompactNormal: "Modo Normal",
+                btnThemeDark: "Modo Oscuro",
+                btnThemeLight: "Modo Claro",
+                btnLang: "🌐 English",
+                btnNavHub: "🏛️ Hub Principal",
+                btnNavSoftware: "💻 CV Software",
+                btnNavAtelier: "Portafolio Atelier",
+                btnNavAts: "Visor ATS",
+                secContact: "Contacto",
+                secAwards: "Premios & Distinciones",
+                secTools: "Herramientas",
+                secLanguages: "Idiomas",
+                secStatement: "Declaración Artística & Visión",
+                secDisciplines: "Disciplinas de Especialización",
+                secEducation: "Formación Académica & Técnica",
+                secExperience: "Producción Audiovisual & Eventos",
+                secProjects: "Proyectos Seleccionados & Obras",
+                secCerts: "Acreditaciones & Certificaciones",
+                certInspectBtn: "🔍 Inspeccionar",
+                certPdfBtn: "📄 Documento PDF",
+                certVerifyBtn: "🔗 Verificar Online",
+                certAccredited: "Acreditado",
+                modalIssuer: "Institución Emisora",
+                modalDate: "Fecha de Acreditación",
+                modalCode: "ID / Código",
+                modalScore: "Calificación / Nivel",
+                modalSkills: "Habilidades & Técnicas Acreditadas",
+                modalPreview: "Visualización del Certificado",
+                modalNoPdf: "El visor integrado no está disponible. Puede abrir el PDF directamente mediante el enlace inferior.",
+                modalOpenPdf: "📄 Abrir Documento PDF",
+                modalVerifyOnline: "🔗 Verificar en Línea"
+            },
+            en: {
+                pageTitle: "Creative CV — Eduard Criollo Yule | Illustrator, Animator & Writer",
+                btnExportPdf: "Export PDF",
+                btnCompact: "Compact View (2P)",
+                btnCompactNormal: "Normal View",
+                btnThemeDark: "Dark Mode",
+                btnThemeLight: "Light Mode",
+                btnLang: "🌐 Español",
+                btnNavHub: "🏛️ Main Hub",
+                btnNavSoftware: "💻 Software CV",
+                btnNavAtelier: "Atelier Portfolio",
+                btnNavAts: "ATS Viewer",
+                secContact: "Contact",
+                secAwards: "Awards & Distinctions",
+                secTools: "Creative Tools",
+                secLanguages: "Languages",
+                secStatement: "Artistic Statement & Vision",
+                secDisciplines: "Areas of Specialization",
+                secEducation: "Academic & Technical Education",
+                secExperience: "Audiovisual Production & Events",
+                secProjects: "Selected Works & Projects",
+                secCerts: "Accreditations & Certifications",
+                certInspectBtn: "🔍 Inspect",
+                certPdfBtn: "📄 PDF Document",
+                certVerifyBtn: "🔗 Verify Online",
+                certAccredited: "Accredited",
+                modalIssuer: "Issuing Organization",
+                modalDate: "Issue Date",
+                modalCode: "ID / Code",
+                modalScore: "Grade / Level",
+                modalSkills: "Validated Techniques & Skills",
+                modalPreview: "Certificate Preview",
+                modalNoPdf: "Embedded viewer not supported. You can open the PDF directly using the button below.",
+                modalOpenPdf: "📄 Open PDF Document",
+                modalVerifyOnline: "🔗 Verify Online"
+            }
+        };
+
+        function toggleArtTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('cv_creative_theme', isDark ? 'dark' : 'light');
+            updateCreativeThemeBtn();
+        }
+
+        function updateCreativeThemeBtn() {
+            const btn = document.getElementById('themeArtToggleBtn');
+            const isDark = document.body.classList.contains('dark-mode');
+            const t = CREATIVE_UI_TEXT[currentLang] || CREATIVE_UI_TEXT.es;
+            if (btn) btn.textContent = isDark ? t.btnThemeLight : t.btnThemeDark;
+        }
+
+        function toggleArtCompactMode() {
+            document.body.classList.toggle('compact-2p');
+            const isCompact = document.body.classList.contains('compact-2p');
+            const btn = document.getElementById('compactArtToggleBtn');
+            const t = CREATIVE_UI_TEXT[currentLang] || CREATIVE_UI_TEXT.es;
+            if (btn) btn.textContent = isCompact ? t.btnCompactNormal : t.btnCompact;
+        }
+
+        function toggleArtLanguage() {
+            setArtLanguage(currentLang === 'es' ? 'en' : 'es');
+        }
+
+        function setArtLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('cv_creative_lang', lang);
+            applyCreativeLanguage();
+        }
+
+        function updateCreativeUITexts() {
+            const t = CREATIVE_UI_TEXT[currentLang] || CREATIVE_UI_TEXT.es;
+            document.title = t.pageTitle;
+
+            const btnExport = document.getElementById('btnArtExportPdf');
+            if (btnExport) btnExport.textContent = t.btnExportPdf;
+
+            const btnCompact = document.getElementById('compactArtToggleBtn');
+            if (btnCompact) {
+                const isCompact = document.body.classList.contains('compact-2p');
+                btnCompact.textContent = isCompact ? t.btnCompactNormal : t.btnCompact;
+            }
+
+            updateCreativeThemeBtn();
+
+            const btnLang = document.getElementById('langArtToggleBtn');
+            if (btnLang) btnLang.textContent = t.btnLang;
+
+            const btnHub = document.getElementById('btnArtNavHub');
+            if (btnHub) {
+                btnHub.textContent = t.btnNavHub;
+                btnHub.href = currentLang === 'en' ? "../../CV_Eduard_Criollo_Yule_en.html" : "../../CV_Eduard_Criollo_Yule.html";
+            }
+
+            const btnSoftware = document.getElementById('btnArtNavSoftware');
+            if (btnSoftware) {
+                btnSoftware.textContent = t.btnNavSoftware;
+                btnSoftware.href = currentLang === 'en' ? "../../01_Software_Dev/cv_web/cv_software_en.html" : "../../01_Software_Dev/cv_web/cv_software.html";
+            }
+
+            const btnAtelier = document.getElementById('btnArtNavAtelier');
+            if (btnAtelier) btnAtelier.textContent = t.btnNavAtelier;
+
+            const btnAts = document.getElementById('btnArtNavAts');
+            if (btnAts) {
+                btnAts.textContent = t.btnNavAts;
+                btnAts.href = currentLang === 'en' ? "../cv_plain_text/viewer_en.html" : "../cv_plain_text/viewer.html";
+            }
+
+            const sContact = document.getElementById('artSecContact');
+            if (sContact) sContact.textContent = t.secContact;
+            const sAwards = document.getElementById('artSecAwards');
+            if (sAwards) sAwards.textContent = t.secAwards;
+            const sTools = document.getElementById('artSecTools');
+            if (sTools) sTools.textContent = t.secTools;
+            const sLanguages = document.getElementById('artSecLanguages');
+            if (sLanguages) sLanguages.textContent = t.secLanguages;
+            const sStatement = document.getElementById('artSecStatement');
+            if (sStatement) sStatement.textContent = t.secStatement;
+            const sDisciplines = document.getElementById('artSecDisciplines');
+            if (sDisciplines) sDisciplines.textContent = t.secDisciplines;
+            const sEducation = document.getElementById('artSecEducation');
+            if (sEducation) sEducation.textContent = t.secEducation;
+            const sExperience = document.getElementById('artSecExperience');
+            if (sExperience) sExperience.textContent = t.secExperience;
+            const sProjects = document.getElementById('artSecProjects');
+            if (sProjects) sProjects.textContent = t.secProjects;
+            const sCerts = document.getElementById('artSecCerts');
+            if (sCerts) sCerts.textContent = t.secCerts;
+        }
+
+        async function applyCreativeLanguage() {
+            updateCreativeUITexts();
+
+            let dataLayer = window.CV_DATA;
+            let profileData = null;
+            let certsData = [];
+            let projectsData = [];
+
+            if (dataLayer) {
+                const bundleLang = (currentLang === 'en' && dataLayer.en) ? dataLayer.en : (dataLayer.es || dataLayer);
+                profileData = bundleLang.profile_creative || dataLayer.profile_creative;
+                certsData = (bundleLang.certifications || dataLayer.certifications || []).filter(c => (c.track || []).includes('creative') || (c.track || []).includes('both'));
+                projectsData = (bundleLang.projects || dataLayer.projects || []).filter(p => p.category === 'creative');
+            }
+
+            currentCreativeCerts = certsData;
+
+            if (profileData) renderCreativeCV(profileData);
+            if (certsData.length) renderCreativeCertifications(certsData);
+            if (projectsData.length) renderCreativeProjects(projectsData);
+
+            // Refresco dinámico HTTP opcional
+            const fileSuffix = currentLang === 'en' ? '_en' : '';
+            try {
+                const resProf = await fetch(`../../data/profile_creative${fileSuffix}.json`);
+                if (resProf.ok) {
+                    profileData = await resProf.json();
+                    renderCreativeCV(profileData);
+                }
+            } catch (_) {}
+
+            try {
+                const resC = await fetch(`../../data/certifications${fileSuffix}.json`);
+                if (resC.ok) {
+                    const json = await resC.json();
+                    currentCreativeCerts = (json.certifications || []).filter(c => (c.track || []).includes('creative') || (c.track || []).includes('both'));
+                    renderCreativeCertifications(currentCreativeCerts);
+                }
+            } catch (_) {}
+
+            try {
+                const resP = await fetch(`../../data/projects${fileSuffix}.json`);
+                if (resP.ok) {
+                    const json = await resP.json();
+                    projectsData = (json.projects || []).filter(p => p.category === 'creative');
+                    renderCreativeProjects(projectsData);
+                }
+            } catch (_) {}
+
+            document.body.setAttribute('data-rendered', 'true');
+            window.status = 'ready';
+        }
+
+        function renderParagraphs(containerId, rawText) {
+            const container = document.getElementById(containerId);
+            if (!container || !rawText) return;
+            const paragraphs = rawText.split(/\r?\n\r?\n/).filter(p => p.trim().length > 0);
+            container.innerHTML = paragraphs.map(p => `<p class="profile-paragraph">${p.trim()}</p>`).join('');
+        }
+
+        function renderCreativeContacts(personal) {
+            const container = document.getElementById('artContactList');
+            if (!container) return;
+
+            const c = personal.contact || {};
+            const isEn = currentLang === 'en';
+            const links = [
+                {
+                    label: isEn ? "ArtStation — Digital Gallery" : "ArtStation — Galería Digital",
+                    url: c.artstation || "https://artstation.com/eduardyule",
+                    display: c.artstation ? c.artstation.replace(/^https?:\/\/(www\.)?/, '') : "artstation.com/eduardyule"
+                },
+                {
+                    label: isEn ? "Behance — Visual Portfolio" : "Behance — Portafolio Visual",
+                    url: c.behance || "https://behance.net/eduardcriollo",
+                    display: c.behance ? c.behance.replace(/^https?:\/\/(www\.)?/, '') : "behance.net/eduardcriollo"
+                },
+                {
+                    label: isEn ? "LinkedIn — Arts & Media" : "LinkedIn — Artes & Audiovisual",
+                    url: c.linkedin || "https://www.linkedin.com/in/eduard-criollo-arts/",
+                    display: c.linkedin ? c.linkedin.replace(/^https?:\/\/(www\.)?/, '') : "linkedin.com/in/eduard-criollo-arts/"
+                },
+                {
+                    label: isEn ? "GitHub — Scripts & Tools" : "GitHub — Scripts & Tools",
+                    url: c.github || "https://github.com/EduardCY",
+                    display: c.github ? c.github.replace(/^https?:\/\/(www\.)?/, '') : "github.com/EduardCY"
+                },
+                {
+                    label: isEn ? "Email" : "Correo Electrónico",
+                    url: `mailto:${c.email || "eduardcriolloyule2004@gmail.com"}`,
+                    display: c.email || "eduardcriolloyule2004@gmail.com"
+                },
+                {
+                    label: isEn ? "Phone / Contact" : "Teléfono / Contacto",
+                    url: "mailto:eduardcriolloyule2004@gmail.com?subject=Solicitud%20de%20Contacto%20Telef%C3%B3nico%20-%20Eduard%20Criollo",
+                    display: c.phone || "+57 314 ••• ••••"
+                }
+            ];
+
+            container.innerHTML = links.map(l => `
+                <li style="margin-bottom: 0.55rem;">
+                    <a href="${l.url}" target="_blank" rel="noopener noreferrer" class="art-contact-link">
+                        <span style="font-weight: 500;">${l.label}</span>
+                    </a>
+                    <span class="explicit-url-creative">${l.display}</span>
+                </li>
+            `).join('');
+        }
+
+        function renderCreativeCV(data) {
+            document.getElementById('artName').textContent = data.personal.name;
+            document.getElementById('artHeadline').textContent = data.personal.headline;
+
+            renderParagraphs('artStatement', data.personal.summary_hook);
+            renderCreativeContacts(data.personal);
+
+            document.getElementById('artAwardsContainer').innerHTML = (data.awards_recognitions || []).map(a =>
+                `<div class="award-badge-card">
+                    <div class="award-title">${a.title}</div>
+                    <div class="award-desc">${a.description}</div>
+                    ${a.year ? `<div style="font-size:0.7rem; color:#94a3b8; margin-top:0.25rem;">📅 ${a.year} • ${a.organization || ''}</div>` : ''}
+                </div>`
+            ).join('');
+
+            const toolsList = (data.creative_skills_matrix && data.creative_skills_matrix.digital_tools)
+                ? data.creative_skills_matrix.digital_tools.skills
+                : ["Blender 3D", "Photoshop", "Illustrator", "After Effects", "Premiere Pro", "Clip Studio Paint", "AutoCAD", "Scrivener", "Audacity"];
+            document.getElementById('artToolsContainer').innerHTML = toolsList.map(t => `<span class="art-tool-pill">${t}</span>`).join('');
+
+            document.getElementById('artLanguagesContainer').innerHTML = (data.languages || []).map(l =>
+                `<p style="margin-bottom:0.35rem;">
+                    <strong>${l.language}:</strong> ${l.level} ${l.certification ? `<br><small style="color:#94a3b8;">${l.certification}</small>` : ''}
+                </p>`
+            ).join('');
+
+            document.getElementById('disciplinesContainer').innerHTML = (data.artistic_disciplines || []).map(d =>
+                `<div class="discipline-card">
+                    <h3 class="discipline-title">${d.name}</h3>
+                    <p class="discipline-desc">${d.description}</p>
+                    <div style="margin-top:0.4rem;">${(d.tools || []).map(t => `<span class="art-tool-pill" style="background:#e2e8f0; color:#1e293b; border:none;">${t}</span>`).join('')}</div>
+                </div>`
+            ).join('');
+
+            document.getElementById('artEducationContainer').innerHTML = (data.education || []).map(e => `
+                <div class="art-timeline-item">
+                    <div class="art-role">${e.degree}</div>
+                    <div class="art-org">${e.institution}</div>
+                    <div class="art-period">${e.period}</div>
+                    <ul style="padding-left:1rem; font-size:0.85rem; color:var(--text-body); line-height: 1.5;">
+                        ${(e.highlights || []).map(h => `<li>${h}</li>`).join('')}
+                    </ul>
+                </div>`
+            ).join('');
+
+            document.getElementById('artExperienceContainer').innerHTML = (data.experience || []).map(exp => `
+                <div class="art-timeline-item">
+                    <div class="art-role">${exp.role}</div>
+                    <div class="art-org">${exp.organization}</div>
+                    <div class="art-period">${exp.period}</div>
+                    <ul style="padding-left:1rem; font-size:0.85rem; color:var(--text-body); line-height: 1.5;">
+                        ${(exp.responsibilities || []).map(r => `<li>${r}</li>`).join('')}
+                    </ul>
+                </div>`
+            ).join('');
+        }
+
+        function renderCreativeProjects(projects) {
+            const container = document.getElementById('artProjectsContainer');
+            if (!container) return;
+
+            container.innerHTML = projects.map(p => {
+                const links = p.links || {};
+                const linkItems = [];
+                if (links.artstation) linkItems.push(`<a href="${links.artstation}" target="_blank" class="cert-verify-link-creative">🎨 ArtStation: <span class="explicit-url-creative">${links.artstation.replace(/^https?:\/\/(www\.)?/, '')}</span></a>`);
+                if (links.behance) linkItems.push(`<a href="${links.behance}" target="_blank" class="cert-verify-link-creative">🅱️ Behance: <span class="explicit-url-creative">${links.behance.replace(/^https?:\/\/(www\.)?/, '')}</span></a>`);
+                if (links.github) linkItems.push(`<a href="${links.github}" target="_blank" class="cert-verify-link-creative">💻 GitHub: <span class="explicit-url-creative">${links.github.replace(/^https?:\/\/(www\.)?/, '')}</span></a>`);
+
+                return `
+                <div class="discipline-card" style="border-left: 3px solid var(--primary-accent);">
+                    <div style="font-size: 0.75rem; font-weight: 700; color: var(--primary-accent); text-transform: uppercase; margin-bottom: 0.25rem;">
+                        ${p.sub_category} ${p.metrics ? `• ${p.metrics}` : ''}
+                    </div>
+                    <h3 class="discipline-title" style="margin-bottom: 0.35rem;">${p.title}</h3>
+                    <p class="discipline-desc" style="margin-bottom: 0.6rem;">${p.summary_executive || p.description}</p>
+                    <div style="margin-bottom:0.4rem;">
+                        ${(p.tech_stack || []).map(t => `<span class="art-tool-pill" style="background: rgba(225, 29, 72, 0.08); color: #f43f5e; border: 1px solid rgba(225, 29, 72, 0.2);">${t}</span>`).join('')}
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.4rem;">
+                        ${linkItems.join('')}
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function renderCreativeCertifications(certs) {
+            const container = document.getElementById('artCertsContainer');
+            if (!container) return;
+            const t = CREATIVE_UI_TEXT[currentLang] || CREATIVE_UI_TEXT.es;
+
+            container.innerHTML = certs.map(c => {
+                const verifyLink = c.credential_url
+                    ? `<a href="${c.credential_url}" target="_blank" rel="noopener noreferrer" class="cert-verify-link-creative" onclick="event.stopPropagation()">
+                         🔗 <span style="font-size:0.7rem;">${t.certVerifyBtn}</span>
+                       </a>`
+                    : '';
+                const archiveLink = c.pdf_archive_path
+                    ? `<a href="../../${c.pdf_archive_path}" target="_blank" class="cert-verify-link-creative" style="color:#8b5cf6;" onclick="event.stopPropagation()">
+                         ${t.certPdfBtn}
+                       </a>`
+                    : '';
+
+                const certKey = c.id || c.code || c.title;
+
+                return `
+                <div class="discipline-card art-cert-card-interactive" style="margin-bottom:0; padding:0.85rem;" onclick="openArtCertModal('${encodeURIComponent(certKey)}')">
+                    <div style="font-size:0.72rem; color:var(--primary-accent); font-weight:700; text-transform:uppercase;">${c.institution}</div>
+                    <div style="font-size:0.88rem; font-weight:700; color:var(--text-heading); margin:0.25rem 0;">${c.title}</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted);">${c.score ? `${t.modalScore}: ${c.score}` : (c.issue_date || t.certAccredited)}</div>
+                    <div style="display:flex; flex-direction:column; gap:0.25rem; margin-top:0.4rem;">
+                        <button type="button" class="cert-verify-link-creative" style="background:none; border:none; padding:0; cursor:pointer; text-align:left; color:var(--primary-accent);">
+                            ${t.certInspectBtn}
+                        </button>
+                        ${verifyLink}
+                        ${archiveLink}
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function openArtCertModal(encodedKey) {
+            const key = decodeURIComponent(encodedKey);
+            const cert = currentCreativeCerts.find(c => (c.id === key) || (c.code === key) || (c.title === key));
+            if (!cert) return;
+
+            const t = CREATIVE_UI_TEXT[currentLang] || CREATIVE_UI_TEXT.es;
+            const modal = document.getElementById('artModalBackdrop');
+            const heading = document.getElementById('modalArtCertTitle');
+            const content = document.getElementById('artModalContent');
+
+            heading.textContent = cert.title;
+
+            const pdfPath = cert.pdf_archive_path ? `../../${cert.pdf_archive_path}` : '';
+            const verifyUrl = cert.credential_url || '';
+
+            const skillsHtml = (cert.skills || []).length > 0
+                ? `<div style="margin-top:0.75rem;">
+                     <strong style="display:block; font-size:0.75rem; text-transform:uppercase; color:var(--primary-accent); margin-bottom:0.4rem;">${t.modalSkills}</strong>
+                     <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                       ${cert.skills.map(s => `<span class="art-tool-pill" style="background:rgba(225,29,72,0.1); color:var(--text-heading); border-color:rgba(225,29,72,0.25);">${s}</span>`).join('')}
+                     </div>
+                   </div>`
+                : '';
+
+            const previewSection = pdfPath
+                ? `<div>
+                     <strong style="display:block; font-size:0.75rem; text-transform:uppercase; color:var(--primary-accent); margin-bottom:0.4rem;">${t.modalPreview}</strong>
+                     <object data="${pdfPath}" type="application/pdf" class="art-preview-frame">
+                         <div style="padding:2rem; text-align:center; color:var(--text-muted); font-size:0.85rem;">
+                             <p>${t.modalNoPdf}</p>
+                             <a href="${pdfPath}" target="_blank" class="art-action-btn primary" style="margin-top:1rem;">${t.modalOpenPdf}</a>
+                         </div>
+                     </object>
+                   </div>`
+                : `<div style="padding:1.5rem; background:rgba(0,0,0,0.05); border-radius:var(--radius-md); text-align:center; color:var(--text-muted);">
+                     Acreditación verificada digitalmente.
+                   </div>`;
+
+            content.innerHTML = `
+                <div class="art-modal-meta-grid">
+                    <div class="art-meta-item">
+                        <strong>${t.modalIssuer}</strong>
+                        <span>${cert.institution}</span>
+                    </div>
+                    <div class="art-meta-item">
+                        <strong>${t.modalDate}</strong>
+                        <span>${cert.issue_date || t.certAccredited}</span>
+                    </div>
+                    <div class="art-meta-item">
+                        <strong>${t.modalCode}</strong>
+                        <span style="font-family:monospace; font-size:0.75rem;">${cert.code || 'VERIFIED'}</span>
+                    </div>
+                    ${cert.score ? `
+                    <div class="art-meta-item">
+                        <strong>${t.modalScore}</strong>
+                        <span style="color:var(--primary-accent);">${cert.score}</span>
+                    </div>` : ''}
+                </div>
+
+                <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">${cert.description || ''}</p>
+
+                ${skillsHtml}
+
+                <div class="art-modal-actions">
+                    ${pdfPath ? `<a href="${pdfPath}" target="_blank" class="art-action-btn primary">${t.modalOpenPdf}</a>` : ''}
+                    ${verifyUrl ? `<a href="${verifyUrl}" target="_blank" rel="noopener noreferrer" class="art-action-btn secondary">${t.modalVerifyOnline}</a>` : ''}
+                </div>
+
+                ${previewSection}
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArtCertModal() {
+            const modal = document.getElementById('artModalBackdrop');
+            if (modal) modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeArtCertModal();
+        });
+
+        if (localStorage.getItem('cv_creative_theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('mode') === 'compact') {
+            document.body.classList.add('compact-2p');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyCreativeLanguage();
+        });
+    </script>
+</body>
+</html>

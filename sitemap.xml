@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+    <!-- Hub Central / Canonical Root -->
+    <url>
+        <loc>https://eduardcy.github.io/cv/</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="es" href="https://eduardcy.github.io/cv/CV_Eduard_Criollo_Yule.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://eduardcy.github.io/cv/CV_Eduard_Criollo_Yule_en.html" />
+    </url>
+
+    <!-- Hub Español -->
+    <url>
+        <loc>https://eduardcy.github.io/cv/CV_Eduard_Criollo_Yule.html</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Hub English -->
+    <url>
+        <loc>https://eduardcy.github.io/cv/CV_Eduard_Criollo_Yule_en.html</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Track: Software Engineer (ES) -->
+    <url>
+        <loc>https://eduardcy.github.io/cv/01_Software_Dev/cv_web/cv_software.html</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <!-- Track: Software Engineer (EN) -->
+    <url>
+        <loc>https://eduardcy.github.io/cv/01_Software_Dev/cv_web/cv_software_en.html</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <!-- Track: Creative Arts (ES) -->
+    <url>
+        <loc>https://eduardcy.github.io/cv/02_Creative_Arts/cv_web/cv_creative.html</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Track: Creative Arts (EN) -->
+    <url>
+        <loc>https://eduardcy.github.io/cv/02_Creative_Arts/cv_web/cv_creative_en.html</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Portfolio Experiencias Interactivas -->
+    <url>
+        <loc>https://eduardcy.github.io/cv/01_Software_Dev/portfolio/option_tron/index.html</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://eduardcy.github.io/cv/01_Software_Dev/portfolio/option_gothic/index.html</loc>
+        <lastmod>2026-09-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+</urlset>
