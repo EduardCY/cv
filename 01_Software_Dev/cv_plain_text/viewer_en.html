@@ -181,6 +181,46 @@
             transform: translateY(0);
         }
 
+        @media screen and (max-width: 640px) {
+            body {
+                padding: 0.5rem;
+            }
+            .viewer-header {
+                padding: 0.6rem 0.8rem;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+            .header-title {
+                font-size: 0.8rem;
+                justify-content: space-between;
+            }
+            .toolbar-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.35rem;
+            }
+            .tool-btn {
+                flex: 1 1 calc(50% - 0.35rem);
+                justify-content: center;
+                padding: 0.45rem 0.5rem;
+                font-size: 0.74rem;
+                min-height: 36px;
+            }
+            .editor-body {
+                font-size: 0.78rem;
+                padding: 0.8rem 0;
+            }
+            .line-numbers {
+                min-width: 2.5rem;
+                padding: 0 0.5rem 0 0.6rem;
+                font-size: 0.72rem;
+            }
+            .code-content {
+                padding: 0 0.8rem;
+            }
+        }
+
         @media print {
             body {
                 background: white !important;

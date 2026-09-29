@@ -1512,7 +1512,7 @@ body.is-resizing object {
         border-bottom: none !important;
         margin: 0 !important;
         box-shadow: none !important;
-        display: none;
+        display: none !important;
         flex-direction: column;
         z-index: 10;
         
@@ -1524,8 +1524,14 @@ body.is-resizing object {
         --project-desc-lines: 8 !important;
     }
 
-    .win97-window.active {
+    .win97-window.active:not(.hidden-window):not(.minimized) {
         display: flex !important;
+    }
+
+    .win97-window.hidden-window,
+    .win97-window.minimized,
+    .win97-window[style*="display: none"] {
+        display: none !important;
     }
 
     /* Ocultar tiradores de redimensionamiento libre en dispositivos táctiles */

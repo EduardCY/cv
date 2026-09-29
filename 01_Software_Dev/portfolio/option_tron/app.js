@@ -463,8 +463,13 @@ function openWindow(winId) {
     const tab = document.getElementById(`tab-${winId}`);
     if (!win) return;
 
+    win.classList.remove('hidden-window', 'minimized');
+    win.style.removeProperty('display');
     win.style.display = 'flex';
-    if (tab) tab.classList.remove('hidden-tab');
+    if (tab) {
+        tab.classList.remove('hidden-tab');
+        tab.classList.add('active');
+    }
     bringToFront(winId);
 
     if (window.innerWidth <= 768) {
@@ -483,14 +488,29 @@ function openWindow(winId) {
 
 /**
  * Cierra una ventana ocultándola del escritorio y de la barra de tareas.
+ * En pantallas móviles remueve las clases activas y garantiza display: none.
  * 
  * @param {string} winId ID de la ventana.
  */
 function closeWindow(winId) {
     const win = document.getElementById(winId);
     const tab = document.getElementById(`tab-${winId}`);
-    if (win) win.style.display = 'none';
-    if (tab) tab.classList.add('hidden-tab');
+    if (win) {
+        win.classList.remove('active', 'maximized');
+        win.classList.add('hidden-window');
+        win.style.setProperty('display', 'none', 'important');
+    }
+    if (tab) {
+        tab.classList.add('hidden-tab');
+        tab.classList.remove('active');
+    }
+
+    // Transferir foco a la siguiente ventana abierta visible si existe
+    const remainingOpenWindows = Array.from(document.querySelectorAll('.win97-window'))
+        .filter(w => w.id !== winId && !w.classList.contains('hidden-window') && !w.classList.contains('minimized') && w.style.display !== 'none');
+    if (remainingOpenWindows.length > 0) {
+        bringToFront(remainingOpenWindows[remainingOpenWindows.length - 1].id);
+    }
 }
 
 /**
@@ -502,11 +522,19 @@ function minimizeWindow(winId) {
     const win = document.getElementById(winId);
     const tab = document.getElementById(`tab-${winId}`);
     if (win) {
-        win.style.display = 'none';
         win.classList.remove('active');
+        win.classList.add('minimized');
+        win.style.setProperty('display', 'none', 'important');
     }
     if (tab) {
         tab.classList.remove('active');
+    }
+
+    // Transferir foco a la siguiente ventana abierta si existe
+    const remainingOpenWindows = Array.from(document.querySelectorAll('.win97-window'))
+        .filter(w => w.id !== winId && !w.classList.contains('hidden-window') && !w.classList.contains('minimized') && w.style.display !== 'none');
+    if (remainingOpenWindows.length > 0) {
+        bringToFront(remainingOpenWindows[remainingOpenWindows.length - 1].id);
     }
 }
 
@@ -562,11 +590,17 @@ function bringToFront(winId) {
     // Desactivar todas las demás ventanas
     document.querySelectorAll('.win97-window').forEach(w => w.classList.remove('active'));
     win.classList.add('active');
+    win.classList.remove('hidden-window', 'minimized');
+    win.style.removeProperty('display');
+    win.style.display = 'flex';
 
     // Sincronizar botones de la barra de tareas
     document.querySelectorAll('.taskbar-tab').forEach(t => t.classList.remove('active'));
     const tab = document.getElementById(`tab-${winId}`);
-    if (tab) tab.classList.add('active');
+    if (tab) {
+        tab.classList.remove('hidden-tab');
+        tab.classList.add('active');
+    }
 }
 
 /**
@@ -578,7 +612,7 @@ function toggleWindowFromTaskbar(winId) {
     const win = document.getElementById(winId);
     if (!win) return;
 
-    if (win.style.display === 'none') {
+    if (win.style.display === 'none' || win.classList.contains('minimized') || win.classList.contains('hidden-window')) {
         openWindow(winId);
     } else if (win.classList.contains('active')) {
         minimizeWindow(winId);

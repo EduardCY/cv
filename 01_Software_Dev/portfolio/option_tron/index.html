@@ -497,19 +497,11 @@
                                 <p>Formato estandarizado sin ruido para sistemas de selección.</p>
                             </div>
                         </a>
-
-                        <a href="../../cv_web/cv_software_compacto_2p.pdf" target="_blank" class="ie-link-card">
-                            <span class="ie-card-icon">📥</span>
-                            <div>
-                                <strong>Descarga PDF Oficial</strong>
-                                <p>Documento imprimible de 2 páginas con métricas y enlaces.</p>
-                            </div>
-                        </a>
                     </div>
                 </fieldset>
 
                 <div class="dialog-button-row" style="margin-top: 10px;">
-                    <button class="win97-btn" onclick="closeWindow('winBrowser')">Cerrar Navegador</button>
+                    <button class="win97-btn default-btn" onclick="closeWindow('winBrowser')">Cerrar Navegador</button>
                 </div>
             </div>
 
@@ -530,7 +522,9 @@
                     <span class="titlebar-text">Papelera de reciclaje</span>
                 </div>
                 <div class="titlebar-controls">
-                    <button class="win97-btn-box" onclick="closeWindow('winTrash')">✕</button>
+                    <button class="win97-btn-box" onclick="minimizeWindow('winTrash')" title="Minimizar">_</button>
+                    <button class="win97-btn-box" onclick="maximizeWindow('winTrash')" title="Maximizar">□</button>
+                    <button class="win97-btn-box btn-close" onclick="closeWindow('winTrash')" title="Cerrar">✕</button>
                 </div>
             </header>
 
@@ -546,6 +540,7 @@
                 </fieldset>
                 <div class="dialog-button-row" style="margin-top: 10px;">
                     <button class="win97-btn" onclick="closeWindow('winTrash')">Vaciar Papelera</button>
+                    <button class="win97-btn default-btn" onclick="closeWindow('winTrash')">Cerrar</button>
                 </div>
             </div>
             <footer class="win97-statusbar">
@@ -695,6 +690,10 @@
             <button class="taskbar-tab hidden-tab" id="tab-winBrowser" onclick="toggleWindowFromTaskbar('winBrowser')">
                 <span class="win97-icon-mini icon-ie-mini"></span>
                 <span>Explorer</span>
+            </button>
+            <button class="taskbar-tab hidden-tab" id="tab-winTrash" onclick="toggleWindowFromTaskbar('winTrash')">
+                <span class="win97-icon-mini icon-trash-mini"></span>
+                <span>Papelera</span>
             </button>
         </div>
 

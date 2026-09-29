@@ -246,8 +246,8 @@
             color: var(--text-sidebar-muted);
             text-decoration: none;
             display: flex;
-            align-items: center;
-            gap: 0.6rem;
+            flex-direction: column;
+            gap: 0.15rem;
             word-break: break-all;
             transition: color 0.2s ease;
         }
@@ -256,10 +256,28 @@
             color: white;
         }
 
-        .contact-icon {
-            color: var(--accent);
-            font-size: 1rem;
+        .contact-header-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .contact-svg-icon {
+            width: 15px;
+            height: 15px;
+            fill: var(--accent);
             flex-shrink: 0;
+            display: inline-block;
+            vertical-align: middle;
+            transition: transform 0.2s ease, fill 0.2s ease;
+        }
+
+        .contact-link:hover .contact-svg-icon {
+            fill: white;
+            transform: scale(1.1);
         }
 
         .metric-card {
@@ -692,27 +710,68 @@
         }
 
         @media screen and (max-width: 900px) {
-            .cv-wrapper {
-                grid-template-columns: 1fr;
-            }
-            .cv-banner-header {
-                height: 125px;
-            }
-            .sidebar {
-                border-right: none;
-                border-bottom: 1px solid var(--border-sidebar);
-            }
-            .profile-photo-wrap {
-                margin-top: -50px;
-            }
-            .profile-photo {
-                width: 115px;
-                height: 115px;
+            body, body.compact-2p {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                padding: 1rem 0.5rem !important;
             }
             .action-bar {
-                position: static;
-                margin-bottom: 1rem;
-                justify-content: center;
+                position: static !important;
+                margin-bottom: 1rem !important;
+                justify-content: center !important;
+                flex-wrap: wrap !important;
+                max-width: 100% !important;
+            }
+            .cv-wrapper, body.compact-2p .cv-wrapper {
+                grid-template-columns: 1fr !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-top: 0 !important;
+            }
+            .cv-banner-header {
+                height: 125px !important;
+            }
+            .sidebar, body.compact-2p .sidebar {
+                width: 100% !important;
+                border-right: none !important;
+                border-bottom: 1px solid var(--border-sidebar) !important;
+                padding: 1.5rem 1rem !important;
+            }
+            .main-content, body.compact-2p .main-content {
+                width: 100% !important;
+                padding: 1.5rem 1rem !important;
+            }
+            .profile-photo-wrap {
+                margin-top: -50px !important;
+            }
+            .profile-photo {
+                width: 115px !important;
+                height: 115px !important;
+            }
+            .cert-grid, body.compact-2p .cert-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media screen and (max-width: 640px) {
+            body, body.compact-2p {
+                padding: 0.5rem !important;
+            }
+            .action-bar {
+                gap: 0.35rem !important;
+                padding: 0.4rem 0.6rem !important;
+                border-radius: var(--radius-md) !important;
+            }
+            .action-btn {
+                padding: 0.35rem 0.65rem !important;
+                font-size: 0.78rem !important;
+            }
+            .main-content, body.compact-2p .main-content {
+                padding: 1rem 0.75rem !important;
+            }
+            .sidebar, body.compact-2p .sidebar {
+                padding: 1rem 0.75rem !important;
             }
         }
 
@@ -938,7 +997,6 @@
             border-color: var(--accent);
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
         }
-    
     </style>
 </head>
 <body class="compact-2p">
@@ -946,7 +1004,7 @@
     <!-- BARRA FLOTANTE DE ACCIÓN -->
     <div class="action-bar" id="actionBar">
         <a href="../../index.html" class="action-btn" id="btnNavHome" title="Ir al Portal Principal de Software">
-            💻 Portal Software
+            Portal Software
         </a>
         <button class="action-btn primary" id="btnExportPdf" onclick="window.print()" title="Imprimir o Guardar como PDF">
             Exportar PDF
@@ -955,7 +1013,7 @@
             Alternar Tema
         </button>
         <button class="action-btn" id="langToggleBtn" onclick="toggleLanguage()" title="Cambiar Idioma / Switch Language">
-            🌐 English
+            English
         </button>
         <a href="../portfolio/option_tron/index.html" class="action-btn" id="btnNavWin97" title="Ver Portafolio Windows 97">
             Portafolio Win97
@@ -1064,7 +1122,7 @@
         <div class="cert-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="certModalHeading">
             <div class="cert-modal-header">
                 <h3 class="cert-modal-title" id="certModalHeading">
-                    <span>🎓</span> <span id="modalCertTitle">Detalles del Certificado</span>
+                    <span id="modalCertTitle">Detalles del Certificado</span>
                 </h3>
                 <button class="cert-modal-close" onclick="closeCertModal()" aria-label="Cerrar modal">✕</button>
             </div>
@@ -1093,11 +1151,11 @@
         const UI_TEXT = {
             es: {
                 pageTitle: "CV Profesional — Eduard Criollo Yule | Full Stack & AI",
-                btnHome: "💻 Portal Software",
+                btnHome: "Portal Software",
                 btnExportPdf: "Exportar PDF",
                 btnThemeDark: "Modo Oscuro",
                 btnThemeLight: "Modo Claro",
-                btnLang: "🌐 English",
+                btnLang: "English",
                 btnNavWin97: "Portafolio Win97",
                 btnNavAts: "Visor ATS",
                 secContact: "Redes & Contacto",
@@ -1109,15 +1167,15 @@
                 secExperience: "Experiencia & Soporte Técnico",
                 secProjects: "Proyectos Seleccionados",
                 secCertifications: "Certificaciones Profesionales",
-                certInspectBtn: "🔍 Inspeccionar",
-                certPdfBtn: "📄 PDF Certificado",
-                certVerifyBtn: "🔗 Verificar Online",
+                certInspectBtn: "Inspeccionar",
+                certPdfBtn: "Certificado PDF",
+                certVerifyBtn: "Verificar Online",
                 certAccredited: "Acreditado",
                 certVerified: "Verificado",
-                repoPrivateTitle: "🔒 Repositorio Privado / Confidencial:",
+                repoPrivateTitle: "Repositorio Privado / Confidencial:",
                 repoPrivateDesc: "Demostración y código disponibles bajo solicitud técnica",
-                repoGithub: "💻 Repositorio GitHub:",
-                repoDemo: "🚀 Demo Online",
+                repoGithub: "Repositorio GitHub:",
+                repoDemo: "Demo Online",
                 modalIssuer: "Institución Emisora",
                 modalDate: "Fecha de Emisión",
                 modalCode: "Código / Credencial ID",
@@ -1125,16 +1183,16 @@
                 modalSkills: "Competencias Acreditadas",
                 modalPreview: "Vista Previa del Documento Oficial",
                 modalNoPdf: "El visor integrado no está disponible. Puede abrir el PDF directamente mediante el botón inferior.",
-                modalOpenPdf: "📄 Abrir Documento PDF Oficial",
-                modalVerifyOnline: "🔗 Verificar en Plataforma Emisora"
+                modalOpenPdf: "Abrir Documento PDF Oficial",
+                modalVerifyOnline: "Verificar en Plataforma Emisora"
             },
             en: {
                 pageTitle: "Professional CV — Eduard Criollo Yule | Full Stack & AI",
-                btnHome: "💻 Software Portal",
+                btnHome: "Software Portal",
                 btnExportPdf: "Export PDF",
                 btnThemeDark: "Dark Mode",
                 btnThemeLight: "Light Mode",
-                btnLang: "🌐 Español",
+                btnLang: "Español",
                 btnNavWin97: "Win97 Portfolio",
                 btnNavAts: "ATS Viewer",
                 secContact: "Contact & Networks",
@@ -1146,15 +1204,15 @@
                 secExperience: "Experience & Technical Support",
                 secProjects: "Selected Projects",
                 secCertifications: "Professional Certifications",
-                certInspectBtn: "🔍 Inspect",
-                certPdfBtn: "📄 PDF Certificate",
-                certVerifyBtn: "🔗 Verify Online",
+                certInspectBtn: "Inspect",
+                certPdfBtn: "PDF Certificate",
+                certVerifyBtn: "Verify Online",
                 certAccredited: "Accredited",
                 certVerified: "Verified",
-                repoPrivateTitle: "🔒 Private / Confidential Repository:",
+                repoPrivateTitle: "Private / Confidential Repository:",
                 repoPrivateDesc: "Architecture demo and source code available upon technical request",
-                repoGithub: "💻 GitHub Repository:",
-                repoDemo: "🚀 Live Demo",
+                repoGithub: "GitHub Repository:",
+                repoDemo: "Live Demo",
                 modalIssuer: "Issuing Organization",
                 modalDate: "Issue Date",
                 modalCode: "Credential ID / Code",
@@ -1162,9 +1220,17 @@
                 modalSkills: "Validated Competencies",
                 modalPreview: "Official Document Preview",
                 modalNoPdf: "Embedded viewer not supported. You can open the PDF directly using the button below.",
-                modalOpenPdf: "📄 Open Official PDF Document",
-                modalVerifyOnline: "🔗 Verify on Issuer Platform"
+                modalOpenPdf: "Open Official PDF Document",
+                modalVerifyOnline: "Verify on Issuer Platform"
             }
+        };
+
+        const CONTACT_ICONS = {
+            linkedin: `<svg viewBox="0 0 24 24" class="contact-svg-icon" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.77v8.37H6.46v-8.37M7.84 6.2a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/></svg>`,
+            github: `<svg viewBox="0 0 24 24" class="contact-svg-icon" aria-hidden="true"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>`,
+            platzi: `<svg viewBox="0 0 24 24" class="contact-svg-icon" aria-hidden="true"><path d="M19.4 6.6c-1.8-2.6-4.9-4.2-8.1-4.2C5.9 2.4 1.6 6.7 1.6 12s4.3 9.6 9.7 9.6c4.6 0 8.5-3.1 9.5-7.5.3-1.1-.5-2.2-1.7-2.2h-7.7c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h3.5c-.8 1.4-2.2 2.3-3.8 2.3-2.5 0-4.6-2.1-4.6-4.6s2.1-4.6 4.6-4.6c1.2 0 2.4.5 3.2 1.4.6.6 1.5.6 2.1 0l1.9-1.9c.5-.5.5-1.4 0-1.9-.3-.5-.7-.9-1.2-1.3z"/></svg>`,
+            email: `<svg viewBox="0 0 24 24" class="contact-svg-icon" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>`,
+            phone: `<svg viewBox="0 0 24 24" class="contact-svg-icon" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>`
         };
 
         function toggleDarkMode() {
@@ -1300,26 +1366,31 @@
             const isEn = currentLang === 'en';
             const links = [
                 {
+                    type: "linkedin",
                     label: isEn ? "LinkedIn — Software Dev & AI" : "LinkedIn — Software Dev & IA",
                     url: c.linkedin || "https://www.linkedin.com/in/eduard-criollo-yule/",
                     display: c.linkedin ? c.linkedin.replace(/^https?:\/\/(www\.)?/, '') : "linkedin.com/in/eduard-criollo-yule/"
                 },
                 {
+                    type: "github",
                     label: isEn ? "GitHub: Repositories & Code" : "GitHub: Repositorios y Código",
                     url: c.github || "https://github.com/EduardCY",
                     display: c.github ? c.github.replace(/^https?:\/\/(www\.)?/, '') : "github.com/EduardCY"
                 },
                 {
+                    type: "platzi",
                     label: isEn ? "Platzi: Training Profile" : "Platzi: Perfil de Formación",
                     url: c.platzi || "https://platzi.com/@EduardYule/",
                     display: c.platzi ? c.platzi.replace(/^https?:\/\/(www\.)?/, '') : "platzi.com/@EduardYule/"
                 },
                 {
+                    type: "email",
                     label: isEn ? "Email Address" : "Correo Electrónico",
                     url: `mailto:${c.email || "eduardcriolloyule2004@gmail.com"}`,
                     display: c.email || "eduardcriolloyule2004@gmail.com"
                 },
                 {
+                    type: "phone",
                     label: isEn ? "Phone / WhatsApp" : "Teléfono / WhatsApp",
                     url: "mailto:eduardcriolloyule2004@gmail.com?subject=Solicitud%20de%20Contacto%20Telef%C3%B3nico%20-%20Eduard%20Criollo",
                     display: c.phone || "+57 314 ••• ••••"
@@ -1327,9 +1398,12 @@
             ];
 
             container.innerHTML = links.map(l => `
-                <li style="margin-bottom: 0.6rem;">
+                <li style="margin-bottom: 0.65rem;">
                     <a href="${l.url}" target="_blank" rel="noopener noreferrer" class="contact-link">
-                        <span>${l.label}</span>
+                        <div class="contact-header-row">
+                            ${CONTACT_ICONS[l.type] || ''}
+                            <span>${l.label}</span>
+                        </div>
                         <span class="url-text-explicit">${l.display}</span>
                     </a>
                 </li>
@@ -1405,7 +1479,7 @@
             container.innerHTML = certs.map(c => {
                 const verifyLink = c.credential_url
                     ? `<a href="${c.credential_url}" target="_blank" rel="noopener noreferrer" class="cert-verify-link" onclick="event.stopPropagation()">
-                         🔗 <span>${t.certVerifyBtn}</span>
+                         <span>${t.certVerifyBtn}</span>
                        </a>`
                     : '';
                 const archiveLink = c.pdf_archive_path
@@ -1430,7 +1504,7 @@
                         </div>
                     </div>
                     <div class="cert-footer">
-                        <span>📅 ${c.issue_date || t.certAccredited}</span>
+                        <span>${c.issue_date || t.certAccredited}</span>
                         <span>${c.code ? 'ID: ' + c.code.substring(0, 16) : t.certVerified}</span>
                     </div>
                 </div>
@@ -1447,13 +1521,13 @@
                 const links = p.links || {};
                 const linkItems = [];
                 if (p.is_private) {
-                    linkItems.push(`<div style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.78rem; color:#f59e0b; font-family:var(--font-mono); background:rgba(245,158,11,0.08); padding:0.25rem 0.6rem; border:1px solid rgba(245,158,11,0.3); border-radius:4px; width:fit-content; margin-top:0.2rem;">🔒 <strong>${t.repoPrivateTitle}</strong> <span style="color:var(--text-muted);">${t.repoPrivateDesc}</span></div>`);
+                    linkItems.push(`<div style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.78rem; color:#f59e0b; font-family:var(--font-mono); background:rgba(245,158,11,0.08); padding:0.25rem 0.6rem; border:1px solid rgba(245,158,11,0.3); border-radius:4px; width:fit-content; margin-top:0.2rem;"><strong>${t.repoPrivateTitle}</strong> <span style="color:var(--text-muted);">${t.repoPrivateDesc}</span></div>`);
                 } else {
                     if (links.github) linkItems.push(`<a href="${links.github}" target="_blank" class="cert-verify-link">${t.repoGithub} <span class="url-text-explicit">${links.github.replace(/^https?:\/\/(www\.)?/, '')}</span></a>`);
                 }
                 if (links.demo) linkItems.push(`<a href="${links.demo}" target="_blank" class="cert-verify-link">${t.repoDemo}</a>`);
 
-                const privateBadge = p.is_private ? `<span style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.35); font-size:0.68rem; padding:0.12rem 0.45rem; border-radius:3px; margin-left:0.5rem; font-family:var(--font-mono); font-weight:700;">🔒 ${currentLang === 'en' ? 'PRIVATE' : 'PRIVADO'}</span>` : '';
+                const privateBadge = p.is_private ? `<span style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.35); font-size:0.68rem; padding:0.12rem 0.45rem; border-radius:3px; margin-left:0.5rem; font-family:var(--font-mono); font-weight:700;">${currentLang === 'en' ? 'PRIVATE' : 'PRIVADO'}</span>` : '';
 
                 return `
                 <div class="project-item">
