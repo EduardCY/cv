@@ -3,740 +3,627 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Eduard Criollo Yule — Desarrollador Full Stack & Especialista en IA. Portal ejecutivo de ingeniería de software con CV interactivo compacto (2P), portafolio interactivo Windows 97, visor ATS y descarga oficial en PDF.">
-    <title>Eduard Criollo Yule — Full Stack Engineer & AI Specialist</title>
+    <meta name="description" content="Eduard Criollo Yule — Desarrollador Full Stack & Especialista en IA. Portal ejecutivo de ingeniería de software en interfaz clásica Windows 97 con CV interactivo compacto (2P), portafolio interactivo retro y visor ATS.">
+    <title>Eduard Criollo Yule — Centro de Control Ejecutivo [Windows 97 Edition]</title>
 
     <!-- OpenGraph & Social Metadata -->
     <link rel="canonical" href="https://eduardcy.github.io/cv/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Eduard Criollo Yule — Software Engineering Portal">
+    <meta property="og:site_name" content="Eduard Criollo Yule — Windows 97 Software Portal">
     <meta property="og:title" content="Eduard Criollo Yule — Full Stack Developer & AI Specialist">
-    <meta property="og:description" content="Portal ejecutivo de ingeniería de software: Spring Boot, Angular, IA predictiva, inglés C1 CEFR. CV Web 2P, Portafolio Windows 97, Visor ATS y PDF oficial.">
+    <meta property="og:description" content="Portal ejecutivo de ingeniería de software estilo Windows 97: Spring Boot, Angular, IA predictiva, inglés C1 CEFR. CV Web 2P, Portafolio retro interactivo y Visor ATS.">
     <meta property="og:image" content="https://eduardcy.github.io/cv/data/img/FotoPerfil_01.JPG">
     <meta property="og:url" content="https://eduardcy.github.io/cv/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Eduard Criollo Yule — Software Engineer & AI Specialist">
-    <meta name="twitter:description" content="Bilingual executive software portfolio: Full Stack (Spring Boot/Angular), Applied AI, C1 English, and official credentials.">
+    <meta name="twitter:description" content="Windows 97 executive software portal: Full Stack (Spring Boot/Angular), Applied AI, C1 English, and ATS Plain Text viewer.">
     <meta name="twitter:image" content="https://eduardcy.github.io/cv/data/img/FotoPerfil_01.JPG">
 
-    <!-- Google Fonts -->
+    <!-- Retro Windows Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         /* ==========================================================================
-           DESIGN TOKENS — Google Antigravity Premium (Glassmorphism & Neon Depth)
+           DESIGN TOKENS — WINDOWS 97 AUTHENTIC SYSTEM PALETTE
            ========================================================================== */
         :root {
-            --bg-page:         #070a13;
-            --bg-surface:      #0d1322;
-            --bg-card:         rgba(15, 23, 42, 0.72);
-            --bg-card-hover:   rgba(22, 34, 61, 0.85);
+            --win-teal:        #008080;
+            --win-gray:        #c0c0c0;
+            --win-gray-light:  #dfdfdf;
+            --win-gray-dark:   #808080;
+            --win-black:       #000000;
+            --win-white:       #ffffff;
+            --win-navy:        #000080;
+            --win-navy-light:  #1084d0;
+            --win-blue-sel:    #000080;
+            --win-text-sel:    #ffffff;
+            --win-border-light:#ffffff;
+            --win-border-dark: #808080;
+            --win-border-black:#000000;
 
-            --border-subtle:   rgba(255, 255, 255, 0.08);
-            --border-glow:     rgba(0, 212, 255, 0.35);
-
-            --cyan-primary:    #00e5ff;
-            --cyan-glow:       rgba(0, 229, 255, 0.22);
-            --blue-accent:     #3b82f6;
-            --indigo-accent:   #6366f1;
-            --purple-accent:   #a855f7;
-            --emerald-accent:  #10b981;
-            --amber-accent:    #f59e0b;
-
-            --text-main:       #f8fafc;
-            --text-secondary:  #94a3b8;
-            --text-muted:      #64748b;
-
-            --font-sans:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-heading:    'Outfit', var(--font-sans);
-            --font-mono:       'JetBrains Mono', monospace;
-
-            --radius-sm:       8px;
-            --radius-md:       14px;
-            --radius-lg:       20px;
-            --radius-xl:       28px;
-
-            --transition:      all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            --win-font:        'MS Sans Serif', Tahoma, 'Segoe UI', Arial, sans-serif;
+            --win-font-mono:   'JetBrains Mono', 'Courier New', monospace;
+            --taskbar-height:  32px;
         }
 
         *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html, body {
-            overflow-x: hidden;
-            max-width: 100vw;
             width: 100%;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-page);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            min-height: 100%;
+            font-family: var(--win-font);
+            font-size: 11px;
+            color: var(--win-black);
+            background-color: var(--win-teal);
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* Ambient Glow Backgrounds */
-        .ambient-glow-1 {
-            position: fixed;
-            top: -150px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(600px, 90vw);
-            height: min(600px, 90vw);
-            background: radial-gradient(circle, rgba(0, 229, 255, 0.12) 0%, rgba(7, 10, 19, 0) 70%);
-            border-radius: 50%;
-            filter: blur(60px);
-            pointer-events: none;
-            z-index: 0;
+        /* Contenedor del Escritorio */
+        .win97-desktop {
+            min-height: 100vh;
+            padding: 16px 16px calc(var(--taskbar-height) + 24px) 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
         }
 
-        .ambient-glow-2 {
-            position: fixed;
-            bottom: -150px;
-            right: 0;
-            width: min(500px, 80vw);
-            height: min(500px, 80vw);
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.13) 0%, rgba(7, 10, 19, 0) 70%);
-            border-radius: 50%;
-            filter: blur(80px);
-            pointer-events: none;
-            z-index: 0;
+        /* Ventana Principal de Control */
+        .win97-master-window {
+            width: 100%;
+            max-width: 960px;
+            background: var(--win-gray);
+            border-top: 2px solid var(--win-white);
+            border-left: 2px solid var(--win-white);
+            border-right: 2px solid var(--win-border-black);
+            border-bottom: 2px solid var(--win-border-black);
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.45);
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
         }
 
-        /* Subtle Blueprint Mesh */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Top Navigation Bar */
-        .top-navbar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(7, 10, 19, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 14px 24px;
+        /* Barra de Título Clásica */
+        .win97-titlebar {
+            background: linear-gradient(90deg, var(--win-navy), var(--win-navy-light));
+            color: var(--win-white);
+            padding: 4px 6px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 0.3px;
+            user-select: none;
         }
 
-        .brand-logo {
+        .titlebar-left {
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--text-main);
-        }
-
-        .brand-symbol {
-            width: 34px;
-            height: 34px;
-            border-radius: var(--radius-sm);
-            background: linear-gradient(135deg, var(--cyan-primary), var(--indigo-accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 15px;
-            color: #000;
-            box-shadow: 0 0 16px var(--cyan-glow);
-        }
-
-        .brand-text {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.05rem;
-            letter-spacing: -0.3px;
-        }
-
-        .brand-badge {
-            font-size: 10.5px;
-            font-weight: 600;
-            color: var(--cyan-primary);
-            background: rgba(0, 229, 255, 0.1);
-            border: 1px solid rgba(0, 229, 255, 0.25);
-            padding: 2px 8px;
-            border-radius: 999px;
-            margin-left: 6px;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .lang-switcher-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-main);
-            padding: 7px 14px;
-            border-radius: 999px;
-            font-size: 12.5px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
-        }
-
-        .lang-switcher-btn:hover {
-            background: rgba(0, 229, 255, 0.1);
-            border-color: var(--cyan-primary);
-            color: var(--cyan-primary);
-            box-shadow: 0 0 12px var(--cyan-glow);
-        }
-
-        /* Main Container */
-        .portal-container {
-            max-width: 1140px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             gap: 8px;
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: var(--emerald-accent);
-            font-size: 11.5px;
-            font-weight: 600;
-            letter-spacing: 0.4px;
-            margin-bottom: 24px;
-            max-width: 96%;
-            text-align: center;
-            line-height: 1.3;
         }
 
-        .status-pulse {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--emerald-accent);
-            box-shadow: 0 0 8px var(--emerald-accent);
-            animation: pulse-ring 2s infinite;
-        }
-
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 6px var(--emerald-accent)); }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-
-        .avatar-wrap {
-            position: relative;
-            margin-bottom: 22px;
-        }
-
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--border-subtle);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-            transition: var(--transition);
-        }
-
-        .avatar-wrap:hover .profile-avatar {
-            border-color: var(--cyan-primary);
-            box-shadow: 0 0 25px var(--cyan-glow);
-            transform: scale(1.03);
-        }
-
-        .avatar-badge-c1 {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: #000;
-            border: 2px solid var(--cyan-primary);
-            border-radius: 999px;
-            padding: 3px 8px;
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--cyan-primary);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-
-        .hero-title {
-            font-family: var(--font-heading);
-            font-size: clamp(2.3rem, 5vw, 3.6rem);
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -1px;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #ffffff 40%, #00e5ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(0.95rem, 3.8vw, 1.25rem);
-            color: var(--cyan-primary);
-            font-weight: 600;
-            margin-bottom: 14px;
-            line-height: 1.35;
-        }
-
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .hero-meta-item {
+        .titlebar-icon {
+            width: 16px;
+            height: 16px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            font-size: 13px;
         }
 
-        .hero-summary {
-            max-width: 760px;
-            font-size: 1.02rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin: 0 auto;
+        .titlebar-controls {
+            display: flex;
+            gap: 2px;
         }
 
-        /* Metrics Grid */
-        .metrics-strip {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-bottom: 50px;
+        .win97-btn-box {
+            width: 18px;
+            height: 16px;
+            background: var(--win-gray);
+            color: var(--win-black);
+            font-size: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid var(--win-white);
+            border-left: 1px solid var(--win-white);
+            border-right: 1px solid var(--win-gray-dark);
+            border-bottom: 1px solid var(--win-gray-dark);
+            box-shadow: 1px 1px 0px var(--win-black);
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
         }
 
-        .metric-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 18px 20px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: var(--transition);
+        .win97-btn-box:active {
+            border-top: 1px solid var(--win-gray-dark);
+            border-left: 1px solid var(--win-gray-dark);
+            border-right: 1px solid var(--win-white);
+            border-bottom: 1px solid var(--win-white);
+            box-shadow: inset 1px 1px 0px var(--win-black);
+        }
+
+        /* Barra de Menú */
+        .win97-menubar {
+            background: var(--win-gray);
+            border-bottom: 1px solid var(--win-gray-dark);
+            padding: 3px 6px;
             display: flex;
             align-items: center;
             gap: 14px;
+            font-size: 11px;
+            user-select: none;
         }
 
-        .metric-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: var(--bg-card-hover);
-            transform: translateY(-2px);
+        .menu-item {
+            cursor: pointer;
+            padding: 2px 4px;
         }
 
-        .metric-icon {
-            font-size: 26px;
-            flex-shrink: 0;
+        .menu-item:hover {
+            background: var(--win-navy);
+            color: var(--win-white);
         }
 
-        .metric-content strong {
+        /* Barra de Herramientas / Toolbar */
+        .win97-toolbar {
+            background: var(--win-gray);
+            border-bottom: 2px solid var(--win-gray-dark);
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Botones de Estilo Windows 97 */
+        .win97-btn {
+            font-family: var(--win-font);
+            font-size: 11px;
+            background: var(--win-gray);
+            color: var(--win-black);
+            padding: 4px 12px;
+            border-top: 2px solid var(--win-white);
+            border-left: 2px solid var(--win-white);
+            border-right: 2px solid var(--win-gray-dark);
+            border-bottom: 2px solid var(--win-gray-dark);
+            box-shadow: 1px 1px 0px var(--win-black);
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .win97-btn:hover {
+            background: #d4d4d4;
+        }
+
+        .win97-btn:active {
+            border-top: 2px solid var(--win-gray-dark);
+            border-left: 2px solid var(--win-gray-dark);
+            border-right: 2px solid var(--win-white);
+            border-bottom: 2px solid var(--win-white);
+            box-shadow: inset 1px 1px 0px var(--win-black);
+            transform: translate(1px, 1px);
+        }
+
+        .win97-btn.default-btn {
+            font-weight: bold;
+            outline: 1px dotted var(--win-black);
+            outline-offset: -4px;
+        }
+
+        .win97-btn.lang-btn {
+            font-weight: bold;
+            background: #e8e8e8;
+        }
+
+        /* Cuerpo de la Ventana */
+        .win97-window-body {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Groupboxes */
+        .win97-groupbox {
+            border-top: 2px solid var(--win-white);
+            border-left: 2px solid var(--win-white);
+            border-right: 2px solid var(--win-gray-dark);
+            border-bottom: 2px solid var(--win-gray-dark);
+            padding: 12px 14px;
+            position: relative;
+        }
+
+        .win97-groupbox legend {
+            padding: 0 6px;
+            font-weight: bold;
+            color: var(--win-navy);
+            font-size: 11px;
+        }
+
+        /* Perfil y Especificaciones */
+        .profile-sys-grid {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .profile-photo-frame {
+            border-top: 2px solid var(--win-gray-dark);
+            border-left: 2px solid var(--win-gray-dark);
+            border-right: 2px solid var(--win-white);
+            border-bottom: 2px solid var(--win-white);
+            background: #000;
+            padding: 4px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
             display: block;
-            font-size: 14px;
-            color: var(--text-main);
-            margin-bottom: 3px;
         }
 
-        .metric-content p {
+        .photo-caption {
+            font-family: var(--win-font-mono);
+            font-size: 10px;
+            color: #ffffff;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        .sys-info-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .sys-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--win-navy);
+            margin-bottom: 2px;
+        }
+
+        .sys-subtitle {
             font-size: 12px;
-            color: var(--text-secondary);
+            font-weight: bold;
+            color: #222;
+        }
+
+        .sys-detail {
+            font-size: 11px;
+            color: #333;
             line-height: 1.4;
         }
 
-        /* Section Headings */
-        .section-header {
-            margin-bottom: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 12px;
+        .sys-well {
+            border-top: 2px solid var(--win-gray-dark);
+            border-left: 2px solid var(--win-gray-dark);
+            border-right: 2px solid var(--win-white);
+            border-bottom: 2px solid var(--win-white);
+            background: var(--win-white);
+            padding: 8px 10px;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #000;
+            margin-top: 8px;
         }
 
-        .section-title {
-            font-family: var(--font-heading);
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
+        /* Cuadrícula de Métricas Clásicas */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 10px;
         }
 
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 22px;
-            background: var(--cyan-primary);
-            border-radius: 4px;
-            box-shadow: 0 0 10px var(--cyan-glow);
-        }
-
-        .section-subtitle {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-        }
-
-        /* Portals Main 4-Grid */
-        .portals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 22px;
-            margin-bottom: 50px;
-        }
-
-        .portal-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 28px 24px;
-            text-decoration: none;
-            color: inherit;
+        .metric-item {
+            border-top: 1px solid var(--win-gray-dark);
+            border-left: 1px solid var(--win-gray-dark);
+            border-right: 1px solid var(--win-white);
+            border-bottom: 1px solid var(--win-white);
+            background: var(--win-gray-light);
+            padding: 8px;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            transition: var(--transition);
+            align-items: flex-start;
+            gap: 8px;
         }
 
-        .portal-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--card-accent, var(--cyan-primary)), transparent);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .portal-card:hover {
-            border-color: var(--card-accent, var(--cyan-primary));
-            background: var(--bg-card-hover);
-            transform: translateY(-5px);
-            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 229, 255, 0.12);
-        }
-
-        .portal-card:hover::before {
-            opacity: 1;
-        }
-
-        .portal-badge {
-            align-self: flex-start;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.7px;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: var(--card-badge-bg, rgba(0, 229, 255, 0.12));
-            color: var(--card-badge-color, var(--cyan-primary));
-            border: 1px solid var(--card-badge-border, rgba(0, 229, 255, 0.25));
-            margin-bottom: 18px;
-        }
-
-        .portal-icon-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .portal-icon {
-            font-size: 32px;
+        .metric-icon {
+            font-size: 20px;
             line-height: 1;
         }
 
-        .portal-title {
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.3px;
+        .metric-text strong {
+            display: block;
+            font-size: 11px;
+            color: var(--win-navy);
+            margin-bottom: 2px;
+        }
+
+        .metric-text p {
+            font-size: 10px;
+            color: #444;
+            line-height: 1.3;
+        }
+
+        /* 3 Portales Principales (Estilo Windows 97 Drives & Folders) */
+        .portals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .win97-portal-card {
+            background: var(--win-gray-light);
+            border-top: 2px solid var(--win-white);
+            border-left: 2px solid var(--win-white);
+            border-right: 2px solid var(--win-gray-dark);
+            border-bottom: 2px solid var(--win-gray-dark);
+            box-shadow: 1px 1px 0px var(--win-black);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--win-black);
+            transition: transform 0.1s;
+        }
+
+        .win97-portal-card:hover {
+            background: #ececec;
+        }
+
+        .win97-portal-card:active {
+            border-top: 2px solid var(--win-gray-dark);
+            border-left: 2px solid var(--win-gray-dark);
+            border-right: 2px solid var(--win-white);
+            border-bottom: 2px solid var(--win-white);
+            box-shadow: inset 1px 1px 0px var(--win-black);
+        }
+
+        .portal-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--win-gray-dark);
+            padding-bottom: 6px;
+        }
+
+        .portal-icon {
+            font-size: 26px;
+            line-height: 1;
+        }
+
+        .portal-title-block h3 {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--win-navy);
+        }
+
+        .portal-type-tag {
+            font-size: 9.5px;
+            font-family: var(--win-font-mono);
+            color: #666;
+            text-transform: uppercase;
         }
 
         .portal-desc {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-
-        .portal-action {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--card-accent, var(--cyan-primary));
-            transition: var(--transition);
-        }
-
-        .portal-card:hover .portal-action {
-            gap: 12px;
-            filter: drop-shadow(0 0 6px var(--card-accent, var(--cyan-primary)));
-        }
-
-        /* Color Variances for Portal Cards */
-        .portal-card.card-cv {
-            --card-accent: var(--cyan-primary);
-            --card-badge-bg: rgba(0, 229, 255, 0.12);
-            --card-badge-color: var(--cyan-primary);
-            --card-badge-border: rgba(0, 229, 255, 0.25);
-        }
-
-        .portal-card.card-win97 {
-            --card-accent: #38bdf8;
-            --card-badge-bg: rgba(56, 189, 248, 0.12);
-            --card-badge-color: #38bdf8;
-            --card-badge-border: rgba(56, 189, 248, 0.25);
-        }
-
-        .portal-card.card-ats {
-            --card-accent: var(--emerald-accent);
-            --card-badge-bg: rgba(16, 185, 129, 0.12);
-            --card-badge-color: var(--emerald-accent);
-            --card-badge-border: rgba(16, 185, 129, 0.25);
-        }
-
-        .portal-card.card-pdf {
-            --card-accent: var(--purple-accent);
-            --card-badge-bg: rgba(168, 85, 247, 0.12);
-            --card-badge-color: var(--purple-accent);
-            --card-badge-border: rgba(168, 85, 247, 0.25);
-        }
-
-        /* Skills Matrix */
-        .skills-matrix {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 30px;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            margin-bottom: 50px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 24px;
-            margin-top: 18px;
-        }
-
-        .skill-group h4 {
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--cyan-primary);
+            font-size: 11px;
+            line-height: 1.45;
+            color: #222;
             margin-bottom: 12px;
+            flex-grow: 1;
+        }
+
+        .portal-pdf-hint {
+            font-size: 10px;
+            color: #000080;
+            font-weight: bold;
+            background: #ffffcc;
+            border: 1px solid #cccc88;
+            padding: 3px 6px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
         }
 
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            font-size: 12px;
-            font-family: var(--font-mono);
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 4px 10px;
-            border-radius: 6px;
-            color: var(--text-main);
-            transition: var(--transition);
-        }
-
-        .skill-tag:hover {
-            border-color: var(--cyan-primary);
-            color: var(--cyan-primary);
-            background: rgba(0, 229, 255, 0.08);
-        }
-
-        /* Footer & Contact Strip */
-        .portal-footer {
+        .portal-action-row {
             margin-top: auto;
-            border-top: 1px solid var(--border-subtle);
-            background: rgba(7, 10, 19, 0.9);
-            padding: 32px 24px;
-        }
-
-        .footer-content {
-            max-width: 1140px;
-            margin: 0 auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            justify-content: flex-end;
         }
 
-        .footer-channels {
+        /* Pila Técnica y Chips */
+        .tech-chips-wrap {
             display: flex;
-            gap: 12px;
             flex-wrap: wrap;
+            gap: 6px;
         }
 
-        .channel-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-subtle);
-            border-radius: 999px;
-            padding: 8px 16px;
-            color: var(--text-main);
-            font-size: 12.5px;
-            font-weight: 600;
-            text-decoration: none;
+        .win97-chip {
+            border-top: 1px solid var(--win-white);
+            border-left: 1px solid var(--win-white);
+            border-right: 1px solid var(--win-gray-dark);
+            border-bottom: 1px solid var(--win-gray-dark);
+            background: var(--win-gray);
+            padding: 3px 7px;
+            font-size: 10px;
+            font-family: var(--win-font-mono);
+            color: var(--win-black);
             display: inline-flex;
             align-items: center;
+            gap: 4px;
+        }
+
+        /* Barra de Estado / Statusbar */
+        .win97-statusbar {
+            border-top: 2px solid var(--win-gray-dark);
+            background: var(--win-gray);
+            display: flex;
+            align-items: center;
+            padding: 2px 4px;
+            gap: 4px;
+            font-size: 10px;
+            user-select: none;
+        }
+
+        .status-cell {
+            border-top: 1px solid var(--win-gray-dark);
+            border-left: 1px solid var(--win-gray-dark);
+            border-right: 1px solid var(--win-white);
+            border-bottom: 1px solid var(--win-white);
+            padding: 3px 8px;
+            background: var(--win-gray);
+        }
+
+        /* Barra de Tareas Inferior de Windows 97 */
+        .win97-taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: var(--taskbar-height);
+            background: var(--win-gray);
+            border-top: 2px solid var(--win-white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px 4px;
+            z-index: 1000;
+            user-select: none;
+        }
+
+        .taskbar-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .start-btn {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 8px;
+            height: 24px;
+        }
+
+        .win97-flag {
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #ff3333 25%, #33cc33 25%, #33cc33 50%, #3366ff 50%, #3366ff 75%, #ffcc00 75%);
+            display: inline-block;
+        }
+
+        .taskbar-tab {
+            border-top: 2px solid var(--win-gray-dark);
+            border-left: 2px solid var(--win-gray-dark);
+            border-right: 2px solid var(--win-white);
+            border-bottom: 2px solid var(--win-white);
+            background: var(--win-gray-light);
+            padding: 2px 10px;
+            height: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: inset 1px 1px 0px var(--win-black);
+            font-size: 11px;
+        }
+
+        .system-tray {
+            border-top: 1px solid var(--win-gray-dark);
+            border-left: 1px solid var(--win-gray-dark);
+            border-right: 1px solid var(--win-white);
+            border-bottom: 1px solid var(--win-white);
+            padding: 2px 8px;
+            display: flex;
+            align-items: center;
             gap: 8px;
-            transition: var(--transition);
-        }
-
-        .channel-btn:hover {
-            border-color: var(--cyan-primary);
-            color: var(--cyan-primary);
-            background: rgba(0, 229, 255, 0.1);
-        }
-
-        .footer-copy {
-            font-size: 12px;
-            color: var(--text-muted);
+            font-size: 11px;
+            height: 24px;
         }
 
         /* Responsive Breakpoints */
         @media screen and (max-width: 768px) {
-            .top-navbar {
-                padding: 8px 12px;
-                width: 100%;
-                max-width: 100vw;
+            .win97-desktop {
+                padding: 4px 4px calc(var(--taskbar-height) + 12px) 4px;
             }
-            .brand-logo {
-                gap: 8px;
+            .win97-master-window {
+                box-shadow: none;
             }
-            .brand-symbol {
-                width: 28px;
-                height: 28px;
-                font-size: 12px;
-                flex-shrink: 0;
-            }
-            .brand-text {
-                font-size: 0.85rem;
+            .win97-menubar {
+                overflow-x: auto;
                 white-space: nowrap;
+                gap: 10px;
             }
-            .brand-badge {
-                display: none;
+            .win97-toolbar {
+                justify-content: flex-start;
+                gap: 4px;
+                padding: 4px;
             }
-            .lang-switcher-btn {
-                padding: 4px 8px;
-                font-size: 11px;
-                flex-shrink: 0;
+            .toolbar-group {
+                gap: 4px;
+                flex-wrap: wrap;
             }
-            .portal-container {
-                padding: 20px 14px 60px;
-            }
-            .hero-title {
-                font-size: 1.95rem;
-                letter-spacing: -0.5px;
-            }
-            .status-pill {
+            .win97-btn {
+                padding: 3px 8px;
                 font-size: 10px;
-                padding: 5px 10px;
-                width: 100%;
-                max-width: 330px;
-                margin-left: auto;
-                margin-right: auto;
-                white-space: normal;
+            }
+            .profile-sys-grid {
+                grid-template-columns: 1fr;
                 text-align: center;
-                line-height: 1.35;
             }
-            .hero-subtitle {
-                font-size: clamp(0.9rem, 4vw, 1.15rem);
-                margin-bottom: 12px;
-                max-width: 320px;
-                margin-left: auto;
-                margin-right: auto;
-                line-height: 1.35;
-            }
-            .hero-meta {
-                flex-direction: column;
-                gap: 6px;
-                font-size: 12px;
-            }
-            .hero-summary {
-                font-size: 13.5px;
-                line-height: 1.6;
+            .profile-photo-frame {
+                margin: 0 auto;
+                max-width: 130px;
             }
             .portals-grid {
                 grid-template-columns: 1fr;
             }
-            .metrics-strip {
+            .metrics-grid {
                 grid-template-columns: 1fr;
             }
-            .skills-grid {
-                grid-template-columns: 1fr;
+            .win97-titlebar {
+                font-size: 11px;
             }
-            .footer-content {
+            .sys-title {
+                font-size: 14px;
+            }
+            .win97-statusbar {
                 flex-direction: column;
+                align-items: stretch;
+            }
+            .status-cell {
                 text-align: center;
             }
         }
@@ -744,371 +631,356 @@
 </head>
 <body>
 
-    <!-- Ambient Visual Glows -->
-    <div class="ambient-glow-1"></div>
-    <div class="ambient-glow-2"></div>
+    <!-- ESCRITORIO WINDOWS 97 -->
+    <div class="win97-desktop">
 
-    <!-- Top Navigation Bar -->
-    <header class="top-navbar">
-        <a href="index.html" class="brand-logo" title="Recargar Portal">
-            <div class="brand-symbol">EC</div>
-            <div>
-                <span class="brand-text">Eduard Criollo Yule</span>
-                <span class="brand-badge">Dev & AI</span>
+        <!-- VENTANA PRINCIPAL DE CONTROL EJECUTIVO -->
+        <main class="win97-master-window">
+            
+            <!-- Barra de Título -->
+            <header class="win97-titlebar">
+                <div class="titlebar-left">
+                    <span class="titlebar-icon">🖳</span>
+                    <span id="titlebarText">Centro de Control & Portal de Software — Eduard Criollo Yule</span>
+                </div>
+                <div class="titlebar-controls">
+                    <button class="win97-btn-box" title="Minimizar">_</button>
+                    <button class="win97-btn-box" title="Maximizar">□</button>
+                    <button class="win97-btn-box" title="Cerrar" onclick="window.location.reload()">✕</button>
+                </div>
+            </header>
+
+            <!-- Menú de la Aplicación -->
+            <nav class="win97-menubar">
+                <span class="menu-item"><u>A</u>rchivo</span>
+                <span class="menu-item"><u>E</u>dición</span>
+                <span class="menu-item"><u>V</u>er</span>
+                <span class="menu-item" onclick="toggleLanguage()"><u>I</u>dioma (ES/EN)</span>
+                <span class="menu-item"><u>A</u>yuda</span>
+            </nav>
+
+            <!-- Barra de Herramientas Superior -->
+            <div class="win97-toolbar">
+                <div class="toolbar-group">
+                    <button class="win97-btn lang-btn" id="toolbarLangBtn" onclick="toggleLanguage()">
+                        <span id="langFlag">🇬🇧</span>
+                        <span id="langLabel">Switch to English</span>
+                    </button>
+                    <a href="01_Software_Dev/cv_web/cv_software.html" class="win97-btn default-btn" id="btnQuickCv">
+                        📄 CV Web (2P)
+                    </a>
+                    <a href="01_Software_Dev/portfolio/option_tron/index.html" class="win97-btn" id="btnQuickWin97">
+                        🖥️ Windows 97 OS
+                    </a>
+                    <a href="01_Software_Dev/cv_plain_text/viewer.html" class="win97-btn" id="btnQuickAts">
+                        📑 Formato ATS
+                    </a>
+                </div>
+
+                <div class="toolbar-group">
+                    <a href="https://github.com/EduardCY" target="_blank" rel="noopener noreferrer" class="win97-btn">
+                        🐙 GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/eduard-criollo-yule/" target="_blank" rel="noopener noreferrer" class="win97-btn">
+                        💼 LinkedIn
+                    </a>
+                </div>
             </div>
-        </a>
 
-        <div class="nav-actions">
-            <button class="lang-switcher-btn" id="langSwitchBtn" onclick="toggleLanguage()" title="Switch Language / Alternar Idioma">
-                <span id="langFlag">🇬🇧</span>
-                <span id="langLabel">English</span>
+            <!-- Cuerpo de la Ventana Principal -->
+            <div class="win97-window-body">
+
+                <!-- 1. Perfil del Sistema & Especificaciones -->
+                <fieldset class="win97-groupbox">
+                    <legend id="legendProfile">Especificaciones del Perfil Profesional</legend>
+                    <div class="profile-sys-grid">
+                        <div class="profile-photo-frame">
+                            <img src="data/img/FotoPerfil_01.JPG" alt="Eduard Criollo Yule" class="profile-img" onerror="this.src='data/assets/foto.png'">
+                            <div class="photo-caption">EDUARD_YULE.JPG</div>
+                        </div>
+
+                        <div class="sys-info-box">
+                            <h1 class="sys-title">Eduard Criollo Yule</h1>
+                            <p class="sys-subtitle" id="txtSubtitle">Desarrollador Full Stack & Especialista en IA</p>
+                            <p class="sys-detail">
+                                📍 <strong>Ubicación:</strong> Cali, Valle del Cauca, Colombia • <span id="txtWorkMode">Remoto / Híbrido / Presencial</span><br>
+                                🌐 <strong>Certificación:</strong> <span id="txtEnglishLevel">Inglés C1 Avanzado (Oxford Placement Test 93/120)</span><br>
+                                📞 <strong>Contacto:</strong> +57 314 ••• •••• • Habéas Data Compliant
+                            </p>
+
+                            <div class="sys-well" id="txtSummary">
+                                Ingeniero de Sistemas en formación con doble especialización en arquitecturas Full Stack empresariales (Spring Boot 3 & Angular 17+) y soluciones predictivas con Inteligencia Artificial (FastAPI, Scikit-Learn). Experiencia probada en modelado relacional estricto, microservicios distribuidos, gestión de datos masivos y despliegue de infraestructura crítica en eventos internacionales.
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 2. Acreditaciones & Métricas Oficiales -->
+                <fieldset class="win97-groupbox">
+                    <legend id="legendMetrics">Métricas de Rendimiento & Acreditaciones Clave</legend>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-icon">🎓</span>
+                            <div class="metric-text">
+                                <strong id="m1Title">Ingeniería de Sistemas</strong>
+                                <p id="m1Desc">Universidad Autónoma de Occidente (UAO) • Enfoque en Software & IA</p>
+                            </div>
+                        </div>
+
+                        <div class="metric-item">
+                            <span class="metric-icon">🏆</span>
+                            <div class="metric-text">
+                                <strong id="m2Title">Oxford CEFR C1 Avanzado</strong>
+                                <p id="m2Desc">Score 93/120 Oficial (Listening 92, Use of English 93) • Oxford University Press</p>
+                            </div>
+                        </div>
+
+                        <div class="metric-item">
+                            <span class="metric-icon">🎖️</span>
+                            <div class="metric-text">
+                                <strong id="m3Title">Dev Senior Code (Miami, FL)</strong>
+                                <p id="m3Desc">Acreditado en Spring Boot 3, Angular 17+, FastAPI y Pipelines de ML</p>
+                            </div>
+                        </div>
+
+                        <div class="metric-item">
+                            <span class="metric-icon">🏅</span>
+                            <div class="metric-text">
+                                <strong id="m4Title">Juegos Panamericanos Cali 2021</strong>
+                                <p id="m4Desc">Reconocimiento a soporte y operación de infraestructura crítica de red</p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 3. Los 3 Portales Principales de Evaluación -->
+                <fieldset class="win97-groupbox">
+                    <legend id="legendPortals">Portales de Evaluación & Formatos de Postulación</legend>
+                    <div class="portals-grid">
+
+                        <!-- Portal 1: CV Web Compacto 2P (Incluye PDF Oficial) -->
+                        <div class="win97-portal-card" id="cardCvWeb">
+                            <div>
+                                <div class="portal-header">
+                                    <span class="portal-icon">📄</span>
+                                    <div class="portal-title-block">
+                                        <h3 id="titleCvWeb">CV Web Profesional (2P)</h3>
+                                        <span class="portal-type-tag" id="tagCvWeb">Formato Ejecutivo • Lectura Rápida</span>
+                                    </div>
+                                </div>
+                                <p class="portal-desc" id="descCvWeb">
+                                    Hoja de vida web interactiva calibrada en densidad visual para comités de contratación y revisión en 2 minutos. Incluye trayectoria completa, stacks y proyectos destacados.
+                                </p>
+                                <div class="portal-pdf-hint">
+                                    <span>📥</span>
+                                    <span id="hintPdf">Incluye botón de Exportar PDF Oficial (2 Páginas)</span>
+                                </div>
+                            </div>
+                            <div class="portal-action-row">
+                                <a href="01_Software_Dev/cv_web/cv_software.html" class="win97-btn default-btn" id="linkCvWeb">
+                                    <span id="btnTextCvWeb">Abrir CV Web (Incluye PDF)</span> ➔
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Portal 2: Portafolio Interactivo Windows 97 -->
+                        <div class="win97-portal-card" id="cardWin97">
+                            <div>
+                                <div class="portal-header">
+                                    <span class="portal-icon">🖥️</span>
+                                    <div class="portal-title-block">
+                                        <h3 id="titleWin97">Portafolio Windows 97</h3>
+                                        <span class="portal-type-tag" id="tagWin97">Entorno OS • Desktop & Móvil</span>
+                                    </div>
+                                </div>
+                                <p class="portal-desc" id="descWin97">
+                                    Entorno de escritorio interactivo retro con explorador de archivos, redimensionamiento libre en 8 direcciones, auto-snapping magnético y visualizador oficial de certificaciones.
+                                </p>
+                            </div>
+                            <div class="portal-action-row">
+                                <a href="01_Software_Dev/portfolio/option_tron/index.html" class="win97-btn default-btn" id="linkWin97">
+                                    <span id="btnTextWin97">Iniciar Windows 97</span> 🚀
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Portal 3: Visor ATS en Texto Plano -->
+                        <div class="win97-portal-card" id="cardAts">
+                            <div>
+                                <div class="portal-header">
+                                    <span class="portal-icon">📑</span>
+                                    <div class="portal-title-block">
+                                        <h3 id="titleAts">Visor ATS en Texto Plano</h3>
+                                        <span class="portal-type-tag" id="tagAts">Parser-Friendly • Sin Ruido</span>
+                                    </div>
+                                </div>
+                                <p class="portal-desc" id="descAts">
+                                    Estructura estandarizada en texto plano sin tablas complejas ni gráficos, optimizada para procesadores de selección automáticos (ATS), terminales e indexadores.
+                                </p>
+                            </div>
+                            <div class="portal-action-row">
+                                <a href="01_Software_Dev/cv_plain_text/viewer.html" class="win97-btn default-btn" id="linkAts">
+                                    <span id="btnTextAts">Abrir Visor ATS</span> ➔
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <!-- 4. Pila Tecnológica & Herramientas -->
+                <fieldset class="win97-groupbox">
+                    <legend id="legendTech">Ecosistema Tecnológico Dominado</legend>
+                    <div class="tech-chips-wrap">
+                        <span class="win97-chip">☕ Java 17/21</span>
+                        <span class="win97-chip">🍃 Spring Boot 3</span>
+                        <span class="win97-chip">📦 Hibernate/JPA</span>
+                        <span class="win97-chip">⚡ FastAPI</span>
+                        <span class="win97-chip">🐍 Python 3.12</span>
+                        <span class="win97-chip">🅰️ Angular 17+</span>
+                        <span class="win97-chip">📘 TypeScript</span>
+                        <span class="win97-chip">🌐 JavaScript ES6+</span>
+                        <span class="win97-chip">🤖 Scikit-Learn</span>
+                        <span class="win97-chip">📊 Pandas & NumPy</span>
+                        <span class="win97-chip">🐘 PostgreSQL</span>
+                        <span class="win97-chip">🐬 MySQL</span>
+                        <span class="win97-chip">🐳 Docker</span>
+                        <span class="win97-chip">🐙 Git & GitHub</span>
+                        <span class="win97-chip">🐧 Linux / Bash</span>
+                    </div>
+                </fieldset>
+
+            </div>
+
+            <!-- Barra de Estado Inferior de la Ventana -->
+            <footer class="win97-statusbar">
+                <span class="status-cell" style="flex: 2;" id="sbStatus">3 Formatos Disponibles (CV Web, Windows 97, ATS)</span>
+                <span class="status-cell" style="flex: 1;">Zona: Internet</span>
+                <span class="status-cell" style="flex: 1;">Oxford C1: 93/120</span>
+                <span class="status-cell" style="flex: 1;" id="sbLang">Idioma: ES</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- BARRA DE TAREAS RETRO WINDOWS 97 -->
+    <footer class="win97-taskbar">
+        <div class="taskbar-left">
+            <button class="win97-btn start-btn" onclick="window.location.href='01_Software_Dev/portfolio/option_tron/index.html'">
+                <span class="win97-flag"></span>
+                <span style="font-weight: bold;">Inicio</span>
             </button>
+            <div class="taskbar-tab">
+                <span>🖳</span>
+                <span id="tbTabTitle">Centro de Control</span>
+            </div>
         </div>
-    </header>
 
-    <!-- Main Content Container -->
-    <main class="portal-container">
-
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="status-pill">
-                <span class="status-pulse"></span>
-                <span id="txtStatus">DISPONIBLE PARA OPORTUNIDADES PROFESIONALES</span>
-            </div>
-
-            <div class="avatar-wrap">
-                <img src="data/img/FotoPerfil_01.JPG" alt="Eduard Criollo Yule" class="profile-avatar" onerror="this.src='data/assets/foto.png'">
-                <div class="avatar-badge-c1" title="Oxford CEFR C1 Advanced Certified">
-                    <span>🇬🇧</span>
-                    <span>C1</span>
-                </div>
-            </div>
-
-            <h1 class="hero-title">Eduard Criollo Yule</h1>
-            <p class="hero-subtitle" id="txtSubtitle">Desarrollador Full Stack & Especialista en IA</p>
-
-            <div class="hero-meta">
-                <span class="hero-meta-item">📍 Cali, Valle del Cauca, Colombia</span>
-                <span class="hero-meta-item">💼 <span id="txtWorkMode">Remoto / Híbrido / Presencial</span></span>
-                <span class="hero-meta-item">🌐 <span id="txtEnglishLevel">Inglés C1 Avanzado (Oxford 93/120)</span></span>
-            </div>
-
-            <p class="hero-summary" id="txtSummary">
-                Ingeniero de Sistemas en formación con doble especialización en arquitecturas Full Stack empresariales (Spring Boot 3 & Angular 17+) y soluciones predictivas con Inteligencia Artificial (FastAPI, Scikit-Learn). Experiencia probada en modelado relacional estricto, microservicios distribuidos, gestión de datos masivos y despliegue de infraestructura crítica en eventos internacionales.
-            </p>
-        </section>
-
-        <!-- Executive Metrics Strip -->
-        <section class="metrics-strip">
-            <div class="metric-card">
-                <div class="metric-icon">🎓</div>
-                <div class="metric-content">
-                    <strong id="m1Title">Ingeniería de Sistemas</strong>
-                    <p id="m1Desc">Universidad Autónoma de Occidente (UAO) • Enfoque en Software & IA</p>
-                </div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-icon">🏆</div>
-                <div class="metric-content">
-                    <strong id="m2Title">Oxford CEFR C1 Avanzado</strong>
-                    <p id="m2Desc">Score 93/120 Oficial (Listening 92, Use of English 93) • Oxford University Press</p>
-                </div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-icon">🎖️</div>
-                <div class="metric-content">
-                    <strong id="m3Title">Dev Senior Code (Miami, FL)</strong>
-                    <p id="m3Desc">Acreditado en Spring Boot 3, Angular 17+, FastAPI y Pipelines de ML</p>
-                </div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-icon">🏅</div>
-                <div class="metric-content">
-                    <strong id="m4Title">Juegos Panamericanos Cali 2021</strong>
-                    <p id="m4Desc">Reconocimiento a soporte y operación de infraestructura crítica de red</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portals Grid (Option B Core Entry Points) -->
-        <section>
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title" id="txtPortalsTitle">Portales & Formatos Profesionales</h2>
-                    <p class="section-subtitle" id="txtPortalsSubtitle">Seleccione el entorno y nivel de detalle óptimo para su proceso de evaluación</p>
-                </div>
-            </div>
-
-            <div class="portals-grid">
-                <!-- 1. CV Web Compacto 2P -->
-                <a href="01_Software_Dev/cv_web/cv_software.html" class="portal-card card-cv" id="linkCvWeb">
-                    <div>
-                        <span class="portal-badge" id="badgeCvWeb">Recomendado Reclutadores • 2 Páginas</span>
-                        <div class="portal-icon-title">
-                            <span class="portal-icon">📄</span>
-                            <h3 class="portal-title" id="titleCvWeb">CV Web Profesional</h3>
-                        </div>
-                        <p class="portal-desc" id="descCvWeb">
-                            Hoja de vida web de alta densidad calibrada para revisión ejecutiva en 2 minutos. Incluye trayectoria, competencias, proyectos y visor interactivo de certificaciones.
-                        </p>
-                    </div>
-                    <div class="portal-action" id="actionCvWeb">
-                        <span>Explorar CV Web</span>
-                        <span>→</span>
-                    </div>
-                </a>
-
-                <!-- 2. Portafolio Windows 97 -->
-                <a href="01_Software_Dev/portfolio/option_tron/index.html" class="portal-card card-win97">
-                    <div>
-                        <span class="portal-badge" id="badgeWin97">Interactivo • Desktop & Móvil</span>
-                        <div class="portal-icon-title">
-                            <span class="portal-icon">🖥️</span>
-                            <h3 class="portal-title" id="titleWin97">Portafolio Windows 97</h3>
-                        </div>
-                        <p class="portal-desc" id="descWin97">
-                            Entorno de escritorio interactivo retro con explorador de proyectos, libre redimensionamiento en 8 direcciones, auto-snapping magnético y visualizador de certificaciones.
-                        </p>
-                    </div>
-                    <div class="portal-action" id="actionWin97">
-                        <span>Iniciar Sistema</span>
-                        <span>🚀</span>
-                    </div>
-                </a>
-
-                <!-- 3. Visor ATS en Texto Plano -->
-                <a href="01_Software_Dev/cv_plain_text/viewer.html" class="portal-card card-ats" id="linkAts">
-                    <div>
-                        <span class="portal-badge" id="badgeAts">Optimizado ATS • Cero Distracción</span>
-                        <div class="portal-icon-title">
-                            <span class="portal-icon">📑</span>
-                            <h3 class="portal-title" id="titleAts">Visor ATS en Texto Plano</h3>
-                        </div>
-                        <p class="portal-desc" id="descAts">
-                            Estructura tipada en texto plano estándar sin tablas complejas ni gráficos, lista para procesadores de selección automáticos (ATS) y terminales.
-                        </p>
-                    </div>
-                    <div class="portal-action" id="actionAts">
-                        <span>Ver Formato ATS</span>
-                        <span>→</span>
-                    </div>
-                </a>
-
-                <!-- 4. Descarga Oficial PDF -->
-                <a href="01_Software_Dev/cv_web/cv_software_compacto_2p.pdf" target="_blank" class="portal-card card-pdf" id="linkPdf">
-                    <div>
-                        <span class="portal-badge" id="badgePdf">PDF Oficial • Imprimible (2P)</span>
-                        <div class="portal-icon-title">
-                            <span class="portal-icon">📥</span>
-                            <h3 class="portal-title" id="titlePdf">Descarga Oficial PDF</h3>
-                        </div>
-                        <p class="portal-desc" id="descPdf">
-                            Documento consolidado en exactamente 2 páginas, diseñado con fidelidad tipográfica para comités de selección, impresión o almacenamiento formal.
-                        </p>
-                    </div>
-                    <div class="portal-action" id="actionPdf">
-                        <span>Descargar PDF (2P)</span>
-                        <span>↓</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Technical Competencies Matrix -->
-        <section class="skills-matrix">
-            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 6px;" id="txtSkillsTitle">
-                Ecosistema Técnico & Herramientas
-            </h3>
-            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;" id="txtSkillsSubtitle">
-                Pila tecnológica dominada en entornos empresariales, backend escalable y modelos de datos
-            </p>
-
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <h4 id="grpBackend">☕ Backend & Microservicios</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Java 17 / 21</span>
-                        <span class="skill-tag">Spring Boot 3</span>
-                        <span class="skill-tag">Hibernate / JPA</span>
-                        <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">Python 3.12</span>
-                        <span class="skill-tag">REST APIs</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <h4 id="grpFrontend">🌐 Frontend & Web</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">Angular 17+</span>
-                        <span class="skill-tag">JavaScript ES6+</span>
-                        <span class="skill-tag">HTML5 Semántico</span>
-                        <span class="skill-tag">CSS3 Moderno</span>
-                        <span class="skill-tag">Responsive UI</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <h4 id="grpAI">🤖 Inteligencia Artificial & Datos</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Scikit-Learn</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">Modelos Predictivos</span>
-                        <span class="skill-tag">ML Pipelines</span>
-                        <span class="skill-tag">Jupyter</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <h4 id="grpDevOps">🗄️ Bases de Datos & DevOps</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">SQL Relacional</span>
-                        <span class="skill-tag">Git / GitHub</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Linux / Bash</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer & Direct Channels -->
-    <footer class="portal-footer">
-        <div class="footer-content">
-            <div class="footer-copy">
-                <strong>Eduard Criollo Yule</strong> • Full Stack Developer & AI Specialist<br>
-                <span>Cali, Colombia • Tel: +57 314 ••• •••• • Habéas Data Compliant</span>
-            </div>
-
-            <div class="footer-channels">
-                <a href="https://github.com/EduardCY" target="_blank" rel="noopener noreferrer" class="channel-btn">
-                    <span>🐙</span>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/eduard-criollo-yule/" target="_blank" rel="noopener noreferrer" class="channel-btn">
-                    <span>💼</span>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="01_Software_Dev/cv_web/cv_software.html" class="channel-btn" style="border-color: var(--cyan-primary); color: var(--cyan-primary);">
-                    <span>📄</span>
-                    <span id="btnFootCv">Ver CV Web</span>
-                </a>
-            </div>
+        <div class="system-tray">
+            <span title="Volumen">🔊</span>
+            <span title="Conexión de red: 100 Mbps">🖧</span>
+            <span id="systemClock">12:00 PM</span>
         </div>
     </footer>
 
-    <!-- Bilingual Reactive Engine -->
+    <!-- Motor Bilingüe Reactivo (ES / EN) -->
     <script>
         const I18N_DATA = {
             es: {
-                flag: '🇬🇧',
-                label: 'English',
-                status: 'DISPONIBLE PARA OPORTUNIDADES PROFESIONALES',
-                subtitle: 'Desarrollador Full Stack & Especialista en IA',
-                workMode: 'Remoto / Híbrido / Presencial',
-                englishLevel: 'Inglés C1 Avanzado (Oxford 93/120)',
-                summary: 'Ingeniero de Sistemas en formación con doble especialización en arquitecturas Full Stack empresariales (Spring Boot 3 & Angular 17+) y soluciones predictivas con Inteligencia Artificial (FastAPI, Scikit-Learn). Experiencia probada en modelado relacional estricto, microservicios distribuidos, gestión de datos masivos y despliegue de infraestructura crítica en eventos internacionales.',
-                m1Title: 'Ingeniería de Sistemas',
-                m1Desc: 'Universidad Autónoma de Occidente (UAO) • Enfoque en Software & IA',
-                m2Title: 'Oxford CEFR C1 Avanzado',
-                m2Desc: 'Score 93/120 Oficial (Listening 92, Use of English 93) • Oxford University Press',
-                m3Title: 'Dev Senior Code (Miami, FL)',
-                m3Desc: 'Acreditado en Spring Boot 3, Angular 17+, FastAPI y Pipelines de ML',
-                m4Title: 'Juegos Panamericanos Cali 2021',
-                m4Desc: 'Reconocimiento a soporte y operación de infraestructura crítica de red',
-                portalsTitle: 'Portales & Formatos Profesionales',
-                portalsSubtitle: 'Seleccione el entorno y nivel de detalle óptimo para su proceso de evaluación',
-                badgeCvWeb: 'Recomendado Reclutadores • 2 Páginas',
-                titleCvWeb: 'CV Web Profesional',
-                descCvWeb: 'Hoja de vida web de alta densidad calibrada para revisión ejecutiva en 2 minutos. Incluye trayectoria, competencias, proyectos y visor interactivo de certificaciones.',
-                actionCvWeb: 'Explorar CV Web →',
-                badgeWin97: 'Interactivo • Desktop & Móvil',
-                titleWin97: 'Portafolio Windows 97',
-                descWin97: 'Entorno de escritorio interactivo retro con explorador de proyectos, libre redimensionamiento en 8 direcciones, auto-snapping magnético y visualizador de certificaciones.',
-                actionWin97: 'Iniciar Sistema 🚀',
-                badgeAts: 'Optimizado ATS • Cero Distracción',
-                titleAts: 'Visor ATS en Texto Plano',
-                descAts: 'Estructura tipada en texto plano estándar sin tablas complejas ni gráficos, lista para procesadores de selección automáticos (ATS) y terminales.',
-                actionAts: 'Ver Formato ATS →',
-                badgePdf: 'PDF Oficial • Imprimible (2P)',
-                titlePdf: 'Descarga Oficial PDF',
-                descPdf: 'Documento consolidado en exactamente 2 páginas, diseñado con fidelidad tipográfica para comités de selección, impresión o almacenamiento formal.',
-                actionPdf: 'Descargar PDF (2P) ↓',
-                skillsTitle: 'Ecosistema Técnico & Herramientas',
-                skillsSubtitle: 'Pila tecnológica dominada en entornos empresariales, backend escalable y modelos de datos',
-                grpBackend: '☕ Backend & Microservicios',
-                grpFrontend: '🌐 Frontend & Web',
-                grpAI: '🤖 Inteligencia Artificial & Datos',
-                grpDevOps: '🗄️ Bases de Datos & DevOps',
-                btnFootCv: 'Ver CV Web'
+                titlebar: "Centro de Control & Portal de Software — Eduard Criollo Yule",
+                langFlag: "🇬🇧",
+                langLabel: "Switch to English",
+                legendProfile: "Especificaciones del Perfil Profesional",
+                subtitle: "Desarrollador Full Stack & Especialista en IA",
+                workMode: "Remoto / Híbrido / Presencial",
+                englishLevel: "Inglés C1 Avanzado (Oxford Placement Test 93/120)",
+                summary: "Ingeniero de Sistemas en formación con doble especialización en arquitecturas Full Stack empresariales (Spring Boot 3 & Angular 17+) y soluciones predictivas con Inteligencia Artificial (FastAPI, Scikit-Learn). Experiencia probada en modelado relacional estricto, microservicios distribuidos, gestión de datos masivos y despliegue de infraestructura crítica en eventos internacionales.",
+                legendMetrics: "Métricas de Rendimiento & Acreditaciones Clave",
+                m1Title: "Ingeniería de Sistemas",
+                m1Desc: "Universidad Autónoma de Occidente (UAO) • Enfoque en Software & IA",
+                m2Title: "Oxford CEFR C1 Avanzado",
+                m2Desc: "Score 93/120 Oficial (Listening 92, Use of English 93) • Oxford University Press",
+                m3Title: "Dev Senior Code (Miami, FL)",
+                m3Desc: "Acreditado en Spring Boot 3, Angular 17+, FastAPI y Pipelines de ML",
+                m4Title: "Juegos Panamericanos Cali 2021",
+                m4Desc: "Reconocimiento a soporte y operación de infraestructura crítica de red",
+                legendPortals: "Portales de Evaluación & Formatos de Postulación",
+                titleCvWeb: "CV Web Profesional (2P)",
+                tagCvWeb: "Formato Ejecutivo • Lectura Rápida",
+                descCvWeb: "Hoja de vida web interactiva calibrada en densidad visual para comités de contratación y revisión en 2 minutos. Incluye trayectoria completa, stacks y proyectos destacados.",
+                hintPdf: "Incluye botón de Exportar PDF Oficial (2 Páginas)",
+                btnTextCvWeb: "Abrir CV Web (Incluye PDF)",
+                titleWin97: "Portafolio Windows 97",
+                tagWin97: "Entorno OS • Desktop & Móvil",
+                descWin97: "Entorno de escritorio interactivo retro con explorador de archivos, redimensionamiento libre en 8 direcciones, auto-snapping magnético y visualizador oficial de certificaciones.",
+                btnTextWin97: "Iniciar Windows 97",
+                titleAts: "Visor ATS en Texto Plano",
+                tagAts: "Parser-Friendly • Sin Ruido",
+                descAts: "Estructura estandarizada en texto plano sin tablas complejas ni gráficos, optimizada para procesadores de selección automáticos (ATS), terminales e indexadores.",
+                btnTextAts: "Abrir Visor ATS",
+                legendTech: "Ecosistema Tecnológico Dominado",
+                sbStatus: "3 Formatos Disponibles (CV Web, Windows 97, ATS)",
+                sbLang: "Idioma: ES",
+                tbTabTitle: "Centro de Control"
             },
             en: {
-                flag: '🇪🇸',
-                label: 'Español',
-                status: 'AVAILABLE FOR PROFESSIONAL OPPORTUNITIES',
-                subtitle: 'Full Stack Developer & Applied AI Specialist',
-                workMode: 'Remote / Hybrid / On-site',
-                englishLevel: 'C1 Advanced English (Oxford 93/120)',
-                summary: 'Systems Engineering student with dual specialization in enterprise Full Stack architectures (Spring Boot 3 & Angular 17+) and predictive solutions with Artificial Intelligence (FastAPI, Scikit-Learn). Proven experience in strict relational data modeling, distributed microservices, big data processing, and critical infrastructure deployment for international events.',
-                m1Title: 'B.S. in Systems Engineering',
-                m1Desc: 'Universidad Autónoma de Occidente (UAO) • Software & AI Focus',
-                m2Title: 'Oxford CEFR C1 Advanced',
-                m2Desc: 'Official 93/120 Score (Listening 92, Use of English 93) • Oxford University Press',
-                m3Title: 'Dev Senior Code (Miami, FL)',
-                m3Desc: 'Accredited in Spring Boot 3, Angular 17+, FastAPI & ML Pipelines',
-                m4Title: 'Junior Pan American Games Cali 2021',
-                m4Desc: 'Awarded for technical support and critical network infrastructure operations',
-                portalsTitle: 'Executive Portals & Formats',
-                portalsSubtitle: 'Choose the optimal viewing environment and level of detail for your review process',
-                badgeCvWeb: 'Recruiter Recommended • 2 Pages',
-                titleCvWeb: 'Professional Web CV',
-                descCvWeb: 'High-density web résumé calibrated for a 2-minute executive review. Features track records, tech stack, highlighted projects, and interactive cert viewer.',
-                actionCvWeb: 'Explore Web CV →',
-                badgeWin97: 'Interactive • Desktop & Mobile',
-                titleWin97: 'Windows 97 Portfolio',
-                descWin97: 'Retro interactive OS environment with project explorer, 8-directional free resizing, magnetic edge auto-snapping, and cert archive.',
-                actionWin97: 'Launch Windows 97 🚀',
-                badgeAts: 'ATS Optimized • Zero Noise',
-                titleAts: 'Plain Text ATS Viewer',
-                descAts: 'Standardized plain text view free of complex formatting, built for high-accuracy parsing in Applicant Tracking Systems and command line environments.',
-                actionAts: 'Open ATS Format →',
-                badgePdf: 'Official PDF • Printable (2P)',
-                titlePdf: 'Official PDF Download',
-                descPdf: 'Consolidated 2-page document with executive typography, ideal for hiring committees, printing, or formal application filing.',
-                actionPdf: 'Download Official PDF (2P) ↓',
-                skillsTitle: 'Technical Ecosystem & Tooling',
-                skillsSubtitle: 'Core tech stack mastered across enterprise backend, scalable architectures, and predictive modeling',
-                grpBackend: '☕ Backend & Microservices',
-                grpFrontend: '🌐 Frontend & Web',
-                grpAI: '🤖 Artificial Intelligence & Data',
-                grpDevOps: '🗄️ Databases & DevOps',
-                btnFootCv: 'View Web CV'
+                titlebar: "Executive Control Center & Software Portal — Eduard Criollo Yule",
+                langFlag: "🇪🇸",
+                langLabel: "Cambiar a Español",
+                legendProfile: "Professional Profile Specifications",
+                subtitle: "Full Stack Developer & Applied AI Specialist",
+                workMode: "Remote / Hybrid / On-site",
+                englishLevel: "C1 Advanced English (Oxford Placement Test 93/120)",
+                summary: "Systems Engineering student with dual specialization in enterprise Full Stack architectures (Spring Boot 3 & Angular 17+) and predictive solutions with Artificial Intelligence (FastAPI, Scikit-Learn). Proven experience in strict relational data modeling, distributed microservices, big data processing, and critical infrastructure deployment for international events.",
+                legendMetrics: "Performance Metrics & Key Accreditations",
+                m1Title: "B.S. in Systems Engineering",
+                m1Desc: "Universidad Autónoma de Occidente (UAO) • Software & AI Focus",
+                m2Title: "Oxford CEFR C1 Advanced",
+                m2Desc: "Official 93/120 Score (Listening 92, Use of English 93) • Oxford University Press",
+                m3Title: "Dev Senior Code (Miami, FL)",
+                m3Desc: "Accredited in Spring Boot 3, Angular 17+, FastAPI & ML Pipelines",
+                m4Title: "Junior Pan American Games Cali 2021",
+                m4Desc: "Awarded for technical support and critical network infrastructure operations",
+                legendPortals: "Evaluation Portals & Application Formats",
+                titleCvWeb: "Professional Web CV (2P)",
+                tagCvWeb: "Executive Format • Fast Review",
+                descCvWeb: "High-density web résumé calibrated for hiring committees and 2-minute executive review. Features track records, tech stack, highlighted projects, and interactive cert viewer.",
+                hintPdf: "Includes Official 2-Page PDF Export Button",
+                btnTextCvWeb: "Open Web CV (Includes PDF)",
+                titleWin97: "Windows 97 Portfolio",
+                tagWin97: "Interactive OS • Desktop & Mobile",
+                descWin97: "Retro interactive OS environment with project explorer, 8-directional free resizing, magnetic edge auto-snapping, and cert archive.",
+                btnTextWin97: "Launch Windows 97",
+                titleAts: "Plain Text ATS Viewer",
+                tagAts: "Parser-Friendly • Zero Noise",
+                descAts: "Standardized plain text structure free of complex formatting, built for high-accuracy parsing in Applicant Tracking Systems, command line, and indexing tools.",
+                btnTextAts: "Open ATS Format",
+                legendTech: "Mastered Technical Ecosystem",
+                sbStatus: "3 Formats Available (Web CV, Windows 97, ATS)",
+                sbLang: "Language: EN",
+                tbTabTitle: "Control Center"
             }
         };
 
         let currentLang = localStorage.getItem('eduard_portal_lang') || 'es';
 
         /**
-         * Aplica los textos del diccionario al DOM según el idioma activo.
+         * Aplica los textos según el idioma seleccionado.
+         * @param {'es'|'en'} lang Idioma a aplicar.
          */
         function applyLanguage(lang) {
             const d = I18N_DATA[lang] || I18N_DATA.es;
 
-            document.getElementById('langFlag').textContent = d.flag;
-            document.getElementById('langLabel').textContent = d.label;
-            document.getElementById('txtStatus').textContent = d.status;
+            document.getElementById('titlebarText').textContent = d.titlebar;
+            document.getElementById('langFlag').textContent = d.langFlag;
+            document.getElementById('langLabel').textContent = d.langLabel;
+            document.getElementById('legendProfile').textContent = d.legendProfile;
             document.getElementById('txtSubtitle').textContent = d.subtitle;
             document.getElementById('txtWorkMode').textContent = d.workMode;
             document.getElementById('txtEnglishLevel').textContent = d.englishLevel;
             document.getElementById('txtSummary').textContent = d.summary;
 
+            document.getElementById('legendMetrics').textContent = d.legendMetrics;
             document.getElementById('m1Title').textContent = d.m1Title;
             document.getElementById('m1Desc').textContent = d.m1Desc;
             document.getElementById('m2Title').textContent = d.m2Title;
@@ -1118,52 +990,38 @@
             document.getElementById('m4Title').textContent = d.m4Title;
             document.getElementById('m4Desc').textContent = d.m4Desc;
 
-            document.getElementById('txtPortalsTitle').textContent = d.portalsTitle;
-            document.getElementById('txtPortalsSubtitle').textContent = d.portalsSubtitle;
-
-            document.getElementById('badgeCvWeb').textContent = d.badgeCvWeb;
+            document.getElementById('legendPortals').textContent = d.legendPortals;
             document.getElementById('titleCvWeb').textContent = d.titleCvWeb;
+            document.getElementById('tagCvWeb').textContent = d.tagCvWeb;
             document.getElementById('descCvWeb').textContent = d.descCvWeb;
-            document.getElementById('actionCvWeb').innerHTML = `<span>${d.actionCvWeb.replace('→', '').trim()}</span> <span>→</span>`;
+            document.getElementById('hintPdf').textContent = d.hintPdf;
+            document.getElementById('btnTextCvWeb').textContent = d.btnTextCvWeb;
 
-            document.getElementById('badgeWin97').textContent = d.badgeWin97;
             document.getElementById('titleWin97').textContent = d.titleWin97;
+            document.getElementById('tagWin97').textContent = d.tagWin97;
             document.getElementById('descWin97').textContent = d.descWin97;
-            document.getElementById('actionWin97').innerHTML = `<span>${d.actionWin97.replace('🚀', '').trim()}</span> <span>🚀</span>`;
+            document.getElementById('btnTextWin97').textContent = d.btnTextWin97;
 
-            document.getElementById('badgeAts').textContent = d.badgeAts;
             document.getElementById('titleAts').textContent = d.titleAts;
+            document.getElementById('tagAts').textContent = d.tagAts;
             document.getElementById('descAts').textContent = d.descAts;
-            document.getElementById('actionAts').innerHTML = `<span>${d.actionAts.replace('→', '').trim()}</span> <span>→</span>`;
+            document.getElementById('btnTextAts').textContent = d.btnTextAts;
 
-            document.getElementById('badgePdf').textContent = d.badgePdf;
-            document.getElementById('titlePdf').textContent = d.titlePdf;
-            document.getElementById('descPdf').textContent = d.descPdf;
-            document.getElementById('actionPdf').innerHTML = `<span>${d.actionPdf.replace('↓', '').trim()}</span> <span>↓</span>`;
+            document.getElementById('legendTech').textContent = d.legendTech;
+            document.getElementById('sbStatus').textContent = d.sbStatus;
+            document.getElementById('sbLang').textContent = d.sbLang;
+            document.getElementById('tbTabTitle').textContent = d.tbTabTitle;
 
-            document.getElementById('txtSkillsTitle').textContent = d.skillsTitle;
-            document.getElementById('txtSkillsSubtitle').textContent = d.skillsSubtitle;
-            document.getElementById('grpBackend').textContent = d.grpBackend;
-            document.getElementById('grpFrontend').textContent = d.grpFrontend;
-            document.getElementById('grpAI').textContent = d.grpAI;
-            document.getElementById('grpDevOps').textContent = d.grpDevOps;
-            document.getElementById('btnFootCv').textContent = d.btnFootCv;
-
-            // Enlazar CV Web al idioma correspondiente
+            // Enlazar CV Web y ATS a la variante correspondiente
             const linkCv = document.getElementById('linkCvWeb');
-            if (linkCv) {
-                linkCv.href = lang === 'en' ? '01_Software_Dev/cv_web/cv_software_en.html' : '01_Software_Dev/cv_web/cv_software.html';
-            }
+            const quickCv = document.getElementById('btnQuickCv');
+            if (linkCv) linkCv.href = lang === 'en' ? '01_Software_Dev/cv_web/cv_software_en.html' : '01_Software_Dev/cv_web/cv_software.html';
+            if (quickCv) quickCv.href = lang === 'en' ? '01_Software_Dev/cv_web/cv_software_en.html' : '01_Software_Dev/cv_web/cv_software.html';
 
             const linkAts = document.getElementById('linkAts');
-            if (linkAts) {
-                linkAts.href = lang === 'en' ? '01_Software_Dev/cv_plain_text/viewer_en.html' : '01_Software_Dev/cv_plain_text/viewer.html';
-            }
-
-            const linkPdf = document.getElementById('linkPdf');
-            if (linkPdf) {
-                linkPdf.href = lang === 'en' ? '01_Software_Dev/cv_web/cv_software_compacto_2p_en.pdf' : '01_Software_Dev/cv_web/cv_software_compacto_2p.pdf';
-            }
+            const quickAts = document.getElementById('btnQuickAts');
+            if (linkAts) linkAts.href = lang === 'en' ? '01_Software_Dev/cv_plain_text/viewer_en.html' : '01_Software_Dev/cv_plain_text/viewer.html';
+            if (quickAts) quickAts.href = lang === 'en' ? '01_Software_Dev/cv_plain_text/viewer_en.html' : '01_Software_Dev/cv_plain_text/viewer.html';
 
             document.documentElement.lang = lang;
             localStorage.setItem('eduard_portal_lang', lang);
@@ -1178,8 +1036,27 @@
             applyLanguage(nextLang);
         }
 
-        // Aplicar idioma inicial guardado o detección de navegador
+        /**
+         * Reloj de la barra de tareas en tiempo real.
+         */
+        function initClock() {
+            const clock = document.getElementById('systemClock');
+            if (!clock) return;
+            function update() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+                clock.textContent = `${hours}:${minutes} ${ampm}`;
+            }
+            update();
+            setInterval(update, 1000);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            initClock();
             const saved = localStorage.getItem('eduard_portal_lang');
             if (!saved) {
                 const navLang = navigator.language || navigator.userLanguage || 'es';
